@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
@@ -36,37 +37,59 @@
         </div>
     <div class="col-md-4"></div>
 </div>
-<h3>    
+
+<!--<h3>    
         <p class="bg-danger" align="center" style="width: 30%; display: block;">
         <b>
+            -->
             <?php
+            //utilizando variables globales
+            //control de usuarios
             session_start();
             ob_start();
                 if(isset($_SESSION['sesion']))
                 {
-                    
-                    if($_SESSION['sesion']==2)
-                        {echo "Los campos SON OBLIGATORIOS";}
-                    if($_SESSION['sesion']==3)
-                        {echo "DATOS INCORRECTOS";}
+                    if($_SESSION['sesion']==2){//Error de campos vacios
+                        echo "<script>
+                            swal({
+                                title: \"Advertencia\",
+                                text:\"Los campos SON OBLIGATORIOS\",
+                                icon:\"warning\",
+                                dangerMode: true,
+                            });
+                        </script>";
+                    }
+                    if($_SESSION['sesion']==3){//Error de datos incorrectos 
+                        echo "<script>
+                            swal({
+                                title: \"Advertencia\",
+                                text: \"DATOS INCORRECTOS\",
+                                icon: \"warning\",
+                            });
+                        </script>";
+                        
+                    }
                 }
-                else
-                {
-                    $_SESSION['sesion']=0;
+                else{
+                    $_SESSION['sesion']=0;//No se ha iniciado sesion
                 }
                 
             ?>
+        <!--
         </b>
         </p>
         <p class="bg-success" align="center">
-        <b>
+        <b> 
+            -->
             <?php
                 if($_SESSION['sesion']==4)
                     {echo "GRACIAS POR USAR NUESTROS SERVICIOS";}
                 $_SESSION['sesion']=0; //Despues de confirmar el error, igualo lo variable a 0
             ?>
+            <!--
         </b>
         </p>
     </h3>
+            -->
 </body>
 </html>
