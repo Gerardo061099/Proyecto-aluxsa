@@ -1,0 +1,223 @@
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+    }
+    
+    body.cuerpo {
+        background: #34495E;
+    }
+    
+    #login {
+        margin-bottom: 5%;
+        margin-top: 35px;
+        padding: 40px;
+        width: 50px;
+        background: #d5d8dc85;
+        border-radius: 5px;
+    }
+    
+    .contenedoru {
+        width: 115px;
+        height: 110px;
+        border-radius: 85px;
+        background: #AED6F1;
+    }
+    
+    .usuario {
+        margin-top: 5px;
+        width: 90px;
+        height: 90px;
+    }
+    
+    .box-1 {
+        border-bottom: #000 0.5px solid;
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .encabesado {
+        height: 55%;
+        display: block;
+    }
+    
+    .tb-herramientas {
+        margin: auto;
+    }
+    
+    .titulo {
+        /*margin out*/
+        margin-top: 0.5px;
+        /*pading in*/
+    }
+    
+    .botones {
+        text-align: right;
+        margin: auto;
+    }
+    
+    .search {
+        width: 20%;
+        padding: 5px;
+        align-items: flex-start;
+    }
+    
+    .btn-primary {
+        display: flex;
+    }
+    
+    .btn-success {
+        display: flex;
+    }
+    
+    .titulo:hover {
+        color: #85929E;
+    }
+    
+    .subtitulo {
+        color: aliceblue;
+    }
+    
+    .titulos {
+        font-size: 25px;
+    }
+    
+    .tb-herramientas {
+        width: 100%;
+        padding: 10px 10px;
+        margin: 10px 10px;
+        border-radius: 2px;
+    }
+    
+    .cuadro-texto {
+        /*border: #000 5px solid;*/
+        padding: 25px 20px;
+        margin: 12px;
+        font-size: 15px;
+        justify-content: flex-start;
+    }
+    
+    .tablas {
+        display: flex;
+        margin: 20px 20px;
+        border-radius: 5px;
+        background: #34495E;
+    }
+    
+    .parrafo {
+        background: #ECF0F1;
+        border-radius: 5px;
+    }
+    
+    .parrafo2 {
+        background: #ECF0F1;
+        border-radius: 5px;
+    }
+    
+    .aside1 {
+        /*border: #000 5px solid;*/
+        background: #ECF0F1;
+        padding: 25px 20px;
+        margin: 12px;
+        border-radius: 5px;
+    }
+    
+    .contenedor {
+        padding: 18px 13px;
+        margin: 12px;
+    }
+    
+    .ley {
+        color: white;
+    }
+    
+    @media all and (max-width:830px) {
+        .img {
+            width: 880px;
+        }
+        .titulo {
+            font-size: 27px;
+        }
+    }
+    
+    @media screen and (max-width: 910px) {
+        .tb-herramientas {
+            display: block;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin: 0%;
+        }
+        .parrafo2 {
+            display: block;
+            overflow-x: auto;
+        }
+        .subtitulo {
+            font-size: 32px;
+        }
+        #login {
+            padding: 20px;
+            height: 490px;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width:770px) {
+        .cuadro-texto {
+            padding: 20px 15px;
+        }
+        .botones {
+            text-align: center;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width: 803px) {
+        .tablas {
+            display: block;
+        }
+        .titulos {
+            font-size: 15px;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width: 430px) {
+        .usuario {
+            width: 50px;
+            height: 50px;
+            border-radius: 60px;
+            background: #AED6F1;
+        }
+        .contenedoru {
+            margin: 8px 8px;
+            width: 60px;
+            height: 60px;
+        }
+        #login {
+            width: auto;
+            height: auto;
+            margin: auto;
+            margin-top: 28px;
+            margin-bottom: 20px;
+        }
+        .titulo {
+            color: #000;
+        }
+        .ley {
+            font-size: 10px;
+            color: white;
+        }
+        .tb-herramientas {
+            padding: 15px 15px;
+        }
+        .botones {
+            display: flex;
+        }
+    }

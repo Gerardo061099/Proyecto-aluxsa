@@ -1,9 +1,10 @@
-<?php
 
+<?php
+//datos del servidor
 $host = "localhost";//servidor
 $userdb = "root";//usuario
 $claveus = "root";//pass
-$nombredb = "bodega";//db
+$nombredb = "bodega";//db bodega
 
 //tablas
 $tbu_db1 = "usuarios";
@@ -19,7 +20,7 @@ $tbsoli_db10 = "solicitud";
 
 //conexion
 $conexion = new mysqli($host,$userdb,$claveus,$nombredb);
-
+//En caso de haber datos erroneos del servidor
 if ($conexion->connect_errno) {
     echo "Problemas de conexion con el servidor...";
 }

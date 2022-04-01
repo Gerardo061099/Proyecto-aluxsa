@@ -1,59 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
-
+<body class="cuerpo">
 <div class="row">
-<img src="ENCABEZADO.jpg" alt="">
 
     <div class="col-md-4"></div>
-    
-        <div class="col-md-4">
-        <center><h1>Inicio de Sesion</h1>
-            <img src="user.png" alt="" style="width: 90px; height: 90px; border-radius: 55px; background: #fff;">
-        </center>
-            <form method="POST" action="inventario.php">
-            <div class="form-group">
-                <label for="user">Nombre de usuario:</label>
-                <input type="text" name="user" class="form-control" id="user">
-            </div>
-            <div class="form-group">
-                <label for="pass">Contraseña:</label>
-                <input type="password" name="pass" class="form-control" id="pass">
-            </div>
-
+        <div class="col-md-4 " id="login" >
+            <center><h1 style="margin-top: 5px;" class="titulo1">Inicio de Sesion</h1>
+                <div class="contenedoru">
+                    <img class="usuario" src="img/user.png" alt="imagen no disponible">
+                </div>
+            </center>
+            <form method="POST" action="inventario.php" style="margin: 8px 8px">
+                <div class="formulario" style="text-align: center; ">
+                    <div class="form-group">
+                        <label for="user" class="usuariola">Nombre de usuario:</label>
+                        <input type="text" name="user" placeholder="name-user" class="form-control" id="user" style="width: 55%; display:flex;  margin:auto;">
+                    </div>
+                    <div class="form-group">
+                        <label for="pass" class="passla">Contraseña:</label>
+                        <input type="password" name="pass" placeholder="********" class="form-control" id="pass" style="width: 55%; display:flex; margin:auto;">
+                    </div>
+                </div>
             <center>
                 <input type="submit" value="Iniciar Sesion" class="btn btn-info" name="btn1">
             </center>
             </form>
-
         </div>
     <div class="col-md-4"></div>
 </div>
-
-<!--<h3>    
-        <p class="bg-danger" align="center" style="width: 30%; display: block;">
-        <b>
-            -->
+<center><p class="ley">Aluminios Xalatlaco S.A de C.V. Todos los derechos Reservados</p></center>
             <?php
             //utilizando variables globales
             //control de usuarios
             session_start();
             ob_start();
-                if(isset($_SESSION['sesion']))
-                {
+                if(isset($_SESSION['sesion'])){ 
                     if($_SESSION['sesion']==2){//Error de campos vacios
                         echo "<script>
                             swal({
-                                title: \"Advertencia\",
-                                text:\"Los campos SON OBLIGATORIOS\",
+                                title: \"Campos Vacios:\",
+                                text:\"Debes llenar todos los campos.\",
                                 icon:\"warning\",
                                 dangerMode: true,
                             });
@@ -62,28 +57,28 @@
                     if($_SESSION['sesion']==3){//Error de datos incorrectos 
                         echo "<script>
                             swal({
-                                title: \"Advertencia\",
-                                text: \"DATOS INCORRECTOS\",
+                                title: \"DATOS INCORRECTOS:\",
+                                text: \"Los datos ingresados no existen en la Base de Datos.\",
                                 icon: \"warning\",
+                                dangerMode: \"true\",
                             });
                         </script>";
-                        
                     }
                 }
                 else{
                     $_SESSION['sesion']=0;//No se ha iniciado sesion
                 }
-                
             ?>
-        <!--
-        </b>
-        </p>
-        <p class="bg-success" align="center">
-        <b> 
-            -->
             <?php
-                if($_SESSION['sesion']==4)
-                    {echo "GRACIAS POR USAR NUESTROS SERVICIOS";}
+                if($_SESSION['sesion']==4){
+                    echo "<script>
+                        swal({
+                            title: \"Sesion Cerrada\",
+                            text: \"GRACIAS POR USAR NUESTROS SERVICIOS\",
+                            icon: \"success\",
+                        });
+                    </script>";
+                }
                 $_SESSION['sesion']=0; //Despues de confirmar el error, igualo lo variable a 0
             ?>
             <!--
