@@ -6,14 +6,26 @@
     }
     
     body.cuerpo {
-        background: #34495E;
+        background: #141E30;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #243B55, #141E30);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #243B55, #141E30);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*
+        background: #ffd89b;
+        /* fallback for old browsers */
+        /*
+        background: -webkit-linear-gradient(to right, #19547b, #ffd89b);
+        /* Chrome 10-25, Safari 5.1-6 */
+        /*
+        background: linear-gradient(to right, #19547b, #ffd89b);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     
     #login {
-        margin-bottom: 5%;
-        margin-top: 35px;
+        margin: 55px 0px;
         padding: 40px;
-        width: 50px;
         background: #d5d8dc85;
         border-radius: 5px;
     }
@@ -53,8 +65,11 @@
     }
     
     .botones {
-        text-align: right;
-        margin: auto;
+        margin: 10px 10px;
+        padding: 8px 8px;
+        border: #34495E 5px solid;
+        border-radius: 5px;
+        display: block;
     }
     
     .search {
@@ -71,10 +86,6 @@
         display: flex;
     }
     
-    .titulo:hover {
-        color: #85929E;
-    }
-    
     .subtitulo {
         color: aliceblue;
     }
@@ -85,8 +96,8 @@
     
     .tb-herramientas {
         width: 100%;
-        padding: 10px 10px;
-        margin: 10px 10px;
+        padding: 5px 5px;
+        margin: 10px 0px;
         border-radius: 2px;
     }
     
@@ -99,92 +110,93 @@
     }
     
     .tablas {
-        display: flex;
         margin: 20px 20px;
+        padding: 10px;
+        width: auto;
         border-radius: 5px;
         background: #34495E;
+        display: flex;
+    }
+    
+    .tablas2 {
+        margin: 20px 20px;
+        padding: 15px 15px;
+        background: #2E4053;
+        border-radius: 5px;
+    }
+    
+    .tb {
+        background: #ECF0F1;
+        border-radius: 5px;
+    }
+    
+    .subtitulo2 {
+        color: aliceblue;
+        margin: 5px;
+        padding: 2px;
+        border: aliceblue 5px solid;
+        border-radius: 5px;
+    }
+    
+    .caja1 {
+        display: block;
     }
     
     .parrafo {
+        margin: 10px;
+        padding: 5px;
         background: #ECF0F1;
         border-radius: 5px;
     }
     
     .parrafo2 {
+        margin: 10px;
+        padding: 5px;
         background: #ECF0F1;
         border-radius: 5px;
     }
     
     .aside1 {
         /*border: #000 5px solid;*/
-        background: #ECF0F1;
         padding: 25px 20px;
         margin: 12px;
         border-radius: 5px;
+        display: inline-block;
+    }
+    
+    .medidas {
+        display: flex;
+        overflow-x: auto;
     }
     
     .contenedor {
+        background: #ECF0F1;
         padding: 18px 13px;
         margin: 12px;
+        border-radius: 5px;
     }
     
     .ley {
         color: white;
     }
     
-    @media all and (max-width:830px) {
-        .img {
-            width: 880px;
-        }
-        .titulo {
-            font-size: 27px;
-        }
+    .form-search {
+        margin: 5px;
+        padding: 3px;
+        display: flex;
     }
     
-    @media screen and (max-width: 910px) {
-        .tb-herramientas {
-            display: block;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin: 0%;
-        }
-        .parrafo2 {
-            display: block;
-            overflow-x: auto;
-        }
-        .subtitulo {
-            font-size: 32px;
-        }
-        #login {
-            padding: 20px;
-            height: 490px;
-        }
-        .titulo {
-            color: #000;
-        }
+    .acciones {
+        margin: 5px;
+        padding: 5px;
     }
     
-    @media all and (max-width:770px) {
-        .cuadro-texto {
-            padding: 20px 15px;
-        }
-        .botones {
-            text-align: center;
-        }
-        .titulo {
-            color: #000;
-        }
-    }
-    
-    @media all and (max-width: 803px) {
-        .tablas {
-            display: block;
-        }
-        .titulos {
+    @media all and (max-width:330px) {
+        .subtitulo2 {
             font-size: 15px;
         }
-        .titulo {
-            color: #000;
+        .acciones {
+            display: flex;
         }
     }
     
@@ -219,5 +231,85 @@
         }
         .botones {
             display: flex;
+        }
+    }
+    
+    @media all and (max-width:770px) {
+        .cuadro-texto {
+            padding: 20px 15px;
+        }
+        .botones {
+            text-align: center;
+        }
+        .titulo {
+            color: #000;
+        }
+        #login {
+            padding: 20px 10px;
+        }
+        .usuario {
+            width: 60px;
+            height: 60px;
+        }
+        .contenedoru {
+            width: 80px;
+            height: 75px;
+        }
+        .tb-herramientas {
+            padding: 5px 5px;
+        }
+    }
+    
+    @media all and (max-width: 803px) {
+        .tablas {
+            display: block;
+        }
+        .titulos {
+            font-size: 15px;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width:830px) {
+        .img {
+            width: 880px;
+        }
+        .titulo {
+            font-size: 27px;
+        }
+    }
+    
+    @media screen and (max-width: 910px) {
+        .tb-herramientas {
+            display: block;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin: 0%;
+        }
+        .parrafo2 {
+            display: block;
+            overflow-x: auto;
+        }
+        .subtitulo {
+            font-size: 32px;
+        }
+        #login {
+            padding: 20px;
+            height: 490px;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width: 1030px) {
+        .tb {
+            display: block;
+            overflow-x: auto;
+            background: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
         }
     }

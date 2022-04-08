@@ -41,6 +41,7 @@ nav a {
 
 nav a:hover {
     color: grey;
+    text-decoration: none;
 }
 
 a.active,

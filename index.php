@@ -10,34 +10,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body class="cuerpo">
-<div class="row">
-
-    <div class="col-md-4"></div>
-        <div class="col-md-4 " id="login" >
-            <center><h1 style="margin-top: 5px;" class="titulo1">Inicio de Sesion</h1>
-                <div class="contenedoru">
-                    <img class="usuario" src="img/user.png" alt="imagen no disponible">
-                </div>
-            </center>
-            <form method="POST" action="inventario.php" style="margin: 8px 8px">
-                <div class="formulario" style="text-align: center; ">
-                    <div class="form-group">
-                        <label for="user" class="usuariola">Nombre de usuario:</label>
-                        <input type="text" name="user" placeholder="name-user" class="form-control" id="user" style="width: 55%; display:flex;  margin:auto;">
+    <div class="row" style="margin: 5px;">
+        <div class="col-md-4" style="padding: 0px; width: 30%;"></div>
+            <div class="col-md-4 " id="login">
+                <center><h1 style="margin-top: 5px;" class="titulo1">Inicio de Sesion</h1>
+                    <div class="contenedoru">
+                        <img class="usuario" src="img/user.png" alt="imagen no disponible">
                     </div>
-                    <div class="form-group">
-                        <label for="pass" class="passla">Contraseña:</label>
-                        <input type="password" name="pass" placeholder="********" class="form-control" id="pass" style="width: 55%; display:flex; margin:auto;">
+                </center>
+                <form method="POST" action="inventario.php" style="margin: 8px 8px">
+                    <div class="formulario" style="text-align: center; ">
+                        <div class="form-group">
+                            <label for="user" class="usuariola">Nombre de usuario:</label>
+                            <input type="text" name="user" placeholder="name-user" class="form-control" id="user" style="width: 55%; display:flex;  margin:auto;">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass" class="passla">Contraseña:</label>
+                            <input type="password" name="pass" placeholder="********" class="form-control" id="pass" style="width: 55%; display:flex; margin:auto;">
+                        </div>
                     </div>
-                </div>
-            <center>
-                <input type="submit" value="Iniciar Sesion" class="btn btn-info" name="btn1">
-            </center>
-            </form>
-        </div>
-    <div class="col-md-4"></div>
-</div>
-<center><p class="ley">Aluminios Xalatlaco S.A de C.V. Todos los derechos Reservados</p></center>
+                <center>
+                    <input type="submit" value="Iniciar Sesion" class="btn btn-info" name="btn1">
+                </center>
+                </form>
+            </div>
+        <div class="col-md-4" style="padding: 0px; width: 30%;"></div>
+    </div>
+    <center><p class="ley">Aluminios Xalatlaco S.A de C.V. Todos los derechos Reservados</p></center>
             <?php
             //utilizando variables globales
             //control de usuarios
@@ -58,7 +57,7 @@
                         echo "<script>
                             swal({
                                 title: \"DATOS INCORRECTOS:\",
-                                text: \"Los datos ingresados no existen en la Base de Datos.\",
+                                text: \"Verifica el usuario o la Contraseña.\",
                                 icon: \"warning\",
                                 dangerMode: \"true\",
                             });
@@ -81,10 +80,5 @@
                 }
                 $_SESSION['sesion']=0; //Despues de confirmar el error, igualo lo variable a 0
             ?>
-            <!--
-        </b>
-        </p>
-    </h3>
-            -->
 </body>
 </html>
