@@ -21,13 +21,17 @@ label.logo {
 
 nav ul {
     float: right;
-    margin-right: 40px;
+    margin-right: 50px;
 }
 
 nav li {
     display: inline-block;
     margin: 0 8px;
     line-height: 55px;
+}
+
+.menu {
+    display: none;
 }
 
 nav a {
@@ -80,4 +84,10 @@ a:hover {
     }
 }
 
-@media all and (max-width:430px) {}
+@media all and (max-width: 430px) {
+    nav li.menu-icon {
+        display: inline-block;
+        margin: 0 8px;
+        line-height: 55px;
+    }
+}

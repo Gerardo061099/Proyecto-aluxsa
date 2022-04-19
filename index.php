@@ -18,7 +18,7 @@
                         <img class="usuario" src="img/user.png" alt="imagen no disponible">
                     </div>
                 </center>
-                <form method="POST" action="inventario.php" style="margin: 8px 8px">
+                <form method="POST" action="pagina_principal.php" style="margin: 8px 8px">
                     <div class="formulario" style="text-align: center; ">
                         <div class="form-group">
                             <label for="user" class="usuariola">Nombre de usuario:</label>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 <center>
-                    <input type="submit" value="Iniciar Sesion" class="btn btn-info" name="btn1">
+                    <input type="submit" value="Iniciar Sesion" class="btn btn-dark" name="btn1">
                 </center>
                 </form>
             </div>
