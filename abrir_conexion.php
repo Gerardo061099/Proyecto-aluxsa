@@ -1,4 +1,3 @@
-
 <?php
 //datos del servidor
 $host = "localhost";//servidor
@@ -6,7 +5,7 @@ $userdb = "root";//usuario
 $claveus = "root";//pass
 $nombredb = "bodega";//db bodega
 
-//tablas
+//tablas BD
 $tbu_db1 = "usuarios";
 $tbcar_db2 = "cargo";
 $tbcat_db3 = "categorias";

@@ -108,6 +108,10 @@
         border-bottom: #5DADE2 2px solid;
     }
     
+    tr:hover {
+        background: #d6dbdfb0;
+    }
+    
     .tb-herramientas {
         width: 100%;
         height: 450px;

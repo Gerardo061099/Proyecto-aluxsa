@@ -52,11 +52,11 @@ ob_start();
     </nav>
     <center>
         <div class="box-1" style="border-bottom: #F4D03F 7px solid;">
-            <div class="encabesado" >
+            <div class="encabesado">
                 <h1 class="titulo">Categorias</h1>
             </div>
         </div>
-        <div class="menu-botones" >
+        <div class="menu-botones">
             <div class="botones">
             <a href="registro_categorias.php" class="badge badge-primary">Nueva Categoria</a>
             <a href="registro_gavilanes.php" class="badge badge-success">Numero de Gavilanes</a>
@@ -150,121 +150,7 @@ ob_start();
             </div>
         </section>
     </center>
-    <div class="aside1">
-                <div class="contenedor">
-                    <div class="aside">
-                    <form method="POST" action="inventario.php">
-                    <h1>Registrar.</h1><!-- from. registrar nuesvas herramientas -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cantidad">Cantidad:</label>
-                                <input type="text" class="form-control" id="cantidad" name="cantidad">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="precio">Precio $:</label>
-                                <input type="text" class="form-control" id="precio" name="precio">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="total">Total:</label>
-                                <input type="texto" class="form-control" id="total" name="total">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="medidas">Codigo Medidas:</label>
-                                    <select id="medidas" name="medidas" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
-                                            //$id_partida=0;
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['id_Medidas'].'</option>');
-                                                    //$id_partida++;
-                                                }
-                                                include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="categoria">Codigo Categoria:</label>
-                                    <select id="categoria" name="categoria" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
-                                            //$id_partida=0;
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['id_Categoria'].'</option>');
-                                                    //$id_partida++;
-                                                }
-                                                include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="gavilanes">Gavilanes:</label>
-                                    <select id="gavilanes" name="gav" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbgav_db6");
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$valores['id_Gav'].'">'.$valores['id_Gav'].'</option>');
-                                                }
-                                                include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
-                            </div>
-                        </div>
-                        <input type="submit" value="Agregar" class="btn btn-success" name="add">
-                        </form>
-                            <?php
-                                if (isset($_POST['add'])) {
-                                    include("abrir_conexion.php");
-                                    $nombre = $_POST['nombre'];
-                                    $cantidad = $_POST['cantidad'];
-                                    $precio = $_POST['precio'];
-                                    $total = $_POST['total'];
-                                    $medidas = $_POST['medidas'];
-                                    $categoria = $_POST['categoria'];
-                                    $n_gavilanes = $_POST['gav']; 
-                                    if ($nombre=="" || $cantidad=""||$precio=""||$total=""||$medidas=""||$categoria=""||$n_gavilanes="") {
-                                        echo"<script>
-                                                swal({
-                                                    title: \"Campos vacios:\",
-                                                    text:\"Debes llenar todos los campos.\",
-                                                    icon:\"warning\",
-                                                    dangerMode: true,
-                                                });
-                                            </script>";
-                                    }
-                                    else {
-                                        mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total',now())");
-                                        echo"<script>
-                                                swal({
-                                                    title: \"Insercion exitosa:\",
-                                                    text:\"Se realizo un registro en la tabla herramientas.\",
-                                                    icon:\"success\",
-                                                    dangerMode: false,
-                                                });
-                                            </script>";
-                                        include("cerrar_conexion.php");
-                                    }
-                                }
-                            ?>
-                    </div>
-                </div>
-                <div>
-                    
-                </div>
-    </div>
+    
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">

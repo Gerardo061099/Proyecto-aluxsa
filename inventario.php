@@ -50,23 +50,23 @@ ob_start();
         <div>
             <div class="info">
                 <p class="info-p">
-                    En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacen. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
+                    En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacén. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
                 </p>
             </div>
-            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE;">
+            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; position: sticky;">
             <?php
             //Contamos la cantidad que hay en el almacen
             include("abrir_conexion.php");
                 $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM herramientas");
                 while($consulta = mysqli_fetch_array($resul)){
-                echo "  <button type=\"button\" class=\"btn btn-primary\" >
+                echo "  <button type=\"button\" class=\"btn btn-primary\">
                             <strong>N° Herramientas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
                         </button>
                     ";
                 }
             include("cerrar_conexion.php");
             ?>
-            
+            <a href="registro_h.php" class="badge badge-dark">Nuevo registro</a>
             </div>
             <div style="margin: 0px 10px; background: #FDFEFE;">
                 <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas.</strong></h1>
@@ -91,7 +91,7 @@ ob_start();
                                                 <th><center>Cantidad</center></th>
                                                 <th><center>Total</center></th>
                                                 <th><center>Fecha_Hora</center></th>
-                                                <th><center>Prioridad</center></th>
+                                                <th><center>Estado</center></th>
                                             </tr>
                                         </thead>
                                 ";
@@ -142,6 +142,5 @@ ob_start();
             </li>
         </ul>
     </nav>
-    
 </body>
 </html>

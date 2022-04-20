@@ -104,7 +104,7 @@ ob_start();
             <center>
                 <form method="POST" action="inventario.php">
                     <div class="form-search">
-                        <label for="search" class="Buscar">Buscar:</label>
+                        <label for="search" class="Buscar" style="color: white;">Buscar:</label>
                         <input class="form-control" id="search" type="text" name="dato"><br>
                     </div>
                     <div class="acciones">
