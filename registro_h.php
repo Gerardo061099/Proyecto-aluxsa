@@ -48,7 +48,7 @@ ob_start();
         <p></p>
     </div>
     <center>
-    <div class="box-1" style="border-top: #F4D03F 7px solid;">
+    <div class="box-1" style="border-top: #DC7633 7px solid;">
             <div class="encabesado">
                 <h1 class="titulo">Registro de Herramientas</h1>
             </div>

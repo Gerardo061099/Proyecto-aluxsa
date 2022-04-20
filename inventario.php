@@ -68,10 +68,11 @@ ob_start();
             ?>
             <a href="registro_h.php" class="badge badge-dark">Nuevo registro</a>
             </div>
-            <div style="margin: 0px 10px; background: #FDFEFE;">
-                <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas.</strong></h1>
-            </div>
                 <div class="tb-herramientas">
+                    <div style="margin: 0px 10px; background: #FDFEFE;">
+                        <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas.</strong></h1>
+                    </div>
+                    <div class="tabla-herramientas">
                     <?php
                             include("abrir_conexion.php");// conexion con la BD
                             $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
@@ -126,13 +127,14 @@ ob_start();
                             }
                                 echo "</table><br>";
                     ?>
+                    </div>
                 </div>
         </div>
     </center>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link">Previous</a>
+                <a class="page-link" href="pagina_principal.php">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
             <li class="page-item"><a class="page-link" href="registros.php">2</a></li>

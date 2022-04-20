@@ -146,11 +146,9 @@ ob_start();
                         include("cerrar_conexion.php");
                         ?>
                 </div>
-                
             </div>
         </section>
     </center>
-    
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">

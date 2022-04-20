@@ -15,7 +15,7 @@
     }
     
     .pag {
-        background: #E5E7E9;
+        background: #17202A;
     }
     
     .pag::-webkit-scrollbar {
@@ -60,7 +60,7 @@
     
     .box-1 {
         border-bottom: #2ECC71 5px solid;
-        background-color: #FDFEFE;
+        background-color: #fdfefec7;
         border-radius: 5px;
         padding: 20px;
         margin: 15px;
@@ -105,7 +105,7 @@
     
     .titulos {
         font-size: 25px;
-        border-bottom: #5DADE2 2px solid;
+        border-bottom: #5DADE2 5px solid;
     }
     
     tr:hover {
@@ -116,12 +116,21 @@
         width: 100%;
         height: 450px;
         padding: 5px 5px;
-        margin: 0px 0px;
+        margin: 5px 10px;
         border-radius: 2px;
+        background: #FDFEFE;
+    }
+    
+    .tabla-herramientas {
+        width: max-content;
+        height: 300px;
         display: inline-block;
         overflow-y: auto;
-        margin: auto;
-        background: #FDFEFE;
+    }
+    
+    .tabla-herramientas::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 100px;
     }
     
     .cuadro-texto {

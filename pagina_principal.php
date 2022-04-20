@@ -79,7 +79,7 @@ ob_start();
         <div class="card text-white bg-danger mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Reportes</div>
             <div class="card-body">
-                <h5 class="card-title">Herramientas Agotadas</h5>
+                <h5 class="card-title">Herramientas agotadas</h5>
                 <p class="card-text"><a href="herramienta_agotada.php"><img src="img/tool-cancel.png" alt=""></a></p>
             </div>
         </div>
