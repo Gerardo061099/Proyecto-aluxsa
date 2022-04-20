@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
+<body class="pag">
 <?php
 //importante
 session_start();
@@ -49,7 +49,7 @@ ob_start();
     <center>
         <div class="box-1">
             <div class="encabesado">
-                <h1 class="titulo">Bienvenido al sistema de inventario de ALUXSA</h1>
+                <h1 class="titulo">¡Bienvenido al sistema de inventario de ALUXSA!</h1>
             </div>
         </div>
     </center>
@@ -83,21 +83,20 @@ ob_start();
                 <p class="card-text"><a href="herramienta_agotada.php"><img src="img/tool-cancel.png" alt=""></a></p>
             </div>
         </div>
-        <!--
-        <div class="card bg-light mb-3" id="card1" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+        <div class="card text-white bg-info mb-3" id="card1" style="max-width: 18rem;">
+            <div class="card-header">Solicitudes</div>
             <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">Puedes registrar una solicitud</h5>
+                <p class="card-text"><a href=""><img src="img/solicitud.png" alt=""></a></p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3" id="card1" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header">Salidas del almacén</div>
             <div class="card-body">
-                <h5 class="card-title">Dark card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">Herramientas salidas del almacén</h5>
+                <p class="card-text"><a href=""><img src="img/salida.png" alt=""></a></p>
             </div>
-        </div>-->
+        </div>
     </div>
     </center>
     <div>

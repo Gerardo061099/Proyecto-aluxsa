@@ -74,7 +74,7 @@ ob_start();
                                         <th><center>Cantidad</center></th>
                                         <th><center>Total</center></th>
                                         <th><center>Fecha_Hora</center></th>
-                                        <th><center>Prioridad</center></th>
+                                        <th><center>Estado</center></th>
                                     </tr>
                                 </thead>
                         ";
