@@ -53,7 +53,7 @@ ob_start();
                     En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacén. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
                 </p>
             </div>
-            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; position: sticky;">
+            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; position: sticky; border-radius: 5px;">
             <?php
             //Contamos la cantidad que hay en el almacen
             include("abrir_conexion.php");
@@ -131,7 +131,7 @@ ob_start();
                 </div>
         </div>
     </center>
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="pagina_principal.php">Previous</a>

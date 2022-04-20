@@ -80,6 +80,7 @@
     .botones {
         margin: 10px 10px;
         padding: 8px 8px;
+        background: #FDFEFE;
         border: #34495E 5px solid;
         border-radius: 5px;
         display: block;
@@ -116,7 +117,6 @@
         width: 100%;
         height: 450px;
         padding: 5px 5px;
-        margin: 5px 10px;
         border-radius: 2px;
         background: #FDFEFE;
     }
@@ -128,9 +128,33 @@
         overflow-y: auto;
     }
     
+    .tabla-herramientas::-webkit-scrollbar {
+        width: 8px;
+        /* Tamaño del scroll en vertical */
+        height: 8px;
+        /* Tamaño del scroll en horizontal */
+        /* Ocultar scroll */
+    }
+    
     .tabla-herramientas::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 100px;
+        background: #5DADE2;
+        border-radius: 4px;
+    }
+    /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+    
+    .tabla-herramientas::-webkit-scrollbar-thumb:hover {
+        background: #2E86C1;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    }
+    /* Cambiamos el fondo cuando esté en active */
+    
+    .tabla-herramientas::-webkit-scrollbar-thumb:active {
+        background-color: #2980B9;
+    }
+    
+    .tabla-herramientas::-webkit-scrollbar-track {
+        background: #e1e1e1;
+        border-radius: 4px;
     }
     
     .cuadro-texto {
@@ -144,7 +168,7 @@
     .tablas {
         margin: 20px 20px;
         padding: 10px;
-        width: auto;
+        width: 930px;
         border-radius: 5px;
         background: #FDFEFE;
         display: flex;
@@ -153,20 +177,24 @@
     .tablas2 {
         margin: 20px 20px;
         padding: 15px 15px;
-        background: #2E4053;
+        background: #FDFEFE;
         border-radius: 5px;
     }
     
     .tb {
         background: #ECF0F1;
         border-radius: 5px;
+        width: max-content;
+        height: 300px;
+        display: inline-block;
+        overflow-y: auto;
     }
     
     .subtitulo2 {
-        color: aliceblue;
+        color: black;
         margin: 5px;
+        border-bottom: #EC7063 5px solid;
         padding: 2px;
-        border: aliceblue 5px solid;
         border-radius: 5px;
     }
     
@@ -251,12 +279,100 @@
         padding: 5px;
     }
     
-    @media all and (max-width:330px) {
-        .subtitulo2 {
+    @media all and (max-width: 1030px) {
+        .tb {
+            display: block;
+            overflow-x: auto;
+            background: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    }
+    
+    @media screen and (max-width: 910px) {
+        .tb-herramientas {
+            display: block;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin: 0%;
+        }
+        .parrafo2 {
+            display: block;
+            overflow-x: auto;
+        }
+        .subtitulo {
+            font-size: 32px;
+        }
+        #login {
+            padding: 20px;
+            height: 490px;
+        }
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width:830px) {
+        .img {
+            width: 880px;
+        }
+        .titulo {
+            font-size: 27px;
+        }
+    }
+    
+    @media all and (max-width: 803px) {
+        .tablas {
+            display: block;
+        }
+        .titulos {
             font-size: 15px;
         }
-        .acciones {
+        .titulo {
+            color: #000;
+        }
+    }
+    
+    @media all and (max-width:770px) {
+        .cuadro-texto {
+            padding: 20px 15px;
+        }
+        .botones {
+            text-align: center;
+        }
+        .titulo {
+            color: #000;
+        }
+        .tablas {
+            width: 500px;
+        }
+        #login {
+            padding: 20px 10px;
+        }
+        .usuario {
+            width: 60px;
+            height: 60px;
+        }
+        .contenedoru {
+            width: 80px;
+            height: 75px;
+        }
+        .medidas {
+            background-color: #ECF0F1;
+            margin: 10px;
+            height: 530px;
+            padding: 25px 20px;
+            border-radius: 5px;
             display: flex;
+            overflow-y: auto;
+            width: 300px;
+        }
+        .parrafo {
+            width: 250px;
+            border-radius: 5px;
+        }
+        .parrafo2 {
+            width: 350px;
         }
     }
     
@@ -292,105 +408,25 @@
         .botones {
             display: flex;
         }
-        .parrafo2 {
-            display: flex;
-            overflow-x: auto;
-        }
-        .botones {
-            display: block;
-        }
-    }
-    
-    @media all and (max-width:770px) {
-        .cuadro-texto {
-            padding: 20px 15px;
-        }
-        .botones {
-            text-align: center;
-        }
-        .titulo {
-            color: #000;
-        }
-        #login {
-            padding: 20px 10px;
-        }
-        .usuario {
-            width: 60px;
-            height: 60px;
-        }
-        .contenedoru {
-            width: 80px;
-            height: 75px;
-        }
-        .medidas {
-            background-color: #ECF0F1;
-            margin: 10px;
-            height: 530px;
-            padding: 25px 20px;
-            border-radius: 5px;
-            display: flex;
-            overflow-y: auto;
-            width: 300px;
-        }
-        .parrafo {
-            width: 250px;
-            border-radius: 5px;
-        }
-        .parrafo2 {
+        .tablas {
             width: 350px;
         }
-    }
-    
-    @media all and (max-width: 803px) {
-        .tablas {
+        .parrafo2 {
+            width: max-content;
+        }
+        .info {
+            display: none;
+        }
+        .botones {
             display: block;
         }
-        .titulos {
+    }
+    
+    @media all and (max-width:330px) {
+        .subtitulo2 {
             font-size: 15px;
         }
-        .titulo {
-            color: #000;
-        }
-    }
-    
-    @media all and (max-width:830px) {
-        .img {
-            width: 880px;
-        }
-        .titulo {
-            font-size: 27px;
-        }
-    }
-    
-    @media screen and (max-width: 910px) {
-        .tb-herramientas {
-            display: block;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin: 0%;
-        }
-        .parrafo2 {
-            display: block;
-            overflow-x: auto;
-        }
-        .subtitulo {
-            font-size: 32px;
-        }
-        #login {
-            padding: 20px;
-            height: 490px;
-        }
-        .titulo {
-            color: #000;
-        }
-    }
-    
-    @media all and (max-width: 1030px) {
-        .tb {
-            display: block;
-            overflow-x: auto;
-            background: #ECF0F1;
-            padding: 10px;
-            border-radius: 5px;
+        .acciones {
+            display: flex;
         }
     }

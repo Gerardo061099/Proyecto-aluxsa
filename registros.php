@@ -46,8 +46,8 @@ ob_start();
     </nav>
     <nav aria-label="breadcrumb" style="margin: 5px 5px; width: 96%;">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="inventario.php">Inventario</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Registros</li>
+            <li class="breadcrumb-item"><a href="pagina_principal.php">Pagina de inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categorias</li>
         </ol>
     </nav>
     <center>

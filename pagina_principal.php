@@ -99,6 +99,7 @@ ob_start();
         </div>
     </div>
     </center>
+    <!--
     <div>
         <div class="botones">
             <center>
@@ -116,6 +117,6 @@ ob_start();
             </center>
         </div>
     </div>
-    
+    -->
 </body>
 </html>
