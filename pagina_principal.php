@@ -87,7 +87,7 @@ ob_start();
             <div class="card-header">Solicitudes</div>
             <div class="card-body">
                 <h5 class="card-title">Puedes registrar una solicitud</h5>
-                <p class="card-text"><a href=""><img src="img/solicitud.png" alt=""></a></p>
+                <p class="card-text"><a href="solicitudes.php"><img src="img/solicitud.png" alt=""></a></p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3" id="card1" style="max-width: 18rem;">

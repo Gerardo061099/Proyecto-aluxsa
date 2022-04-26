@@ -41,20 +41,8 @@ ob_start();
         <a class="navbar-brand" href="#">
             ALUXSA S.A de C.V
         </a>
-        <a class="navbar-brand" href="cerrar_sesion.php">
-        Cerrar sesion
-        </a>
-            
-    </nav>
-    <center>
-        <div>
-            <div class="info">
-                <p class="info-p">
-                    En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacén. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
-                </p>
-            </div>
-            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; position: sticky; border-radius: 5px;">
-            <?php
+        <a class="navbar-brand" href="#">
+        <?php
             //Contamos la cantidad que hay en el almacen
             include("abrir_conexion.php");
                 $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM herramientas");
@@ -66,11 +54,24 @@ ob_start();
                 }
             include("cerrar_conexion.php");
             ?>
-            <a href="registro_h.php" class="badge badge-dark">Nuevo registro</a>
+        </a>
+            
+    </nav>
+    <center>
+        <div>
+            <div class="info">
+                <p class="info-p">
+                    En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacén. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
+                </p>
+            </div>
+            <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: 40px;">
+                <div style="float: right;">
+                    <a href="registro_h.php" class="badge badge-success">Nuevo registro</a>
+                </div>
             </div>
                 <div class="tb-herramientas">
                     <div style="margin: 0px 10px; background: #FDFEFE;">
-                        <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas.</strong></h1>
+                        <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas</strong></h1>
                     </div>
                     <div class="tabla-herramientas">
                     <?php
