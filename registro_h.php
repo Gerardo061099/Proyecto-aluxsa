@@ -59,7 +59,7 @@ ob_start();
     <div class="aside1">
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
-                    <form method="POST" action="registro_h.php">
+                    <form method="POST" action="registro_h.php" enctype="multipart/form-data" >
                     <h1>Registrar:</h1><!-- from. registrar nuesvas herramientas -->
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -71,14 +71,18 @@ ob_start();
                                 <input type="text" class="form-control" id="cantidad" name="cantida">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
+                        <div class="form-row" >
+                            <div class="form-group col-md-2">
                                 <label for="precio">Precio $:</label>
                                 <input type="text" class="form-control" id="precio" name="preci">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-2">
                                 <label for="total">Total:</label>
                                 <input type="texto" class="form-control" id="total" name="tota">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="subir_imagen">Sube una imagen</label>
+                                <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
                             </div>
                         </div>
                         <div class="form-row">
@@ -130,28 +134,28 @@ ob_start();
                                     </select>
                             </div>
                         </div>
-                        <input type="submit" value="Hecho" class="btn btn-success" name="enviar" onclick="obtener()">
+                        <input type="submit" value="Hecho" class="btn btn-success" name="enviar" onclick=obtener(event)>
                         </form>
                             <?php
                                 if (isset($_POST['gavilanes'])) {
                                     include("abrir_conexion.php");
-                                    echo"<script>
-                                                swal({
-                                                    title: \"Entra en php:\",
-                                                    text:\"Entramos en php\",
-                                                    icon:\"success\",
-                                                    dangerMode: false,
-                                                });
-                                            </script>";
+                                    //ajax
                                     $nombre = $_POST['nombre'];
                                     $cantidad = $_POST['cantidad'];
                                     $precio = $_POST['precio'];
                                     $total = $_POST['total'];
-                                    //ajax
                                     $medidas = $_POST['medidas'];
                                     $categoria = $_POST['categoria'];
-                                    $n_gavilanes = $_POST['gavilanes']; 
-                                    if ($nombre=="" && $cantidad="" && $precio="" && $total="" && $medidas="" && $categoria=""&&$n_gavilanes="") {
+                                    $n_gavilanes = $_POST['gavilanes'];
+                                    //subimos foto
+                                    $nombre_img=$_FILES['img']['name'];//así obtiene el nombre del archivo FILE
+                                    $temporal=$_FILES['img']['tmp_name'];//así obtiene el archivo FILE
+                                    $carpeta='imge';
+                                    $ruta = $carpeta.'/'.$nombre_img;
+                                    move_uploaded_file($temporal,$ruta);
+
+
+                                    if ($nombre =="" && $cantidad =="" && $precio =="" && $total =="" && $medidas =="" && $categoria ==""&&$n_gavilanes =="") {
                                         echo"<script>
                                                 swal({
                                                     title: \"Campos vacios:\",
@@ -162,16 +166,8 @@ ob_start();
                                             </script>";
                                     }
                                     else {
-                                        mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total',now())");
-                                        echo"<script>
-                                                swal({
-                                                    title: \"Insercion exitosa:\",
-                                                    text:\"Se realizo un registro en la tabla herramientas.\",
-                                                    icon:\"success\",
-                                                    dangerMode: false,
-                                                });
-                                            </script>";
-                                            //header("Location:inventario.php");
+                                        mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total','$ruta',now())");
+                                        echo"Insercion exitosa";
                                         include("cerrar_conexion.php");
                                     }
                                 }
