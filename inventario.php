@@ -61,7 +61,7 @@ ob_start();
         <div>
             <div class="info">
                 <p class="info-p">
-                    En la siguiente tabla se muestra la informacion de cada herramienta que se encuentra en el almacén. Se agrego una columna como característica adicional: <span class="badge badge-danger"> Insuficiente</span> o <span class="badge badge-success">Suficiente</span> para indicarle al usuario que tipo de herramientas debe adquirir con tiempo.
+                    <h1>Herramientas</h1>
                 </p>
             </div>
             <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: 40px;">

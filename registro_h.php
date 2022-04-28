@@ -47,9 +47,7 @@ ob_start();
         </a>
             
     </nav>
-    <div >
-        <p></p>
-    </div>
+    
     <center>
     <div class="box-1" style="border-top: #DC7633 7px solid;">
             <div class="encabesado">
@@ -59,7 +57,7 @@ ob_start();
     <div class="aside1">
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
-                    <form method="POST" action="registro_h.php" enctype="multipart/form-data" >
+                    <form enctype="multipart/form-data">
                     <h1>Registrar:</h1><!-- from. registrar nuesvas herramientas -->
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -124,8 +122,9 @@ ob_start();
                                         <option selected>Choose...</option>
                                         <?php
                                             include("abrir_conexion.php");
+                                            //realizamos una consulta a la DB
                                             $query = $conexion -> query ("SELECT * FROM $tbgav_db6");
-                                            $contador=0;
+                                            //mostramos los datos obtenidos mediante etiquetas de HTML
                                                 while ($valores = mysqli_fetch_array($query)) {
                                                     echo ('<option value="'.$valores['id_Gav'].'">'.$valores['Num_gavilanes'].'</option>');
                                                 }
@@ -150,24 +149,17 @@ ob_start();
                                     //subimos foto
                                     $nombre_img=$_FILES['img']['name'];//así obtiene el nombre del archivo FILE
                                     $temporal=$_FILES['img']['tmp_name'];//así obtiene el archivo FILE
-                                    $carpeta='imge';
+                                    $carpeta='img2';
                                     $ruta = $carpeta.'/'.$nombre_img;
                                     move_uploaded_file($temporal,$ruta);
-
-
                                     if ($nombre =="" && $cantidad =="" && $precio =="" && $total =="" && $medidas =="" && $categoria ==""&&$n_gavilanes =="") {
-                                        echo"<script>
-                                                swal({
-                                                    title: \"Campos vacios:\",
-                                                    text:\"Debes llenar todos los campos.\",
-                                                    icon:\"warning\",
-                                                    dangerMode: true,
-                                                });
-                                            </script>";
+                                        echo"campos vacios";
                                     }
                                     else {
-                                        mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total','$ruta',now())");
+                                        if ($nombre_img=$_FILES['img']['name']!="") {
+                                            mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total','$ruta',now())");
                                         echo"Insercion exitosa";
+                                        }
                                         include("cerrar_conexion.php");
                                     }
                                 }

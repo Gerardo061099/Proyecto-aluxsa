@@ -152,7 +152,7 @@ ob_start();
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="inventario.php">Previous</a>
+                <a class="page-link" href="pagina_principal.php">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
             <li class="page-item disabled"><a class="page-link" href="#">2</a></li>

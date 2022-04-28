@@ -13,7 +13,7 @@ function obtener(e) {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
-            icon: "warning"
+            icon: "warning",
         });
     } else {
         console.log("Nombre del producto: " + nom);
@@ -39,24 +39,19 @@ function obtener(e) {
             type: "POST",
             data: datos,
             processData: false,
+            Cache: false,
             contentType: false,
-            success: function(e) {
-                if (e == "Insercion exitosa") {
-                    swal({
-                        title: "¡Registro exitoso!",
-                        text: "Se realizo el registro.",
-                        icon: "success",
-                        dangerMode: true,
-                    });
-                } else {
-                    swal({
-                        title: "Error al inserta datos",
-                        text: "Debes llenar los campos de forma correcta",
-                        icon: "warning",
-                        dangerMode: true,
-                    });
-                }
+            success: function() {
+                swal({
+                    title: "Insercion exitosa!!",
+                    text: "Se inserto una nueva herramienta a la base de datos",
+                    icon: "success",
+                });
+            },
+            error: function() {
+                alert("Ocurrio un error");
             }
+
         });
     }
 

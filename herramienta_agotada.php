@@ -47,8 +47,8 @@ ob_start();
     </nav>
     <center>
         <div class="box-1">
-            <div class="encabesado" >
-                <h1 class="titulo">Inventario</h1>
+            <div class="encabesado">
+                <h1 class="titulo">Reportes</h1>
             </div>
         </div>
         <section class="tablas2">
@@ -97,7 +97,6 @@ ob_start();
                                 //mostramos un aviso segun la cantidad de piezas 
                                 if($consulta['cantidad']<=2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
                                     echo "<span class=\"badge badge-danger\">Insuficiente</span>";
-                                    
                                 }//si la cantidad es mayor a 2 no se requiere comprar más
                                     else{
                                     echo "<span class=\"badge badge-success\">Suficientes</span>";
