@@ -69,16 +69,6 @@ ob_start();
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="precio">Precio $:</label>
-                                <input type="text" class="form-control" id="precio" name="precio">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="total">Total:</label>
-                                <input type="texto" class="form-control" id="total" name="total">
-                            </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="medidas">Codigo Medidas:</label>
                                     <select id="medidas" name="medidas" class="form-control">

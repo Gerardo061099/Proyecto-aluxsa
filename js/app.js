@@ -5,7 +5,7 @@ function obtener(e) {
     var can = document.getElementById('cantidad').value;
     var precio = document.getElementById('precio').value;
     var total = document.getElementById('total').value;
-    var img = document.getElementById('subir_imagen').files[0].name;
+    var img = document.getElementById('subir_imagen').files[0];
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;

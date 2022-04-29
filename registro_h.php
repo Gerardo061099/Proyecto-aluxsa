@@ -57,8 +57,8 @@ ob_start();
     <div class="aside1">
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
-                    <form enctype="multipart/form-data">
-                    <h1>Registrar:</h1><!-- from. registrar nuesvas herramientas -->
+                    <form action="registro_h.php" enctype="multipart/form-data">
+                    <h1>Registrar:</h1><!-- from. registrar nuevas herramientas -->
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nombre">Nombre:</label>
@@ -94,7 +94,6 @@ ob_start();
                                             //$num=0;
                                                 while ($valores = mysqli_fetch_array($query)) {
                                                     echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
-                                                    //$id_partida++;
                                                 }
                                                 include("cerrar_conexion.php");
                                         ?>
@@ -158,7 +157,7 @@ ob_start();
                                     else {
                                         if ($nombre_img=$_FILES['img']['name']!="") {
                                             mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,preciocompra,cantidad,total,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$precio','$cantidad','$total','$ruta',now())");
-                                        echo"Insercion exitosa";
+                                        echo "Insercion exitosa";
                                         }
                                         include("cerrar_conexion.php");
                                     }
@@ -170,6 +169,7 @@ ob_start();
                     
                 </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

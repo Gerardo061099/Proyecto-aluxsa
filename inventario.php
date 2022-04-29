@@ -76,7 +76,7 @@ ob_start();
                     <div class="tabla-herramientas">
                     <?php
                             include("abrir_conexion.php");// conexion con la BD
-                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
+                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.rutaimg,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
                             //Unimos tabla Herramientas con categorias y medidas
                             echo "
                             <table class=\"table\" id=\"herramientas\" style=\"width:115px; height:25px; font-size:13px;\">
@@ -92,6 +92,7 @@ ob_start();
                                                 <th><center>Precio</center></th>
                                                 <th><center>Cantidad</center></th>
                                                 <th><center>Total</center></th>
+                                                <th><center>Img</center></th>
                                                 <th><center>Fecha_Hora</center></th>
                                                 <th><center>Estado</center></th>
                                             </tr>
@@ -111,6 +112,7 @@ ob_start();
                                         <td><center>".$consulta['preciocompra']."</center></td>
                                         <td><center>".$consulta['cantidad']."</center></td>
                                         <td><center>".$consulta['total']."</center></td>
+                                        <td><center>";?><img src="<?php echo $consulta['rutaimg'] ?>" alt="img no encontrada" style="width: 115px; height: 80px;" ><?php echo "</center></td>
                                         <td><center>".$consulta['fecha_hora']."</center></td>
                                         <th><center>";?>
                                         <?php
@@ -127,9 +129,19 @@ ob_start();
                                 ";
                             }
                                 echo "</table><br>";
+                                include("cerrar_conexion.php");
                     ?>
+                    
                     </div>
                 </div>
+        </div>
+        <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: 40px; width: 95%; height: 900px;">
+            <div style="float: left;">
+                <img src="img2/imgid1.jpg" style="width: 225; height: 215px;" id="" class="" alt="imagen no encontrada">
+            </div>
+            <div style="float: right;">
+                <img src="img2/imgid2.jpg" style="width: 225; height: 215px;" class="" alt="imagen no encontrada">
+            </div>
         </div>
     </center>
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
