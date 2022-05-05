@@ -56,3 +56,7 @@ function obtener(e) {
     }
 
 }
+
+function subirsolicitud() {
+
+}

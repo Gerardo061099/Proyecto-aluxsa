@@ -15,7 +15,7 @@
     }
     
     .pag {
-        background: #17202A;
+        background: #CACFD2;
     }
     
     .pag::-webkit-scrollbar {
@@ -86,10 +86,9 @@
         display: block;
     }
     
-    .search {
-        width: 20%;
-        padding: 5px;
-        align-items: flex-start;
+    .opciones {
+        width: max-content;
+        height: 50px;
     }
     
     .btn-primary {
@@ -110,7 +109,8 @@
     }
     
     tr:hover {
-        background: #d6dbdfb0;
+        background: #abc8dfb0;
+        border-bottom: #F4D03F 5px solid;
     }
     
     .tb-herramientas {
@@ -119,6 +119,35 @@
         padding: 5px 5px;
         border-radius: 2px;
         background: #FDFEFE;
+    }
+    
+    .conten {
+        display: inline-block;
+    }
+    
+    .subt {
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    #imgs {
+        width: 245px;
+        height: 215px;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+        border: #44A08D 5px solid;
+    }
+    
+    .infor {
+        width: 295px;
+        height: 215px;
+        margin: 10px;
+        padding: 10px;
+        font-size: 14px;
+        background: #F2F3F4;
+        border-radius: 7px;
+        border-left: #85C1E9 5px solid;
     }
     
     .tabla-herramientas {
@@ -133,6 +162,7 @@
         /* Tamaño del scroll en vertical */
         height: 8px;
         /* Tamaño del scroll en horizontal */
+        display: none;
         /* Ocultar scroll */
     }
     
@@ -202,6 +232,15 @@
         display: block;
     }
     
+    .tb::-webkit-scrollbar {
+        width: 8px;
+        /* Tamaño del scroll en vertical */
+        height: 8px;
+        /* Tamaño del scroll en horizontal */
+        display: none;
+        /* Ocultar scroll */
+    }
+    
     .parrafo {
         margin: 10px;
         padding: 5px;
@@ -215,7 +254,7 @@
         padding: 8px 8px;
         background: #FDFEFE;
         border-radius: 5px;
-        border-left: #2ECC71 7px solid;
+        border-bottom: #2ECC71 7px solid;
     }
     
     .info-p {
@@ -268,24 +307,18 @@
         color: white;
     }
     
-    .form-search {
-        margin: 5px;
-        padding: 3px;
-        display: flex;
-    }
-    
     .acciones {
         margin: 5px;
         padding: 5px;
     }
     
-    @media all and (max-width: 1030px) {
-        .tb {
-            display: block;
-            overflow-x: auto;
+    @media screen and (max-width: 1030px) {
+        .caja1 {
             background: #ECF0F1;
             padding: 10px;
             border-radius: 5px;
+            display: block;
+            overflow-x: auto;
         }
     }
     

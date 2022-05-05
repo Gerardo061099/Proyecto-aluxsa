@@ -80,43 +80,24 @@ ob_start();
             <div class="card-header">Reportes</div>
             <div class="card-body">
                 <h5 class="card-title">Herramientas agotadas</h5>
-                <p class="card-text"><a href="herramienta_agotada.php"><img src="img/tool-cancel.png" alt=""></a></p>
+                <p class="card-text"><center><a href="herramienta_agotada.php"><img src="img/tool-cancel.png" alt=""></center></a></p>
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Solicitudes</div>
             <div class="card-body">
-                <h5 class="card-title">Puedes registrar una solicitud</h5>
-                <p class="card-text"><a href="solicitudes.php"><img src="img/solicitud.png" alt=""></a></p>
+                <h5 class="card-title">Registrar solicitud</h5>
+                <p class="card-text"><center><a href="solicitudes.php"><img src="img/solicitud.png" alt=""></center></a></p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Salidas del almacén</div>
             <div class="card-body">
-                <h5 class="card-title">Herramientas salidas del almacén</h5>
-                <p class="card-text"><a href=""><img src="img/salida.png" alt=""></a></p>
+                <h5 class="card-title">Salidas del almacén</h5>
+                <p class="card-text"><center><a href=""><img src="img/salida.png" alt=""></center></a></p>
             </div>
         </div>
     </div>
     </center>
-    <!--
-    <div>
-        <div class="botones">
-            <center>
-                <form method="POST" action="inventario.php">
-                    <div class="form-search">
-                        <label for="search" class="Buscar" style="color: white;">Buscar:</label>
-                        <input class="form-control" id="search" type="text" name="dato"><br>
-                    </div>
-                    <div class="acciones">
-                        <input type="submit" value="Consultar" class="btn btn-primary" name="conulta">
-                        <input type="submit" value="Actualizar" class="btn btn-success" name="actualiza">
-                        <input type="submit" value="Borrar" class="btn btn-danger" name="borra">
-                    </div>
-                </form>
-            </center>
-        </div>
-    </div>
-    -->
 </body>
 </html>

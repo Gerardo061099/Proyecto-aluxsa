@@ -35,18 +35,10 @@ ob_start();
         header("Location:index.php");
     }
 ?>
-<nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            ALUXSA S.A de C.V
-        </a>
-        <a class="navbar-brand" href="inventario.php">
-        Volver a registros
-        </a>
-            
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">ALUXSA S.A de C.V</a>
+        <a class="navbar-brand" href="pagina_principal.php">Pagina Principal</a>
     </nav>
-    <div >
-        <p></p>
-    </div>
     <center>
     <div class="box-1" style="border-left: #DC7633 7px solid;">
             <div class="encabesado">
@@ -56,68 +48,64 @@ ob_start();
     <div class="aside1">
                 <div class="contenedor" style="border-left: #48C9B0 7px solid;">
                     <div class="aside">
-                    <form method="POST" action="solicitudes.php">
-                    <img src="img/solicitudb.png" alt=""><!-- from. Realizar una solicitud -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
+                        <form method="POST" action="solicitudes.php">
+                            <img src="img/solicitudb.png" alt=""><!-- from. Realizar una solicitud -->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="cantidad">Cantidad:</label>
+                                    <input type="text" class="form-control" id="cantidad" name="cantidad">
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="cantidad">Cantidad:</label>
-                                <input type="text" class="form-control" id="cantidad" name="cantidad">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="medidas">Codigo Medidas:</label>
-                                    <select id="medidas" name="medidas" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
-                                            $num=0;
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$num++.'">'.$valores['id_Medidas'].'</option>');
-                                                    //$id_partida++;
-                                                }
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="medidas">Codigo Medidas:</label>
+                                        <select id="medidas" name="medidas" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                                include("abrir_conexion.php");
+                                                $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
+                                                    while ($valores = mysqli_fetch_array($query)) {
+                                                        echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
+                                                    }
                                                 include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="categoria">Codigo Categoria:</label>
+                                        <select id="categoria" name="categoria" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                                include("abrir_conexion.php");
+                                                $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
+                                                    while ($valores = mysqli_fetch_array($query)) {
+                                                        echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['Descripcion'].$valores['Material'].'</option>');
+                                                    }
+                                                    include("cerrar_conexion.php");
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="gavilanes">Gavilanes:</label>
+                                        <select id="gavilanes" name="gav" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                                include("abrir_conexion.php");
+                                                $query = $conexion -> query ("SELECT * FROM $tbgav_db6");
+                                                $contador=0;
+                                                    while ($valores = mysqli_fetch_array($query)) {
+                                                        echo ('<option value="'.$contador++.'">'.$valores['id_Gav'].'</option>');
+                                                    }
+                                                    include("cerrar_conexion.php");
+                                            ?>
+                                        </select>
+                                </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="categoria">Codigo Categoria:</label>
-                                    <select id="categoria" name="categoria" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
-                                            $id_partida=0;
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$id_partida++.'">'.$valores['id_Categoria'].'</option>');
-                                                    //$id_partida++;
-                                                }
-                                                include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="gavilanes">Gavilanes:</label>
-                                    <select id="gavilanes" name="gav" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <?php
-                                            include("abrir_conexion.php");
-                                            $query = $conexion -> query ("SELECT * FROM $tbgav_db6");
-                                            $contador=0;
-                                                while ($valores = mysqli_fetch_array($query)) {
-                                                    echo ('<option value="'.$contador++.'">'.$valores['id_Gav'].'</option>');
-                                                }
-                                                include("cerrar_conexion.php");
-                                        ?>
-                                    </select>
-                            </div>
-                        </div>
-                        <input type="submit" value="Registrar" class="btn btn-outline-info" name="registro">
+                            <input type="submit" value="Registrar" class="btn btn-outline-info" onclick="subirsolicitud()" name="registro">
                         </form>
                             <?php
                                 if (isset($_POST['registro'])) {
@@ -154,9 +142,6 @@ ob_start();
                                 }
                             ?>
                     </div>
-                </div>
-                <div>
-                    
                 </div>
     </div>
 </body>

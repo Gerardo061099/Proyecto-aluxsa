@@ -60,10 +60,10 @@ ob_start();
                     $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad <= 2 ORDER BY id_herramienta");
                     //Unimos tabla Herramientas con categorias y medidas
                     echo "
-                            <table class=\"table\" id=\"tabla2\" style=\"width:115px; height:25px; font-size:15px;\">
+                            <table class=\"table\" id=\"tabla2\" style=\"width:115px; height:25px; font-size:13px;\">
                                 <thead class=\"thead-dark\">
                                     <tr>
-                                        <th><center>N°</center></th>
+                                        <th><center>#</center></th>
                                         <th><center>Nombre</center></th>
                                         <th><center>Material</center></th>
                                         <th><center>Descripcion</center></th>
@@ -101,7 +101,6 @@ ob_start();
                                     else{
                                     echo "<span class=\"badge badge-success\">Suficientes</span>";
                                     }
-                                
                                 "</center></th>
                             </tr>
                         </tbody>
@@ -118,11 +117,9 @@ ob_start();
             <li class="page-item">
                 <a class="page-link" href="pagina_principal.php">Previous</a>
             </li>
-            <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
-            <li class="page-item"><a class="page-link" href="busquedas.php">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="registros.php">Next</a>
+            <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
             </li>
         </ul>
     </nav>
