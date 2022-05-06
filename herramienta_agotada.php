@@ -7,6 +7,7 @@
     <title>Inventario de Bodega</title>
     <!-- <link rel="stylesheet" href="css/navbar.css"> -->
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
@@ -70,9 +71,7 @@ ob_start();
                                         <th><center>Gavilanes</center></th>
                                         <th><center>Ancho</center></th>
                                         <th><center>Largo</center></th>
-                                        <th><center>Precio</center></th>
                                         <th><center>Cantidad</center></th>
-                                        <th><center>Total</center></th>
                                         <th><center>Fecha_Hora</center></th>
                                         <th><center>Estado</center></th>
                                     </tr>
@@ -89,9 +88,7 @@ ob_start();
                                 <td><center>".$consulta['Num_gavilanes']."</center></td>
                                 <td><center>".$consulta['Ancho']."</center></td>
                                 <td><center>".$consulta['Largo']."</center></td>
-                                <td><center>".$consulta['preciocompra']."</center></td>
                                 <td><center>".$consulta['cantidad']."</center></td>
-                                <td><center>".$consulta['total']."</center></td>
                                 <td><center>".$consulta['fecha_hora']."</center></td>
                                 <th><center>";
                                 //mostramos un aviso segun la cantidad de piezas 
@@ -111,6 +108,9 @@ ob_start();
                 </div>
             </div>
         </section>
+        <div>
+            <button type="button" class="btn btn-outline-info" onclick="convertir(event);">Convertir a PDF</button>
+        </div><br><br>
     </center>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -125,4 +125,5 @@ ob_start();
     </nav>
     
 </body>
+<script src="js/app.js"></script>
 </html>

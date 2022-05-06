@@ -204,6 +204,18 @@
         display: flex;
     }
     
+    .form-update {
+        align-content: center;
+        width: max-content;
+        height: max-content;
+        margin: 25px 0px;
+        padding: 5px;
+        position: relative;
+        background: #FDFEFE;
+        border-radius: 5px;
+        border-bottom: #F4D03F 7px solid;
+    }
+    
     .tablas2 {
         margin: 20px 20px;
         padding: 15px 15px;
