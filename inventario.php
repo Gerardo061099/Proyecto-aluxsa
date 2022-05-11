@@ -81,8 +81,6 @@ ob_start();
             <div class="tb-herramientas">
                     <div class="opciones">
                         <a href="registro_h.php" class="badge badge-success">Nuevo registro</a>
-                        <a href="#" class="badge badge-danger">Eliminar un registro</a>
-                        <a href="update.php" class="badge badge-info">Actualizar Registro</a>
                         <a class="navbar-brand" href="#">
                             <?php
                                 //Contamos la cantidad que hay en el almacen
@@ -110,7 +108,7 @@ ob_start();
                             <table class=\"table\" id=\"herramientas\" style=\"width:115px; height:25px; font-size:13px;\">
                                         <thead class=\"thead-dark\">
                                             <tr>
-                                            <th><center>Check</center></th>
+                                            
                                                 <th><center>#</center></th>
                                                 <th><center>Nombre</center></th>
                                                 <th><center>Material</center></th>
@@ -129,9 +127,6 @@ ob_start();
                                 echo 
                                 "<tbody>
                                     <tr>
-                                    <td><center><div class=\"form-check\">
-                                    <input class=\"form-check-input position-static\" type=\"checkbox\" id=\"blankCheckbox\" value=\"option1\" aria-label=\"...\">
-                                  </div></center></td>
                                         <td><center>".$consulta['id_herramienta']."</center></td>
                                         <td><center>".$consulta['Nombre']."</center></td>
                                         <td><center>".$consulta['material']."</center></td>
@@ -144,26 +139,31 @@ ob_start();
                                         <th><center>";?>
                                         <?php
                                         //mostramos un aviso segun la cantidad de piezas 
-                                        if($consulta['cantidad']<=2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
+                                        if($consulta['cantidad']<2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
                                             if ($consulta['cantidad']==1) {
                                                 echo "<span class=\"badge badge-warning\">Compra más</span>";
                                             }
                                             else{
-                                                echo "<span class=\"badge badge-danger\">Insuficiente</span>";
+                                                if ($consulta['cantidad']==0) {
+                                                    echo "<span class=\"badge badge-danger\">Insuficiente</span>";
+                                                }
                                             }
                                         }//si la cantidad es mayor a 2 no se requiere comprar más
                                         else{
-                                            echo "<span class=\"badge badge-success\">Suficiente</span>";
+                                            if ($consulta['cantidad']>=2) {
+                                                echo "<span class=\"badge badge-success\">Suficiente</span>";
+                                            }
                                         }
-                                        echo "</center></th>
-                                        <th><center><form method=\"post\" action=\"eliminar.php\"><a class=\"btn btn-outline-danger\" id=".$consulta['id_herramienta']." href=\"eliminar.php\" role=\"button\">Eliminar</a></form></center></th>
+                                        ?>
+                                        </center></th>
+                                        <th><center><a class="btn btn-danger" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
                                     </tr>
                                 </tbody>
-                                ";
+                            <?php
                             }
-                                echo "</table><br>";
-                                include("cerrar_conexion.php");
-                    ?>
+                            include("cerrar_conexion.php");
+                            ?>
+                                </table><br>
                     </div>
             </div>
         </div>
@@ -187,7 +187,10 @@ ob_start();
     </div>
             <?php
                 include("abrir_conexion.php");
-                $res = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.rutaimg,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
+                $res = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.rutaimg,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas WHERE h.fecha_hora  = (
+                    SELECT MAX(h.fecha_hora)
+                    FROM $tbherr_db7
+                )");
                 echo '<div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: max-content; width: 95%;">
                 <div><h1>Herramientas Almacenadas</h1></div>';
                 while ($consulta = mysqli_fetch_array($res)) {
