@@ -221,15 +221,15 @@
         padding: 15px 15px;
         background: #FDFEFE;
         border-radius: 5px;
+        height: max-content;
+        width: max-content;
     }
     
     .tb {
         background: #ECF0F1;
         border-radius: 5px;
         width: max-content;
-        height: 300px;
-        display: inline-block;
-        overflow-y: auto;
+        height: max-content;
     }
     
     .subtitulo2 {
@@ -242,15 +242,13 @@
     
     .caja1 {
         display: block;
+        height: max-content;
     }
     
-    .tb::-webkit-scrollbar {
-        width: 8px;
-        /* Tamaño del scroll en vertical */
-        height: 8px;
-        /* Tamaño del scroll en horizontal */
-        display: none;
-        /* Ocultar scroll */
+    #tabla2 {
+        width: 115px;
+        height: 25px;
+        font-size: 13px;
     }
     
     .parrafo {

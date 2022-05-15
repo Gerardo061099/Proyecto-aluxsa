@@ -102,7 +102,7 @@ ob_start();
                     <div class="tabla-herramientas">
                         <?php
                             include("abrir_conexion.php");// conexion con la BD
-                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
+                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
                             //Unimos tabla Herramientas con categorias y medidas
                             echo "
                             <table class=\"table\" id=\"herramientas\" style=\"width:115px; height:25px; font-size:13px;\">
@@ -119,7 +119,7 @@ ob_start();
                                                 <th><center>Cantidad</center></th>
                                                 <th><center>Fecha_Hora</center></th>
                                                 <th><center>Estado</center></th>
-                                                <th><center>Eliminar</center></th>
+                                                <th><center></center></th>
                                             </tr>
                                         </thead>
                                 ";
@@ -156,7 +156,7 @@ ob_start();
                                         }
                                         ?>
                                         </center></th>
-                                        <th><center><a class="btn btn-danger" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
+                                        <th><center><a class="btn btn-danger btn-sm" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
                                     </tr>
                                 </tbody>
                             <?php
@@ -172,14 +172,32 @@ ob_start();
         <div class="botones">
             <center>
                 <form method="POST" action="inventario.php">
-                    <div class="form-search">
-                        <label for="search" class="Buscar">Buscar:</label>
-                        <input class="form-control" id="search" type="text" name="dato"><br>
-                    </div>
-                    <div class="acciones">
-                    <input type="submit" value="Consultar" class="btn btn-primary" name="conulta">
-                        <input type="submit" value="Actualizar" class="btn btn-success" name="actualiza">
-                        <input type="submit" value="Borrar" class="btn btn-danger" name="borra">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                            <label class="mr-sm-2 sr-only" for="seleccion">Preference</label>
+                            <select class="custom-select mr-sm-2" id="seleccion" name="herramienta">
+                                <option selected>Choose...</option>
+                                <option value="Cortador">Cortador</option>
+                                <option value="Buril">Buril</option>
+                                <option value="Broca">Broca</option>
+                            </select>
+                        </div>
+                        <div class="col-auto my-1">
+                            <label class="mr-sm-2 sr-only" for="seleccion">Preference</label>
+                            <select class="custom-select mr-sm-2" id="medida" name="medida">
+                                <option selected>Choose...</option>
+                                <?php
+                                include("abrir_conexion.php");
+                                $consulta = mysqli_query($conexion,"SELECT ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta ");
+                                while($res = mysqli_fetch_array($consulta)){
+                                    echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-auto my-1">
+                            <button type="submit" class="btn btn-primary" name="consulta" onclick="consultar(event)">Consultar</button>
+                        </div>
                     </div>
                 </form>
             </center>
@@ -187,28 +205,37 @@ ob_start();
     </div>
             <?php
                 include("abrir_conexion.php");
-                $res = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.rutaimg,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas WHERE h.fecha_hora  = (
-                    SELECT MAX(h.fecha_hora)
-                    FROM $tbherr_db7
-                )");
-                echo '<div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: max-content; width: 95%;">
-                <div><h1>Herramientas Almacenadas</h1></div>';
-                while ($consulta = mysqli_fetch_array($res)) {
-                    echo '
-                    <div class="conten">
-                        <img src="'.$consulta['rutaimg'].'"id="imgs" class="" alt="imagen no encontrada">
-                        <div class = "infor">
-                            <h1 class="subt">Caracteristicas</h1>
-                            <p>#'.$consulta['id_herramienta'].'</p>
-                            <p>Nombre: '.$consulta['Nombre'].' de '.$consulta['material'].' '.$consulta['descripcion'].'</p>
-                            <p>Medidas: '.$consulta['Ancho'].'Ancho x '.$consulta['Largo'].'Largo'.'</p>
-                            <p># gavilanes: '.$consulta['Num_gavilanes'].'</p>
-                            <p>Cantidad: '.$consulta['cantidad'].'</p>
-                        </div>
-                    </div>
-                    ';
+                $name1 = $_POST['herramienta'];
+                $medida = $_POST['medida'];
+                if ($name1 != "" && $medida != "") {
+                $res = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.rutaimg,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE h.Nombre LIKE '%$name1%' AND m.Ancho LIKE '%$medida%' ");
+            ?>
+                <div class="contador-h" style="margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: max-content; width: 95%;">
+                <div><center><h1>Herramientas Almacenadas</h1></center></div>
+                <?php
+                    while ($consulta = mysqli_fetch_array($res)) {
+                ?>      <center>
+                            <div class="conten">
+                            <img src="<?php echo $consulta['rutaimg'];?>" id="imgs" class="" alt="imagen no encontrada">
+                                <div class = "infor">
+                                    <h1 class="subt">Caracteristicas</h1>
+                                    <p><?php echo ' # '.$consulta['id_herramienta'].' Nombre: '.$consulta['Nombre'].' de '.$consulta['material'].' '.$consulta['descripcion']?></p>
+                                    <p> <?php echo 'Medidas: '.$consulta['Ancho'].' Ancho x '.$consulta['Largo'].' Largo'?></p>
+                                    <p><?php echo'# gavilanes: '.$consulta['Num_gavilanes'].' Cantidad: '.$consulta['cantidad']?></p>
+                                </div>
+                            </div>
+                        </center>
+                        
+                        <?php
+                        
+                    }
+                    echo "Consulta exitosa";
+                }else{
+                    
                 }
-                echo '</div>';
+                ?>
+                </div>
+                <?php
                 include("cerrar_conexion.php");
             ?>
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
@@ -217,10 +244,8 @@ ob_start();
                 <a class="page-link" href="pagina_principal.php">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
-            <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
-            <li class="page-item"><a class="page-link" href="busquedas.php">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="registros.php">Next</a>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
             </li>
         </ul>
     </nav>

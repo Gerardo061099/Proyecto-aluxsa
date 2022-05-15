@@ -20,4 +20,5 @@ if ($id != "") {//validamos si la variable id esta vacia
                 ;
     }
 }
+include("cerrar_conexion.php");
 ?>

@@ -86,7 +86,8 @@ function update(e) {
             $('#resultado').html(mensaje);
             if (mensaje == "Actualizacion exitosa") {
                 swal({
-                    title: "Insercion exitosa",
+                    title: "Actualizacion exitosa!!",
+                    text: "Se realizo un actualizacion de manera exitosa!!",
                     icon: "success"
                 });
             } else {
@@ -99,26 +100,75 @@ function update(e) {
         }
     });
 } //fin function update();
+function consultar(e) {
+    //e.preventDefault();
+    var nombre = document.getElementById("seleccion").value;
+    var medida = document.getElementsByName("medida").value;
+    var url = "inventario.php";
+    if (nombre != "" && medida != "") {
+        console.log("Los datos enviados no estan vacios");
+        console.log("------------------------------------------------");
+        console.log("Nombre: " + nombre);
+        console.log("Medida de la herramienta: " + medida);
+        var data = new FormData();
+        data.append("herramienta", nombre);
+        data.append("medida", medida);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            processData: false,
+            Cache: false,
+            contentType: false,
+            success: function(mensaje) {
+                if (mensaje == "La consula no se pudo ejecutar") {
+                    swal({
+                        title: "Oh oh ",
+                        text: "Ocurrio un error",
+                        icon: "error"
+                    });
+                } else {
+                    swal({
+                        title: "Consulta exitosa!!",
+                        text: "Deslice para abajo para ver los resultados de la busqueda!!",
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    }
+}
 
-/*
-function convertir(e) {
-    e.preventDefault();
-    var source = window.document.getElementsByTagName("body")[0];
-    var specialElementHandlers = {
-        '#hidden-element': function(element, renderer) {
-            return true;
-        }
-    };
-    var doc = new jsPDF({
-        orientation: 'landscape'
-    });
-    doc.setFont("courier");
-    doc.setFontType("normal");
-    doc.setFontSize(24);
-    doc.setTextColor(100);
-    doc.fromHTML(elementHTML, 15, 15, {
-        'width': 170,
-        'elementHandlers': specialElementHandlers
-    });
 
-}*/
+function convertir() {
+    var $screenshot = document.body;
+    html2pdf()
+        .set({
+            margin: 0.5,
+            filename: "Reportes.pdf",
+            image: {
+                type: "jpg",
+                quality: 0.98,
+            },
+            html2canvas: {
+                scale: 3,
+                letterRendering: true
+            },
+            jsPDF: {
+                unit: "in",
+                format: "a3",
+                orientation: "portrait" //portrait o landscape
+            }
+        })
+        .from($screenshot)
+        .save()
+        .catch(error => console.log(error))
+        .finally()
+        .then(() => {
+            swal({
+                title: "Conversion exitosa!!",
+                text: "Se a generado el PDF",
+                icon: "success"
+            });
+        });
+}

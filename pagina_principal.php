@@ -69,13 +69,6 @@ ob_start();
                 <p class="card-text"><center><a href="registros.php"><img src="img/categorias.png" alt=""></a></center></p>
             </div>
         </div>
-        <div class="card text-white bg-warning mb-3" id="card1" style="max-width: 18rem;">
-            <div class="card-header">Medidas</div>
-            <div class="card-body">
-                <h5 class="card-title">Lista de medidas</h5>
-                <p class="card-text"><center><a href="#"><img src="img/medidas.png" alt=""></a></center></p>
-            </div>
-        </div>
         <div class="card text-white bg-danger mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Reportes</div>
             <div class="card-body">
