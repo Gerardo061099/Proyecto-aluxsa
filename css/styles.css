@@ -108,7 +108,7 @@
         border-bottom: #5DADE2 5px solid;
     }
     
-    tr:hover {
+    .body-tb:hover {
         background: #abc8dfb0;
         border-bottom: #F4D03F 5px solid;
     }
@@ -151,10 +151,17 @@
     }
     
     .tabla-herramientas {
-        width: max-content;
+        width: 1050px;
         height: 300px;
         display: inline-block;
         overflow-y: auto;
+    }
+    
+    #herramientas {
+        margin: 0px;
+        width: 1050px;
+        height: 25px;
+        font-size: 13px;
     }
     
     .tabla-herramientas::-webkit-scrollbar {
@@ -222,14 +229,7 @@
         background: #FDFEFE;
         border-radius: 5px;
         height: max-content;
-        width: max-content;
-    }
-    
-    .tb {
-        background: #ECF0F1;
-        border-radius: 5px;
-        width: max-content;
-        height: max-content;
+        width: 80%;
     }
     
     .subtitulo2 {
@@ -245,10 +245,20 @@
         height: max-content;
     }
     
+    .tb {
+        background: #ECF0F1;
+        margin: 0px;
+        width: max-content;
+        height: max-content;
+    }
+    
     #tabla2 {
-        width: 115px;
+        margin: 0px 0px;
+        /*ancho de la tabla*/
+        width: 845px;
         height: 25px;
         font-size: 13px;
+        border-radius: 5px;
     }
     
     .parrafo {
@@ -425,6 +435,13 @@
             height: 50px;
             border-radius: 60px;
             background: #AED6F1;
+        }
+        .card-categorias {
+            width: 85%;
+            padding: 10px;
+        }
+        .form-update {
+            width: 85%;
         }
         .contenedoru {
             margin: 8px 8px;

@@ -11,7 +11,7 @@ $consulta = mysqli_query($conexion,"SELECT Cantidad FROM $tbherr_db7 WHERE id_he
 $resul = mysqli_fetch_array($consulta);
 // ------------- operacion para almacenar la cantidad de
 $suma= $resul['Cantidad'] + $cantidadn;
-$ope =$consulta + $cantidadn ;
+//$ope =$consulta + $cantidadn ;
 if ($id_h!="" && $cantidadn!="") {
     $_UPDATE_SQL = "UPDATE $tbherr_db7 SET Cantidad = $suma WHERE id_Herramienta= '$id_h'";
     mysqli_query($conexion,$_UPDATE_SQL);

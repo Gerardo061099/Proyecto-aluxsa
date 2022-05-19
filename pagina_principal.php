@@ -87,7 +87,7 @@ ob_start();
             <div class="card-header">Salidas del almacén</div>
             <div class="card-body">
                 <h5 class="card-title">Salidas del almacén</h5>
-                <p class="card-text"><center><a href=""><img src="img/salida.png" alt=""></center></a></p>
+                <p class="card-text"><center><a href="salidas_almacen.php"><img src="img/salida.png" alt=""></center></a></p>
             </div>
         </div>
     </div>

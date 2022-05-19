@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Bodega</title>
-    <!--<link rel="stylesheet" href="css/navbar.css">-->
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -152,10 +151,14 @@ ob_start();
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="pagina_principal.php">Previous</a>
+                <a class="page-link" href="inventario.php">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
+            <li class="page-item"><a class="page-link" href="inventario.php">1</a></li>
             <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="herramienta_agotada.php">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="herramienta_agotada.php">Next</a>
+            </li>
         </ul>
     </nav>
     

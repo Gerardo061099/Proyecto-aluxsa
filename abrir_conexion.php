@@ -2,12 +2,10 @@
 //datos del servidor
 $host = "localhost";//servidor
 $userdb = "root";//usuario
-$claveus = "root";//pass
+$claveus = "root";//clavepass
 $nombredb = "bodega";//db bodega
-
 //tablas BD
 $tbu_db1 = "usuarios";
-$tbcar_db2 = "cargo";
 $tbcat_db3 = "categorias";
 $tbdet_db4 = "detalle_solicitud";
 $tbem_db5 = "empleado";
@@ -16,7 +14,6 @@ $tbherr_db7 = "herramientas";
 $tbmaq_db8 = "maquinaria";
 $tbmed_db9 = "medidas";
 $tbsoli_db10 = "solicitud";
-
 //conexion
 $conexion = new mysqli($host,$userdb,$claveus,$nombredb);
 //En caso de haber datos erroneos del servidor

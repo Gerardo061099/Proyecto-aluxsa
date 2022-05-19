@@ -50,7 +50,7 @@ ob_start();
     <center>
         <section class="tablas2">
             <div class="caja1" id="tb-herramientas-agotadas">
-            <h1 class="subtitulo2">Herramientas Agotadas</h1>
+            <h1 class="subtitulo2">Solicitudes</h1>
                 <div class="tb">
                 <?php
                     include("abrir_conexion.php");// conexion con la BD
@@ -127,9 +127,9 @@ ob_start();
             </li>
             <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
             <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="solicitudes.php">4</a></li>
+            <li class="page-item"><a class="page-link" href="pagina_principal.php">4</a></li>
             <li class="page-item">
-                <a class="page-link" href="solicitudes.php">Next</a>
+                <a class="page-link" href="pagina_principal.php">Next</a>
             </li>
         </ul>
     </nav>

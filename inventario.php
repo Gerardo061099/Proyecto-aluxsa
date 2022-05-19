@@ -69,7 +69,7 @@ ob_start();
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="cantidadnew">Cantidad</label>
                                 <input type="text" class="form-control" id="cantidadn">
                             </div>
@@ -81,14 +81,29 @@ ob_start();
             <div class="tb-herramientas">
                     <div class="opciones">
                         <a href="registro_h.php" class="badge badge-success">Nuevo registro</a>
+                        <a href=" " class="badge badge-secondary">Refrescar pagina</a>
                         <a class="navbar-brand" href="#">
                             <?php
                                 //Contamos la cantidad que hay en el almacen
                                 include("abrir_conexion.php");
-                                $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM herramientas");
+                                $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM $tbherr_db7");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-primary\">
                                                 <strong>N° Herramientas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
+                                            </button>
+                                        ";
+                                }
+                                include("cerrar_conexion.php");
+                            ?>
+                        </a>
+                        <a class="navbar-brand" href="herramienta_agotada.php">
+                            <?php
+                                //Contamos la cantidad que hay en el almacen
+                                include("abrir_conexion.php");
+                                $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as faltantes FROM $tbherr_db7 WHERE cantidad < 3");
+                                while($consulta = mysqli_fetch_array($resul)){
+                                    echo "  <button type=\"button\" class=\"btn btn-danger\">
+                                                <strong>Herramientas agotadas:</strong> <span class=\"badge badge-light\">".$consulta['faltantes']."</span>
                                             </button>
                                         ";
                                 }
@@ -102,13 +117,12 @@ ob_start();
                     <div class="tabla-herramientas">
                         <?php
                             include("abrir_conexion.php");// conexion con la BD
-                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY id_herramienta");
+                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY h.id_herramienta");
                             //Unimos tabla Herramientas con categorias y medidas
                             echo "
-                            <table class=\"table\" id=\"herramientas\" style=\"width:115px; height:25px; font-size:13px;\">
+                            <table class=\"table\" id=\"herramientas\">
                                         <thead class=\"thead-dark\">
                                             <tr>
-                                            
                                                 <th><center>#</center></th>
                                                 <th><center>Nombre</center></th>
                                                 <th><center>Material</center></th>
@@ -125,7 +139,7 @@ ob_start();
                                 ";
                                 while($consulta = mysqli_fetch_array($resultados)){
                                 echo 
-                                "<tbody>
+                                "<tbody class=\"body-tb\">
                                     <tr>
                                         <td><center>".$consulta['id_herramienta']."</center></td>
                                         <td><center>".$consulta['Nombre']."</center></td>
@@ -225,13 +239,10 @@ ob_start();
                                 </div>
                             </div>
                         </center>
-                        
                         <?php
-                        
                     }
-                    echo "Consulta exitosa";
                 }else{
-                    
+                    echo "La consula no se pudo ejecutar";
                 }
                 ?>
                 </div>
@@ -243,9 +254,11 @@ ob_start();
             <li class="page-item">
                 <a class="page-link" href="pagina_principal.php">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="pagina_principal.php">1</a></li>
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Next</a>
+            <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
+            <li class="page-item"><a class="page-link" href="herramienta_agotada.php">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="registros.php">Next</a>
             </li>
         </ul>
     </nav>

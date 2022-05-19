@@ -11,7 +11,7 @@ function obtener(e) {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" || can == "" || precio == "" || total == "" || img == "" || select == "" || cate == "" || gav == "") {
+    if (nom == "" && can == "" && precio == "" && total == "" && img == "" && select == "" && cate == "" && gav == "") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
@@ -44,7 +44,7 @@ function obtener(e) {
             Cache: false,
             contentType: false,
             before: function(mensaje) {
-
+                $('#cargar').html('<div><img src="cargando.gif"></img></div>');
             },
             success: function(mensaje) {
                 if (mensaje == "campos vacios") {
@@ -82,6 +82,9 @@ function update(e) {
         processData: false,
         Cache: false,
         contentType: false,
+        beforeSend: function() {
+            $('#cargar').html('<div><img src="cargando.gif"></img></div>');
+        },
         success: function(mensaje) {
             $('#resultado').html(mensaje);
             if (mensaje == "Actualizacion exitosa") {
@@ -120,6 +123,9 @@ function consultar(e) {
             processData: false,
             Cache: false,
             contentType: false,
+            beforeSend: function() {
+                $('#cargar').html('<div><img src="cargando.gif"></img></div>');
+            },
             success: function(mensaje) {
                 if (mensaje == "La consula no se pudo ejecutar") {
                     swal({
@@ -139,12 +145,13 @@ function consultar(e) {
     }
 }
 
-
 function convertir() {
+    console.log("Function convertir");
     var $screenshot = document.body;
     html2pdf()
         .set({
-            margin: 0.5,
+            margin: 0.2,
+            marginTop: 0.8,
             filename: "Reportes.pdf",
             image: {
                 type: "jpg",
@@ -171,4 +178,91 @@ function convertir() {
                 icon: "success"
             });
         });
+}
+
+function subirsolicitud(e) {
+    e.preventDefault();
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("ap").value;
+    var n_empleado = document.getElementById("n_empleado").value;
+    var genero = document.getElementById("genero").value;
+    console.log("Nombre empleado: " + nombre);
+    console.log("Apellidos: " + apellidos);
+    console.log("N° empleado: " + n_empleado);
+    console.log("Genero: " + genero);
+    var datos = new FormData();
+    datos.append("Nombre", nombre);
+    datos.append("Apellidos", apellidos);
+    datos.append("N_empleado", n_empleado);
+    datos.append("Genero", genero);
+    $.ajax({
+        url: "add_solicitante.php",
+        type: "POST",
+        data: datos,
+        processData: false,
+        Cache: false,
+        contentType: false,
+        beforeSend: function() {
+            $('#cargar').html('<div><img src="img/cargando.gif"></img><br><br>Cargando...</div>');
+        },
+        success: function(mensaje) {
+            if (mensaje == "Insercion exitosa!!") {
+                swal({
+                    title: "Insercion exitosa",
+                    text: "Los datos han sido insertados",
+                    icon: "success"
+                });
+                window.location.href = "add_solicitud.php";
+            } else if (mensaje == "La insercion no se pudo ejecutar") {
+                swal({
+                    title: "Oh oh",
+                    text: "Ocurrio un problema",
+                    icon: "warning"
+                });
+            }
+        }
+    });
+}
+
+function RegistrarSoli(e) {
+    e.preventDefault();
+    var herramienta = document.getElementById("herramienta").value;
+    var maquina = document.getElementById("maquina").value;
+    var cantidad = document.getElementById("cantidad").value;
+    console.log("id_herramienta: " + herramienta);
+    console.log("id_Maquina: " + maquina);
+    console.log("Cantidad: " + cantidad);
+    var data = new FormData();
+    data.append("N_herramienta", herramienta);
+    data.append("N_maquina", maquina);
+    data.append("cantidad", cantidad);
+    $.ajax({
+        url: "fin_solicitud.php",
+        type: "POST",
+        data: data,
+        processData: false,
+        Cache: false,
+        contentType: false,
+        beforeSend: function() {
+            $('#load').html('<div><img src="img/cargando2.gif"></img><br><br>Cargando...</div>');
+        },
+        success: function(message) {
+            if (message == "Registro realizado") {
+                swal({
+                    title: "Registro Exitoso",
+                    text: "Se a registrado la solicitud de forma exitosa!!",
+                    icon: "success"
+                });
+                window.location.href = "salidas_almacen.php";
+            } else {
+                swal({
+                    title: "Error",
+                    text: "Ocurrio un error inesperado",
+                    icon: "warning"
+                });
+            }
+        }
+    });
+
+
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     
 </head>
@@ -47,7 +48,6 @@ ob_start();
         </a>
             
     </nav>
-    
     <center>
         <div class="box-1" style="border-top: #DC7633 7px solid;">
             <div class="encabesado">
@@ -66,7 +66,7 @@ ob_start();
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="cantidad">Cantidad:</label>
-                                    <input type="text" class="form-control" id="cantidad" name="cantida">
+                                    <input type="text" class="form-control" id="cantidad" name="cantida" placeholder="1 2 3 4...">
                                 </div>
                             </div>
                             <div class="form-row" >
@@ -85,7 +85,7 @@ ob_start();
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="medidas">Codigo Medidas:</label>
+                                    <label for="medidas">Medidas:</label>
                                         <select id="medidas" name="" id="medidas" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
@@ -99,7 +99,7 @@ ob_start();
                                         </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="categoria">Codigo Categoria:</label>
+                                    <label for="categoria">Categoria:</label>
                                         <select id="categoria" name="" id="categoria" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
@@ -145,7 +145,7 @@ ob_start();
         </ul>
     </nav>
     </center>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    
     <script src="js/app.js"></script>
 </body>
 </html>
