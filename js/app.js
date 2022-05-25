@@ -11,7 +11,7 @@ function obtener(e) {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" && can == "" && precio == "" && total == "" && img == "" && select == "" && cate == "" && gav == "") {
+    if (nom == "" || can == "" || precio == "" || total == "" || img == "undefined" || select == "Choose..." || cate == "Choose..." || gav == "Choose...") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
@@ -43,7 +43,7 @@ function obtener(e) {
             processData: false,
             Cache: false,
             contentType: false,
-            before: function(mensaje) {
+            before: function() {
                 $('#cargar').html('<div><img src="cargando.gif"></img></div>');
             },
             success: function(mensaje) {
@@ -69,12 +69,12 @@ function obtener(e) {
 function update(e) {
     e.preventDefault();
     var id_herramienta = document.getElementById('id_h').value;
-    var cantidadn = document.getElementById('cantidadn').value;
+    var cantidadnew = document.getElementById('cantidadnew').value;
     console.log("# herramienta:" + id_herramienta);
-    console.log("Cantidad: " + cantidadn);
+    console.log("Cantidad: " + cantidadnew);
     var files = new FormData();
     files.append("numero_h", id_herramienta);
-    files.append("can", cantidadn);
+    files.append("can", cantidadnew);
     $.ajax({
         url: "update.php",
         type: "POST",
@@ -106,7 +106,7 @@ function update(e) {
 function consultar(e) {
     //e.preventDefault();
     var nombre = document.getElementById("seleccion").value;
-    var medida = document.getElementsByName("medida").value;
+    var medida = document.getElementById("medida").value;
     var url = "inventario.php";
     if (nombre != "" && medida != "") {
         console.log("Los datos enviados no estan vacios");
@@ -124,10 +124,10 @@ function consultar(e) {
             Cache: false,
             contentType: false,
             beforeSend: function() {
-                $('#cargar').html('<div><img src="cargando.gif"></img></div>');
+                $('#cargando').html('<div><img src="img/cargando.gif"></img>Cargando...</div>');
             },
             success: function(mensaje) {
-                if (mensaje == "La consula no se pudo ejecutar") {
+                if (mensaje == "No se a realizado una consulta") {
                     swal({
                         title: "Oh oh ",
                         text: "Ocurrio un error",
@@ -263,6 +263,4 @@ function RegistrarSoli(e) {
             }
         }
     });
-
-
 }

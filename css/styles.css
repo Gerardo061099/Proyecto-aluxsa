@@ -80,6 +80,7 @@
     .botones {
         margin: 10px 10px;
         padding: 8px 8px;
+        width: max-content;
         background: #FDFEFE;
         border: #34495E 5px solid;
         border-radius: 5px;
@@ -338,6 +339,10 @@
             padding: 10px;
             border-radius: 5px;
             display: block;
+            overflow-x: auto;
+        }
+        .tabla-herramientas {
+            display: inline-block;
             overflow-x: auto;
         }
     }

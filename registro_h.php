@@ -79,14 +79,14 @@ ob_start();
                                     <input type="texto" class="form-control" id="total" name="tota">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="subir_imagen">Sube una imagen</label>
+                                    <label for="subir_imagen">Nomenclatura: img.jpg</label>
                                     <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="medidas">Medidas:</label>
-                                        <select id="medidas" name="" id="medidas" class="form-control">
+                                        <select id="medidas" id="medidas" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
                                                 include("abrir_conexion.php");
@@ -100,12 +100,11 @@ ob_start();
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="categoria">Categoria:</label>
-                                        <select id="categoria" name="" id="categoria" class="form-control">
+                                        <select id="categoria" id="categoria" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
                                                 include("abrir_conexion.php");
                                                 $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
-                                                $id_partida=0;
                                                     while ($valores = mysqli_fetch_array($query)) {
                                                         echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['Descripcion'].' '.$valores['Material'].'</option>');
                                                         //$id_partida++;
@@ -116,7 +115,7 @@ ob_start();
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="gavilanes">Gavilanes:</label>
-                                        <select id="gavilanes" name="" id="gavilanes" class="form-control">
+                                        <select id="gavilanes" id="gavilanes" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
                                                 include("abrir_conexion.php");
@@ -131,7 +130,7 @@ ob_start();
                                         </select>
                                 </div>
                             </div>
-                            <input type="submit" value="Hecho" class="btn btn-success" name="enviar" onclick=obtener(event)>
+                            <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
                         </form>
                     </div>
                 </div>
