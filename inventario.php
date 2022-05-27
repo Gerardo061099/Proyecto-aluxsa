@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Bodega</title>
-    <!-- <link rel="stylesheet" href="css/navbar.css"> -->
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
@@ -185,15 +184,14 @@ ob_start();
             </div>
         </div>
     </center>
-    
-    <div>
+    <div class="contenedor-botones">
         <div class="botones">
                 <form>
                     <center>
                     <div class="form-row align-items-center">
                         <div class="col-auto my-1">
-                            <label for="seleccion">Herramienta:</label>
-                            <select class="custom-select" id="seleccion" name="herramienta">
+                            <label for="herra_b">Herramienta:</label>
+                            <select class="custom-select" id="herra_b">
                                 <option selected>Choose...</option>
                                 <option value="Cortador">Cortador</option>
                                 <option value="Buril">Buril</option>
@@ -201,58 +199,29 @@ ob_start();
                             </select>
                         </div>
                         <div class="col-auto my-1">
-                            <label for="medida">Medida:</label>
-                            <select class="custom-select" id="medida" name="medida">
+                            <label for="medida_b">Medida:</label>
+                            <select class="custom-select" id="medida_b">
                                 <option selected>Choose...</option>
                                 <?php
                                 include("abrir_conexion.php");
-                                $consulta = mysqli_query($conexion,"SELECT ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
-                                while($res = mysqli_fetch_array($consulta)){
-                                    echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
-                                }
+                                $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
+                                    while($res = mysqli_fetch_array($consulta)){
+                                        echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
+                                    }
+                                include("cerrar_conexion.php");
                                 ?>
                             </select>
                         </div>
                     </div>
                     </center>
                     <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary" onclick="consultar(event)">Consultar</button><br>
+                            <button type="submit" class="btn btn-primary" onclick="consultar(event);">Consultar</button>
                             <div id="cargando"></div>
                     </div>
                 </form>
         </div>
     </div>
-            <?php
-            //busqueda de herramientas
-                include("abrir_conexion.php");
-                $name1 = $_POST['herramienta'];
-                $medida = $_POST['medida'];
-                if ($name1 != "" && $medida != "") {
-                $res = mysqli_query($conexion, "SELECT h.id_Herramienta,h.Nombre,c.Material,c.Descripcion,g.Num_gavilanes,m.ancho,m.largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_Categoria = c.id_categoria inner join $tbgav_db6 g on h.id_Gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_Medidas = m.id_medidas WHERE h.Nombre LIKE '%$name1%' AND m.ancho LIKE '%$medida%' ");
-                    echo "<div class=\"contador-h\" style=\"margin: 10px 10px; background: #FDFEFE; padding: 5px; border-radius: 5px; height: max-content; width: 95%;\">
-                    <div><center><h1>Herramientas Almacenadas</h1></center></div>";
-                    while ($consulta = mysqli_fetch_array($res)) {
-                    echo '<center>
-                            <div class="conten">
-                            <img src="'.$consulta['rutaimg'].'" id="imgs" class="" alt="imagen no encontrada">
-                                <div class = "infor">
-                                    <h1 class="subt">Caracteristicas</h1>
-                                    <p>'.$consulta['id_Herramienta'].' Nombre: '.$consulta['Nombre'].' de '.$consulta['material'].' '.$consulta['descripcion'].'</p>
-                                    <p>Medidas: '.$consulta['Ancho'].' Ancho x '.$consulta['Largo'].' Largo'.'</p>
-                                    <p>gavilanes: '.$consulta['Num_gavilanes'].' Cantidad: '.$consulta['Cantidad'].'</p>
-                                </div>
-                            </div>
-                        </center>
-                        ';
-                    }
-                }else{
-                    echo "No se a realizado una consulta";
-                }
-                ?>
-                </div>
-                <?php
-                include("cerrar_conexion.php");
-            ?>
+            
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">

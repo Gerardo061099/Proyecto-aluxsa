@@ -19,4 +19,4 @@ $conexion = new mysqli($host,$userdb,$claveus,$nombredb);
 //En caso de haber datos erroneos del servidor
 if ($conexion->connect_errno) {
     echo "Problemas de conexion con el servidor...";
-}
+} 

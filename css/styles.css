@@ -122,6 +122,15 @@
         background: #FDFEFE;
     }
     
+    .contador-h {
+        margin: 10px 10px;
+        background: #FDFEFE;
+        padding: 5px;
+        border-radius: 5px;
+        height: max-content;
+        width: 95%;
+    }
+    
     .conten {
         display: inline-block;
     }
@@ -154,7 +163,7 @@
     .tabla-herramientas {
         width: 1050px;
         height: 300px;
-        display: inline-block;
+        display: block;
         overflow-y: auto;
     }
     
@@ -342,7 +351,8 @@
             overflow-x: auto;
         }
         .tabla-herramientas {
-            display: inline-block;
+            width: 1000px;
+            display: block;
             overflow-x: auto;
         }
     }
@@ -482,8 +492,11 @@
         .info {
             display: none;
         }
+        .contenedor-botones {
+            margin: 50px 100px;
+        }
         .botones {
-            display: block;
+            width: 190px;
         }
     }
     

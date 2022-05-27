@@ -67,7 +67,7 @@ function obtener(e) {
 
 // funcion para actualizar campo cantidad de una herramienta
 function update(e) {
-    e.preventDefault();
+    //e.preventDefault();
     var id_herramienta = document.getElementById('id_h').value;
     var cantidadnew = document.getElementById('cantidadnew').value;
     console.log("# herramienta:" + id_herramienta);
@@ -83,10 +83,10 @@ function update(e) {
         Cache: false,
         contentType: false,
         beforeSend: function() {
-            $('#cargar').html('<div><img src="cargando.gif"></img></div>');
+            $('#resultado').html('<div>cargando.... Espere un momento</div>');
         },
         success: function(mensaje) {
-            $('#resultado').html(mensaje);
+            //$('#resultado').html(mensaje);
             if (mensaje == "Actualizacion exitosa") {
                 swal({
                     title: "Actualizacion exitosa!!",
@@ -104,30 +104,26 @@ function update(e) {
     });
 } //fin function update();
 function consultar(e) {
-    //e.preventDefault();
-    var nombre = document.getElementById("seleccion").value;
-    var medida = document.getElementById("medida").value;
-    var url = "inventario.php";
-    if (nombre != "" && medida != "") {
-        console.log("Los datos enviados no estan vacios");
-        console.log("------------------------------------------------");
-        console.log("Nombre: " + nombre);
-        console.log("Medida de la herramienta: " + medida);
-        var data = new FormData();
-        data.append("herramienta", nombre);
-        data.append("medida", medida);
+    var nombre_h = document.getElementById("herra_b").value;
+    var medida_h = document.getElementById("medida_b").value;
+    if (nombre_h != "Choose..." && medida_h != "Choose...") {
+        console.log("Nombre: " + nombre_h);
+        console.log("Medida de la herramienta: " + medida_h);
+        var datos = new FormData();
+        datos.append("herramientajs", nombre_h);
+        datos.append("medida", medida_h);
         $.ajax({
-            url: url,
+            url: "busqueda.php",
             type: "POST",
-            data: data,
+            data: datos,
             processData: false,
             Cache: false,
             contentType: false,
             beforeSend: function() {
-                $('#cargando').html('<div><img src="img/cargando.gif"></img>Cargando...</div>');
+                $('#cargando').html('<div>Cargando...</div>');
             },
             success: function(mensaje) {
-                if (mensaje == "No se a realizado una consulta") {
+                if (mensaje == "Datos vacios") {
                     swal({
                         title: "Oh oh ",
                         text: "Ocurrio un error",
@@ -139,11 +135,26 @@ function consultar(e) {
                         text: "Deslice para abajo para ver los resultados de la busqueda!!",
                         icon: "success"
                     });
+                    window.location.href = "busqueda.php";
                 }
+            },
+            error: function() {
+                swal({
+                    title: "Oh oh ",
+                    text: "Algo salio mal",
+                    icon: "error"
+                });
             }
         });
+    } else {
+        swal({
+            title: "Campos vacios",
+            text: "Debes seleccionar una opcion para realizar la busqueda!!",
+            icon: "warning"
+        });
+        e.preventDefault();
     }
-}
+} //fin function consultar();
 
 function convertir() {
     console.log("Function convertir");
