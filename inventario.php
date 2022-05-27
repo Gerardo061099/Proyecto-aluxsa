@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Bodega</title>
-    <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
+    <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
+    
 </head>
 <body class="pag">
 <?php
@@ -55,7 +56,7 @@ ob_start();
             <center>
                 <div id="resultado"></div>
                 <div class="form-update">
-                    <form class="needs-validation" novalidate>
+                    <form>
                         <div class="form-row" id="items">
                             <div class="col-md-4 mb-3">
                                 <label for="id_h"># registro</label>
@@ -215,13 +216,38 @@ ob_start();
                     </div>
                     </center>
                     <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary" onclick="consultar(event);">Consultar</button>
-                            <div id="cargando"></div>
+                    <button class="btn btn-primary" type="submit" onclick="consultar(event);">Buscar</button>
+                        <div id="cargando"></div>
                     </div>
                 </form>
         </div>
     </div>
-            
+    <?php
+                include("abrir_conexion.php");
+                $her = $_POST['herramientajs'];
+                $med = $_POST['medidajs'];
+                if ($her != "" || $med != "") {
+                    $query = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE h.Nombre LIKE '%$her%' AND m.Ancho LIKE '%$med%' ORDER BY h.id_herramienta");
+                    echo '<div class="contador-h"><div><center><h1>Resultados</h1></center></div>';
+                    while($consulta = mysqli_fetch_array($query)) {
+                    echo "<div class=\"conten\">
+                            <img src=".$consulta['rutaimg']." id=\"imgs\" alt=\"imagen no encontrada\">
+                                <div class = \"infor\">
+                                    <h1 class=\"subt\">Caracteristicas</h1>
+                                    <p> # ".$consulta['id_herramienta']." Nombre: ".$consulta['Nombre']." de ".$consulta['Material']." ".$consulta['Descripcion']."</p>
+                                    <p>Medidas: ".$consulta['Ancho']." Ancho x ".$consulta['Largo']." Largo"."</p>
+                                    <p>gavilanes: ".$consulta['Num_gavilanes']." Cantidad: ".$consulta['Cantidad']."</p>
+                                </div>
+                            </div>";
+                    }
+                    include("cerrar_conexion.php");
+                }else{
+                    if ($medidaA == "" || $herramienta == ""){
+                        echo "Datos vacios";
+                    }
+                }
+                echo '</div>';
+    ?>
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">
