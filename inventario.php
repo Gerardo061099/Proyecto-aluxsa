@@ -187,12 +187,12 @@ ob_start();
     </center>
     <div class="contenedor-botones">
         <div class="botones">
-                <form>
+                <form method="POST" action="inventario.php">
                     <center>
                     <div class="form-row align-items-center">
                         <div class="col-auto my-1">
                             <label for="herra_b">Herramienta:</label>
-                            <select class="custom-select" id="herra_b">
+                            <select class="custom-select" id="herra_b" name="herramienta">
                                 <option selected>Choose...</option>
                                 <option value="Cortador">Cortador</option>
                                 <option value="Buril">Buril</option>
@@ -201,7 +201,7 @@ ob_start();
                         </div>
                         <div class="col-auto my-1">
                             <label for="medida_b">Medida:</label>
-                            <select class="custom-select" id="medida_b">
+                            <select class="custom-select" id="medida_b" name="medida">
                                 <option selected>Choose...</option>
                                 <?php
                                 include("abrir_conexion.php");
@@ -216,29 +216,37 @@ ob_start();
                     </div>
                     </center>
                     <div class="col-auto my-1">
-                    <button class="btn btn-primary" type="submit" onclick="consultar(event);">Buscar</button>
+                    <button class="btn btn-primary" type="submit" name="buscar">Buscar</button>
                         <div id="cargando"></div>
                     </div>
                 </form>
         </div>
     </div>
-    <?php
+            <?php
                 include("abrir_conexion.php");
-                $her = $_POST['herramientajs'];
-                $med = $_POST['medidajs'];
-                if ($her != "" || $med != "") {
-                    $query = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE h.Nombre LIKE '%$her%' AND m.Ancho LIKE '%$med%' ORDER BY h.id_herramienta");
-                    echo '<div class="contador-h"><div><center><h1>Resultados</h1></center></div>';
-                    while($consulta = mysqli_fetch_array($query)) {
-                    echo "<div class=\"conten\">
-                            <img src=".$consulta['rutaimg']." id=\"imgs\" alt=\"imagen no encontrada\">
-                                <div class = \"infor\">
-                                    <h1 class=\"subt\">Caracteristicas</h1>
-                                    <p> # ".$consulta['id_herramienta']." Nombre: ".$consulta['Nombre']." de ".$consulta['Material']." ".$consulta['Descripcion']."</p>
-                                    <p>Medidas: ".$consulta['Ancho']." Ancho x ".$consulta['Largo']." Largo"."</p>
-                                    <p>gavilanes: ".$consulta['Num_gavilanes']." Cantidad: ".$consulta['Cantidad']."</p>
+                if (isset($_POST['buscar'])) {
+                    $her = $_POST['herramienta'];
+                    $med = $_POST['medida'];
+                    $consult = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE Nombre LIKE '%$her%' AND Ancho LIKE '%$med%' ORDER BY h.id_herramienta");
+            ?>
+                    <div class="contador-h">
+                        <div><center>
+                            <h1>Resultados</h1>
+                        </center>
+                        </div>
+                            <?php
+                            while($consulta = mysqli_fetch_array($consult)) {
+                                ?>
+                            <div class="conten">
+                            <img src="<?php echo $consulta['rutaimg'];?>" id="imgs" alt="imagen no encontrada">
+                                <div class = "infor">
+                                    <h1 class="subt">Caracteristicas</h1>
+                                    <p><?php echo "# ".$consulta['id_herramienta']." Nombre: ".$consulta['Nombre']." de ".$consulta['Material']." ".$consulta['Descripcion'];?></p>
+                                    <p><?php echo "Medidas: ".$consulta['Ancho']." Ancho x ".$consulta['Largo']." Largo";?></p>
+                                    <p><?php echo"gavilanes: ".$consulta['Num_gavilanes']." Cantidad: ".$consulta['Cantidad'];?></p>
                                 </div>
-                            </div>";
+                            </div>
+                            <?php
                     }
                     include("cerrar_conexion.php");
                 }else{
@@ -246,8 +254,9 @@ ob_start();
                         echo "Datos vacios";
                     }
                 }
-                echo '</div>';
-    ?>
+                ?>
+                    </div>
+    
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">

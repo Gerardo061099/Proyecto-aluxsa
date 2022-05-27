@@ -103,7 +103,7 @@ function update(e) {
         }
     });
 } //fin function update();
-function consultar() {
+function consultar(e) {
     var nombre_h = document.getElementById('herra_b').value;
     var medida_h = document.getElementById('medida_b').value;
     if (nombre_h != "Choose..." && medida_h != "Choose...") {
@@ -113,12 +113,9 @@ function consultar() {
         datos.append("herramientajs", nombre_h);
         datos.append("medidajs", medida_h);
         $.ajax({
-            url: "inventario.php",
             type: "POST",
+            url: "inventario.php",
             data: datos,
-            processData: false,
-            Cache: false,
-            contentType: false,
             beforeSend: function() {
                 $('#cargando').html('<div>Cargando...</div>');
             },
@@ -151,6 +148,7 @@ function consultar() {
             text: "Debes seleccionar una opcion para realizar la busqueda!!",
             icon: "warning"
         });
+        e.preventDefault();
     }
 } //fin function consultar();
 
