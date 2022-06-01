@@ -77,13 +77,13 @@ ob_start();
                                 <input type="text" class="form-control" id="cantidadnew">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit" onclick="update(event);">Actualizar</button>
+                        <button class="btn btn-primary" type="submit" onclick="update(event);"><img src="img/update.png" alt=""> Actualizar</button>
                     </form>
                 </div>
             </center>
             <div class="tb-herramientas">
                     <div class="opciones">
-                        <a href="registro_h.php" class="badge badge-success">Nuevo registro</a>
+                        <a href="registro_h.php" class="badge badge-success"><img src="img/new.png" alt=""> Nuevo registro</a>
                         <a href=" " class="badge badge-secondary">Refrescar pagina</a>
                         <a class="navbar-brand" href="#">
                             <?php
@@ -158,17 +158,17 @@ ob_start();
                                         //mostramos un aviso segun la cantidad de piezas 
                                         if($consulta['cantidad']<2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
                                             if ($consulta['cantidad']==1) {
-                                                echo "<span class=\"badge badge-warning\">Compra más</span>";
+                                                echo "<img src=\"img/warning.png\" alt=\"sin resultados\">";
                                             }
                                             else{
                                                 if ($consulta['cantidad']==0) {
-                                                    echo "<span class=\"badge badge-danger\">Insuficiente</span>";
+                                                    echo "<img src=\"img/cancel.png\" alt=\"sin resultados\">";
                                                 }
                                             }
                                         }//si la cantidad es mayor a 2 no se requiere comprar más
                                         else{
                                             if ($consulta['cantidad']>=2) {
-                                                echo "<span class=\"badge badge-success\">Suficiente</span>";
+                                                echo "<img src=\"img/check.png\" alt=\"sin resultados\">";
                                             }
                                         }
                                         ?>

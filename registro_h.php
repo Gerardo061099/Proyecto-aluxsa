@@ -107,7 +107,6 @@ ob_start();
                                                 $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
                                                     while ($valores = mysqli_fetch_array($query)) {
                                                         echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['Descripcion'].' '.$valores['Material'].'</option>');
-                                                        //$id_partida++;
                                                     }
                                                     include("cerrar_conexion.php");
                                             ?>
