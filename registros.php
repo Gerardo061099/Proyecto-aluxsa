@@ -39,9 +39,10 @@ ob_start();
         <a class="navbar-brand" href="#">
             ALUXSA S.A de C.V
         </a>
-        <a class="navbar-brand" href="cerrar_sesion.php">
-        Cerrar sesion
-        </a>
+        <form class="form-inline my-2 my-lg-0" method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </nav>
     <nav aria-label="breadcrumb" style="margin: 5px 5px; width: 96%;">
         <ol class="breadcrumb">
@@ -49,105 +50,137 @@ ob_start();
             <li class="breadcrumb-item active" aria-current="page">Categorias</li>
         </ol>
     </nav>
-    <center>
-        <div class="box-1" style="border-bottom: #F4D03F 7px solid;">
-            <div class="encabesado">
-                <h1 class="titulo">Categorias</h1>
-            </div>
+    <div class="box-1" style="border-bottom: #F4D03F 7px solid;">
+        <div class="encabesado">
+            <h1 class="titulo">Categorias</h1>
         </div>
-        <div class="menu-botones">
-            <div class="botones">
-            <a href="registro_categorias.php" class="badge badge-primary">Nueva Categoria</a>
-            <a href="registro_gavilanes.php" class="badge badge-success">Numero de Gavilanes</a>
-            <a href="registro_medidas.php" class="badge badge-dark">Agrega nuevas medidas</a>
-            </div>
-        </div>
-        <section class="tablas">
-            <div class="cuadro-texto">
-                <div class="parrafo">
-                    <?php
-                        include("abrir_conexion.php");
-                        $resultados1 = mysqli_query($conexion,"SELECT * FROM $tbgav_db6 ");
-                            echo " <h1 class=\"titulos\" style=\"border-bottom: #5DADE2 2px solid;\"><strong> N° Gavilanes</strong></h1>
-                                <table class=\"table table-striped\" style= \"width:90px; heigh:25px; font-size:15px;\">
-                                    <tr>
-                                    <td><b><center>#</center></b></td>
-                                    <td><b><center>Gavilanes</center></b></td>
-                                    </tr>";
-                        while($consulta1 = mysqli_fetch_array($resultados1))
-                        {
-                        echo 
-                        "
+    </div>
+    <div class="contenido">
+        <div class="con-cortadores">
+            <div class="cortadores">
+                <div>
+                    <h1 style="text-align: left; margin: 5px 15px;">Cortadores</h1>
+                </div>
+                <div class="separador"></div>
+            <?php
+                include("abrir_conexion.php");// conexion con la BD
+                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'CORTADOR' ORDER BY h.id_herramienta");
+                //Unimos tabla Herramientas con categorias y medidas
+                echo "
+                    <table class=\"table\" id=\"tb-cortadores\">
+                        <thead class=\"thead-dark\">
                             <tr>
-                            <td><center>".$consulta1['id_Gav']."</center></td>
-                            <td><center>".$consulta1['Num_gavilanes']."</center></td>
+                                <th><center>#</center></th>
+                                <th><center>Nombre</center></th>
+                                <th><center>Material</center></th>
+                                <th><center>Descripcion</center></th>
+                                <th><center>Gavilanes</center></th>
+                                <th><center>Ancho</center></th>
+                                <th><center>Largo</center></th>
+                                <th><center>Cantidad</center></th>
+                                <th><center>Fecha</center></th>
                             </tr>
-                        ";
-                        }
-                        echo "</table>";
-                        include("cerrar_conexion.php");
-                        ?>
-                </div>
-                <div class="parrafo2">
-                    <?php
-                            include("abrir_conexion.php");
-                            $resultados1 = mysqli_query($conexion,"SELECT * FROM $tbcat_db3 ");
-                                echo " <h1 class=\"titulos\" style=\"border-bottom: #5DADE2 2px solid;\"><strong>Categorias</strong></h1>
-                                    <table class=\"table table-striped\" style= \"width:90px; height:25px; font-size:15px; margin: 8px 8px;\">
-                                        <tr>
-                                            <td><b><center>#</center></b></td>
-                                            <td><b><center>Descripcion</center></b></td>
-                                            <td><b><center>Material</center></b></td>
-                                        </tr>";
-                            while($consulta1 = mysqli_fetch_array($resultados1)){
-                            echo 
-                            "
-                                        <tr>
-                                            <td><center>".$consulta1['id_Categoria']."</center></td>
-                                            <td><center>".$consulta1['Descripcion']."</center></td>
-                                            <td><center>".$consulta1['Material']."</center></td>
-                                        </tr>
-                            ";
-                            }
-                            echo "  </table>";
-                            include("cerrar_conexion.php");
-                    ?>
-                </div>
+                        </thead>";
+                while($consulta = mysqli_fetch_array($resultados)){
+                echo "
+                        <tbody class=\"tb-body\">
+                            <tr>
+                                <td><center>".$consulta['id_herramienta']."</center></td>
+                                <td><center>".$consulta['Nombre']."</center></td>
+                                <td><center>".$consulta['material']."</center></td>
+                                <td><center>".$consulta['descripcion']."</center></td>
+                                <td><center>".$consulta['Num_gavilanes']."</center></td>
+                                <td><center>".$consulta['Ancho']."</center></td>
+                                <td><center>".$consulta['Largo']."</center></td>
+                                <td><center>".$consulta['cantidad']."</center></td>
+                                <td><center>".$consulta['fecha_hora']."</center></td>
+                            </tr>
+                        </tbody>";
+                }
+                include("cerrar_conexion.php");
+                echo "
+                    </table>
+                ";
+            ?>
             </div>
-            <div class="medidas">
-                <div class="parrafo">
-                    <?php
-                        include("abrir_conexion.php");
-                        $resultados1 = mysqli_query($conexion,"SELECT * FROM $tbmed_db9 ");
-                            echo " <h1 class=\"titulos\" style=\"border-bottom: #5DADE2 2px solid;\"><strong>Medidas</strong></h1>
-                                <table class=\"table table-striped\" style= \"width:90px; heigh:25px; font-size:15px;\">
-                                    <thead>
-                                        <tr>
-                                            <td><b><center>#</center></b></td>
-                                            <td><b><center>Ancho</center></b></td>
-                                            <td><b><center>Largo</center></b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>";
-                        while($consulta1 = mysqli_fetch_array($resultados1))
-                        {
-                        echo 
-                            "   
-                                    <tr>
-                                        <td><center>".$consulta1['id_Medidas']."</center></td>
-                                        <td><center>".$consulta1['Ancho']."</center></td>
-                                        <td><center>".$consulta1['Largo']."</center></td>
-                                    </tr>
-                        ";
-                        }
-                        echo " </tbody>";
-                        echo "</table>";
-                        include("cerrar_conexion.php");
-                        ?>
-                </div>
+        </div>
+        <?php
+        include("abrir_conexion.php");
+        $consulta = mysqli_query($conexion,"SELECT COUNT(*) as cortadores FROM $tbherr_db7 WHERE Nombre = 'Cortador'");
+        while ($resultado = mysqli_fetch_array($consulta)){
+            $n_cortadores = $resultado['cortadores'];
+        }
+        include("cerrar_conexion.php");
+        ?>
+        <div class="informacion_piezas">
+            <div class="informacion_p">
+            <h1>Numero de Registros por pieza</h1>
+                <p>
+                    <?php echo '<button type="button" class="btn btn-primary">Cortadores <span class="badge badge-light">'.$n_cortadores.'</span>
+                    <span class="sr-only">unread messages</span>
+                    </button>'; ?> 
+                </p>
+                <?php
+                include("abrir_conexion.php");
+                $query = mysqli_query($conexion,"SELECT COUNT(*) as brocas FROM $tbherr_db7 WHERE Nombre = 'Broca'");
+                while ($row = mysqli_fetch_array($query)){
+                    $n_broca = $row['brocas'];
+                }
+                ?>
+                <p><?php echo '<button type="button" class="btn btn-info">Brocas <span class="badge badge-light">'.$n_broca.'</span>
+                    <span class="sr-only">unread messages</span>
+                    </button>'; ?>  </p>
             </div>
-        </section>
-    </center>
+        </div>
+    </div>
+        <div class="con-cortadores">
+            <div class="cortadores">
+                <div>
+                    <h1 style="text-align: left; margin: 5px 15px;">Brocas</h1>
+                </div>
+            <div class="separador"></div>
+            <?php
+                include("abrir_conexion.php");// conexion con la BD
+                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'Broca' ORDER BY h.id_herramienta");
+                //Unimos tabla Herramientas con categorias y medidas
+                echo "
+                    <table class=\"table\" id=\"tb-cortadores\">
+                        <thead class=\"thead-dark\">
+                            <tr>
+                                <th><center>#</center></th>
+                                <th><center>Nombre</center></th>
+                                <th><center>Material</center></th>
+                                <th><center>Descripcion</center></th>
+                                <th><center>Gavilanes</center></th>
+                                <th><center>Ancho</center></th>
+                                <th><center>Largo</center></th>
+                                <th><center>Cantidad</center></th>
+                                <th><center>Fecha</center></th>
+                            </tr>
+                        </thead>";
+                while($consulta = mysqli_fetch_array($resultados)){
+                echo "
+                        <tbody class=\"tb-body\">
+                            <tr>
+                                <td><center>".$consulta['id_herramienta']."</center></td>
+                                <td><center>".$consulta['Nombre']."</center></td>
+                                <td><center>".$consulta['material']."</center></td>
+                                <td><center>".$consulta['descripcion']."</center></td>
+                                <td><center>".$consulta['Num_gavilanes']."</center></td>
+                                <td><center>".$consulta['Ancho']."</center></td>
+                                <td><center>".$consulta['Largo']."</center></td>
+                                <td><center>".$consulta['cantidad']."</center></td>
+                                <td><center>".$consulta['fecha_hora']."</center></td>
+                            </tr>
+                        </tbody>";
+                }
+                include("cerrar_conexion.php");
+                echo "
+                    </table>
+                ";
+            ?>
+            </div>
+        </div>  
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item">

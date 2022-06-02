@@ -70,38 +70,47 @@ function update(e) {
     //e.preventDefault();
     var id_herramienta = document.getElementById('id_h').value;
     var cantidadnew = document.getElementById('cantidadnew').value;
-    console.log("# herramienta:" + id_herramienta);
-    console.log("Cantidad: " + cantidadnew);
-    var files = new FormData();
-    files.append("numero_h", id_herramienta);
-    files.append("can", cantidadnew);
-    $.ajax({
-        url: "update.php",
-        type: "POST",
-        data: files,
-        processData: false,
-        Cache: false,
-        contentType: false,
-        beforeSend: function() {
-            $('#resultado').html('<div>cargando.... Espere un momento</div>');
-        },
-        success: function(mensaje) {
-            //$('#resultado').html(mensaje);
-            if (mensaje == "Actualizacion exitosa") {
-                swal({
-                    title: "Actualizacion exitosa!!",
-                    text: "Se realizo un actualizacion de manera exitosa!!",
-                    icon: "success"
-                });
-            } else {
-                swal({
-                    title: "Oh oh ",
-                    text: "Ocurrio un error",
-                    icon: "error"
-                });
+    if (id_herramienta != "Choose..." && cantidadnew != "") {
+        console.log("# herramienta:" + id_herramienta);
+        console.log("Cantidad: " + cantidadnew);
+        var files = new FormData();
+        files.append("numero_h", id_herramienta);
+        files.append("can", cantidadnew);
+        $.ajax({
+            url: "update.php",
+            type: "POST",
+            data: files,
+            processData: false,
+            Cache: false,
+            contentType: false,
+            beforeSend: function() {
+                $('#resultado').html('<div>cargando.... Espere un momento</div>');
+            },
+            success: function(mensaje) {
+                //$('#resultado').html(mensaje);
+                if (mensaje == "Actualizacion exitosa") {
+                    swal({
+                        title: "Actualizacion exitosa!!",
+                        text: "Se realizo un actualizacion de manera exitosa!!",
+                        icon: "success"
+                    });
+                } else {
+                    swal({
+                        title: "Oh oh ",
+                        text: "Ocurrio un error",
+                        icon: "error"
+                    });
+                }
             }
-        }
-    });
+        });
+    } else {
+        swal({
+            title: "Datos Vacios",
+            text: "Ocurrio un error",
+            icon: "error"
+        });
+    }
+
 } //fin function update();
 function consultar(e) {
     var nombre_h = document.getElementById('herra_b').value;
@@ -116,6 +125,9 @@ function consultar(e) {
             type: "POST",
             url: "inventario.php",
             data: datos,
+            processData: false,
+            Cache: false,
+            contentType: false,
             beforeSend: function() {
                 $('#cargando').html('<div>Cargando...</div>');
             },
@@ -236,38 +248,55 @@ function RegistrarSoli(e) {
     var herramienta = document.getElementById("herramienta").value;
     var maquina = document.getElementById("maquina").value;
     var cantidad = document.getElementById("cantidad").value;
-    console.log("id_herramienta: " + herramienta);
-    console.log("id_Maquina: " + maquina);
-    console.log("Cantidad: " + cantidad);
-    var data = new FormData();
-    data.append("N_herramienta", herramienta);
-    data.append("N_maquina", maquina);
-    data.append("cantidad", cantidad);
-    $.ajax({
-        url: "fin_solicitud.php",
-        type: "POST",
-        data: data,
-        processData: false,
-        Cache: false,
-        contentType: false,
-        beforeSend: function() {
-            $('#load').html('<div><img src="img/cargando2.gif"></img><br><br>Cargando...</div>');
-        },
-        success: function(message) {
-            if (message == "Registro realizado") {
-                swal({
-                    title: "Registro Exitoso",
-                    text: "Se a registrado la solicitud de forma exitosa!!",
-                    icon: "success"
-                });
-                window.location.href = "salidas_almacen.php";
-            } else {
-                swal({
-                    title: "Error",
-                    text: "Ocurrio un error inesperado",
-                    icon: "warning"
-                });
+    if (herramienta != "Choose..." && maquina != "Choose..." && cantidad != "") {
+        console.log("id_herramienta: " + herramienta);
+        console.log("id_Maquina: " + maquina);
+        console.log("Cantidad: " + cantidad);
+        var data = new FormData();
+        data.append("N_herramienta", herramienta);
+        data.append("N_maquina", maquina);
+        data.append("cantidad", cantidad);
+        $.ajax({
+            url: "fin_solicitud.php",
+            type: "POST",
+            data: data,
+            processData: false,
+            Cache: false,
+            contentType: false,
+            beforeSend: function() {
+                $('#load').html('<br><br><div><img src="img/cargando.gif"></img>Cargando...</div>');
+            },
+            success: function(message) {
+                if (message == "Registro realizado") {
+                    swal({
+                        title: "Registro Exitoso",
+                        text: "Se a registrado la solicitud de forma exitosa!!",
+                        icon: "success"
+                    });
+                    window.location.href = " ";
+                } else if (message == "La cantidad solicitada es mayor a la cantidad en existencia") {
+                    swal({
+                        title: "Error",
+                        text: "La cantidad que solicitas es mayor al número de piezas almacenadas",
+                        icon: "warning"
+                    });
+                    window.location.href = " ";
+                } else {
+                    swal({
+                        title: "Error",
+                        text: "Ocurrio un error inesperado",
+                        icon: "warning"
+                    });
+                    window.location.href = " ";
+                }
+
             }
-        }
-    });
+        });
+    } else {
+        swal({
+            title: "Datos no ingresados",
+            text: "Debes Selection los datos",
+            icon: "warning"
+        });
+    }
 }

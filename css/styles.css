@@ -74,6 +74,7 @@
     .titulo {
         /*margin out*/
         margin-top: 0.5px;
+        text-align: center;
         /*pading in*/
     }
     
@@ -111,7 +112,7 @@
     
     .body-tb:hover {
         background: #abc8dfb0;
-        border-bottom: #F4D03F 5px solid;
+        border-bottom: #F4D03F 2px solid;
     }
     
     .tb-herramientas {
@@ -160,6 +161,10 @@
         border-left: #85C1E9 5px solid;
     }
     
+    .forms {
+        display: flex;
+    }
+    
     .tabla-herramientas {
         width: 1050px;
         height: 300px;
@@ -183,25 +188,71 @@
         /* Ocultar scroll */
     }
     
-    .tabla-herramientas::-webkit-scrollbar-thumb {
-        background: #5DADE2;
-        border-radius: 4px;
-    }
-    /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
-    
-    .tabla-herramientas::-webkit-scrollbar-thumb:hover {
-        background: #2E86C1;
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-    }
-    /* Cambiamos el fondo cuando esté en active */
-    
-    .tabla-herramientas::-webkit-scrollbar-thumb:active {
-        background-color: #2980B9;
+    .cortadores {
+        width: 1050px;
+        height: 300px;
+        margin: 0px 0px;
+        display: block;
+        overflow-y: auto;
     }
     
-    .tabla-herramientas::-webkit-scrollbar-track {
-        background: #e1e1e1;
-        border-radius: 4px;
+    .separador {
+        margin: 2px;
+        border-bottom: #2ECC71 5px solid;
+    }
+    
+    #tb-cortadores {
+        margin: 0px 20px;
+        width: 1050px;
+        height: 25px;
+        font-size: 13px;
+    }
+    
+    .tb-body:hover {
+        background: #abc8dfb0;
+        border-bottom: #F4D03F 3px solid;
+    }
+    
+    .contenido {
+        display: flex;
+    }
+    
+    .con-cortadores {
+        margin: 10px 20px;
+        width: 1100px;
+        height: 350px;
+        padding: 5px 5px;
+        border-radius: 5px;
+        background: #FDFEFE;
+    }
+    
+    .cortadores::-webkit-scrollbar {
+        width: 8px;
+        /* Tamaño del scroll en vertical */
+        height: 8px;
+        /* Tamaño del scroll en horizontal */
+        display: none;
+        /* Ocultar scroll */
+    }
+    
+    .informacion_piezas {
+        margin: 10px 20px;
+        width: 350px;
+        height: 350px;
+        border-radius: 5px;
+        background-color: #FDFEFE;
+    }
+    
+    .informacion_p h1 {
+        margin: 10px 10px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        background: #34495E;
+    }
+    
+    .informacion_p p {
+        margin: 10px 10px;
     }
     
     .cuadro-texto {
@@ -225,12 +276,12 @@
         align-content: center;
         width: max-content;
         height: max-content;
-        margin: 25px 0px;
+        margin: 25px 20px;
         padding: 5px;
         position: relative;
         background: #FDFEFE;
         border-radius: 5px;
-        border-bottom: #F4D03F 7px solid;
+        border-left: #F4D03F 7px solid;
     }
     
     .tablas2 {
@@ -355,6 +406,11 @@
             display: block;
             overflow-x: auto;
         }
+        .con-cortadores {
+            width: 1000px;
+            display: block;
+            overflow-x: auto;
+        }
     }
     
     @media screen and (max-width: 910px) {
@@ -442,6 +498,18 @@
         .parrafo2 {
             width: 350px;
         }
+        .informacion_p h1 {
+            margin: 10px 10px;
+            font-size: 17px;
+            color: white;
+            text-align: center;
+            background: #34495E;
+        }
+        .con-cortadores {
+            width: 730px;
+            display: block;
+            overflow-x: auto;
+        }
     }
     
     @media all and (max-width: 430px) {
@@ -492,11 +560,40 @@
         .info {
             display: none;
         }
+        .forms {
+            display: block;
+        }
         .contenedor-botones {
-            margin: 50px 100px;
+            margin: 20px 10px;
         }
         .botones {
             width: 190px;
+        }
+        .contenido {
+            display: block;
+        }
+        .con-cortadores {
+            width: 380px;
+            margin: 10px 10px;
+            display: block;
+            overflow-x: auto;
+        }
+    }
+    
+    @media all and (max-width:380px) {
+        .con-cortadores {
+            width: 345px;
+            margin: 15px 15px;
+            display: block;
+            overflow-x: auto;
+        }
+        .informacion_piezas {
+            margin: 15px 15px;
+            width: 345px;
+        }
+        .informacion_p {
+            margin: 10px 5px;
+            padding: 10px;
         }
     }
     
@@ -506,5 +603,8 @@
         }
         .acciones {
             display: flex;
+        }
+        .infor {
+            width: 250px;
         }
     }

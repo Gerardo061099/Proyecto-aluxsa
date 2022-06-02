@@ -48,77 +48,56 @@ ob_start();
         </a>
     </nav>
     <center>
-        <section class="tablas2">
-            <div class="caja1" id="tb-herramientas-agotadas">
-            <h1 class="subtitulo2">Solicitudes</h1>
-                <div class="tb">
-                <?php
-                    include("abrir_conexion.php");// conexion con la BD
-                    $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < 2 ORDER BY id_herramienta");
-                    //Unimos tabla Herramientas con categorias y medidas
-                ?>
-                            <table class="table" id="tabla2">
-                                <thead class="thead-dark" id="thead">
-                                    <tr>
-                                        <th><center>#</center></th>
-                                        <th><center>Nombre</center></th>
-                                        <th>Material</th>
-                                        <th>Descripcion</th>
-                                        <th><center>Gavilanes</center></th>
-                                        <th><center>Ancho</center></th>
-                                        <th><center>Largo</center></th>
-                                        <th><center>Cantidad</center></th>
-                                        <th><center>Estado</center></th>
-                                    </tr>
-                                </thead>
-                                <?php
-                                while($consulta = mysqli_fetch_array($resultados)){
-                                ?>
-                                <tbody class="body-tb">
-                                    <tr>
-                                        <td><center><?php echo $consulta['id_herramienta']?></center></td>
-                                        <td><center><?php echo $consulta['Nombre']?></center></td>
-                                        <td><?php echo $consulta['material']?></td>
-                                        <td><?php echo $consulta['descripcion']?></td>
-                                        <td><center><?php echo $consulta['Num_gavilanes']?></center></td>
-                                        <td><center><?php echo $consulta['Ancho']?></center></td>
-                                        <td><center><?php echo $consulta['Largo']?></center></td>
-                                        <td><center><?php echo $consulta['cantidad']?></center></td>
-                                        <td><center>
-                                        <?php
-                                        //mostramos un aviso segun la cantidad de piezas 
-                                        if($consulta['cantidad']<2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
-                                            if ($consulta['cantidad']==1) {
-                                                echo "<span class=\"badge badge-warning\">Compra más</span>";
-                                            }
-                                            else{
-                                                if ($consulta['cantidad']==0) {
-                                                    echo "<span class=\"badge badge-danger\">Insuficiente</span>";
-                                                }
-                                            }
-                                        }//si la cantidad es mayor a 2 no se requiere comprar más
-                                        else{
-                                            if ($consulta['cantidad']>=2) {
-                                                echo "<span class=\"badge badge-success\">Suficiente</span>";
-                                            }
-                                        }
-                                        ?>
-                                        </center></td>
-                                    </tr>
-                                </tbody>
-                                <?php
-                            }?>
-                        </table><br>
+    <div style="margin: 0px 10px; background: #FDFEFE;">
+                        <h1 class="titulos" style="text-align:left;"><strong>Salidas del almacen</strong></h1>
+                    </div>
+                    <div class="tabla-herramientas">
                         <?php
-                        include("cerrar_conexion.php");
+                            include("abrir_conexion.php");// conexion con la BD
+                            $resultados = mysqli_query($conexion,"SELECT s.id_solicitud,e.nombre as solicitante,e.apellidos,h.Nombre as herramienta,c.Descripcion,c.Material,g.Num_gavilanes AS Gav,m.Largo,m.Ancho,d.cantidad,s.Fecha from $tbsoli_db10 s inner join $tbdet_db4 d on s.id_solicitud = d.id_solicitud inner join $tbherr_db7 h on d.id_herramientas = h.id_herramienta inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas inner join $tbem_db5 e on s.id_empleado = e.id_empleado;");
+                            //Unimos tabla Herramientas con categorias y medidas
+                            echo "
+                            <table class=\"table\" id=\"herramientas\">
+                                        <thead class=\"thead-dark\">
+                                            <tr>
+                                                <th><center>#</center></th>
+                                                <th><center>Solicitante</center></th>
+                                                <th><center>Apellidos</center></th>
+                                                <th><center>Herramienta</center></th>
+                                                <th><center>Descripcion</center></th>
+                                                <th><center>Material</center></th>
+                                                <th><center>Gav</center></th>
+                                                <th><center>Ancho</center></th>
+                                                <th><center>Largo</center></th>
+                                                <th><center>Cantidad</center></th>
+                                                <th><center>Fecha</center></th>
+                                            </tr>
+                                        </thead>
+                                ";
+                                while($consulta = mysqli_fetch_array($resultados)){
+                                echo 
+                                "<tbody class=\"body-tb\">
+                                    <tr>
+                                        <td><center>".$consulta['id_solicitud']."</center></td>
+                                        <td><center>".$consulta['solicitante']."</center></td>
+                                        <td><center>".$consulta['apellidos']."</center></td>
+                                        <td><center>".$consulta['herramienta']."</center></td>
+                                        <td><center>".$consulta['Descripcion']."</center></td>
+                                        <td><center>".$consulta['Material']."</center></td>
+                                        <td><center>".$consulta['Gav']."</center></td>
+                                        <td><center>".$consulta['Ancho']."</center></td>
+                                        <td><center>".$consulta['Largo']."</center></td>
+                                        <td><center>".$consulta['cantidad']."</center></td>
+                                        <td><center>".$consulta['Fecha']."</center></td>
+                                        </tr>
+                                </tbody>";
                         ?>
-                </div>
-            </div>
-        </section>
-        <br><br>
-        <div>
-            <button type="button" class="btn btn-outline-info" onclick="convertir()">Convertir a PDF</button>
-        </div><br><br>
+                            <?php
+                            }
+                            include("cerrar_conexion.php");
+                            ?>
+                                </table><br>
+                    </div>
     </center>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">

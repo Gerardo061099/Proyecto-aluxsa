@@ -87,7 +87,7 @@ ob_start();
                             </div>
                         </div>
                         <input type="submit" value="Registrar" class="btn btn-outline-success" onclick="RegistrarSoli(event)">
-                        <input type="submit" value="Finalizar Registros" class="btn btn-outline-warning">
+                        <a class="btn btn-primary" href="salidas_almacen.php" role="button">Finalizar</a>
                         <div id="load"></div>
                     </form>
                 </div>

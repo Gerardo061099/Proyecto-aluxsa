@@ -53,8 +53,7 @@ ob_start();
                     <h1>Herramientas</h1>
                 </p>
             </div>
-            <center>
-                <div id="resultado"></div>
+            <div class="forms">
                 <div class="form-update">
                     <form>
                         <div class="form-row" id="items">
@@ -80,7 +79,44 @@ ob_start();
                         <button class="btn btn-primary" type="submit" onclick="update(event);"><img src="img/update.png" alt=""> Actualizar</button>
                     </form>
                 </div>
-            </center>
+                <div class="contenedor-botones">
+                    <div class="botones">
+                            <form method="POST" action="inventario.php">
+                                <center>
+                                <div class="form-row align-items-center">
+                                    <div class="col-auto my-1">
+                                        <label for="herra_b">Herramienta:</label>
+                                        <select class="custom-select" id="herra_b" name="herramienta">
+                                            <option selected>Choose...</option>
+                                            <option value="Cortador">Cortador</option>
+                                            <option value="Buril">Buril</option>
+                                            <option value="Broca">Broca</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-auto my-1">
+                                        <label for="medida_b">Medida:</label>
+                                        <select class="custom-select" id="medida_b" name="medida">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                            include("abrir_conexion.php");
+                                            $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
+                                                while($res = mysqli_fetch_array($consulta)){
+                                                    echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
+                                                }
+                                            include("cerrar_conexion.php");
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                </center>
+                                <div class="col-auto my-1">
+                                <button class="btn btn-info" type="submit" name="buscar"><img src="img/search.png" alt="sin resultados"> Buscar</button>
+                                    <div id="cargando"></div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
             <div class="tb-herramientas">
                     <div class="opciones">
                         <a href="registro_h.php" class="badge badge-success"><img src="img/new.png" alt=""> Nuevo registro</a>
@@ -134,7 +170,7 @@ ob_start();
                                                 <th><center>Ancho</center></th>
                                                 <th><center>Largo</center></th>
                                                 <th><center>Cantidad</center></th>
-                                                <th><center>Fecha_Hora</center></th>
+                                                <th><center>Fecha</center></th>
                                                 <th><center>Estado</center></th>
                                                 <th><center></center></th>
                                             </tr>
@@ -185,49 +221,14 @@ ob_start();
             </div>
         </div>
     </center>
-    <div class="contenedor-botones">
-        <div class="botones">
-                <form method="POST" action="inventario.php">
-                    <center>
-                    <div class="form-row align-items-center">
-                        <div class="col-auto my-1">
-                            <label for="herra_b">Herramienta:</label>
-                            <select class="custom-select" id="herra_b" name="herramienta">
-                                <option selected>Choose...</option>
-                                <option value="Cortador">Cortador</option>
-                                <option value="Buril">Buril</option>
-                                <option value="Broca">Broca</option>
-                            </select>
-                        </div>
-                        <div class="col-auto my-1">
-                            <label for="medida_b">Medida:</label>
-                            <select class="custom-select" id="medida_b" name="medida">
-                                <option selected>Choose...</option>
-                                <?php
-                                include("abrir_conexion.php");
-                                $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
-                                    while($res = mysqli_fetch_array($consulta)){
-                                        echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
-                                    }
-                                include("cerrar_conexion.php");
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    </center>
-                    <div class="col-auto my-1">
-                    <button class="btn btn-primary" type="submit" name="buscar">Buscar</button>
-                        <div id="cargando"></div>
-                    </div>
-                </form>
-        </div>
-    </div>
             <?php
                 include("abrir_conexion.php");
                 if (isset($_POST['buscar'])) {
+                    
                     $her = $_POST['herramienta'];
                     $med = $_POST['medida'];
-                    $consult = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE Nombre LIKE '%$her%' AND Ancho LIKE '%$med%' ORDER BY h.id_herramienta");
+                    if ($her != 'Choose...' && $med != 'Choose...') {
+                        $consult = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE Nombre LIKE '%$her%' AND Ancho LIKE '%$med%' ORDER BY h.id_herramienta");                    
             ?>
                     <div class="contador-h">
                         <div><center>
@@ -247,12 +248,26 @@ ob_start();
                                 </div>
                             </div>
                             <?php
+                            echo '
+                            <script>
+                            swal({
+                                title: "Busqueda exitosa!!",
+                                text: "Para ver los resultados deslice hacia arriba",
+                                icon: "success"
+                            });
+                            </script>';
                     }
+                }else {
+                    echo '
+                    <script>
+                        swal({
+                            title: "Opciones no validas",
+                            text: "Selecciona los valores para realizar la busqueda",
+                            icon: "warning"
+                        });
+                    </script>';
+                }
                     include("cerrar_conexion.php");
-                }else{
-                    if ($medidaA == "" || $herramienta == ""){
-                        echo "Datos vacios";
-                    }
                 }
                 ?>
                     </div>
