@@ -368,6 +368,31 @@
         overflow-y: auto;
     }
     
+    .box-registros {
+        display: flex;
+    }
+    
+    .contenedor_registros {
+        margin: 15px 20px;
+    }
+    
+    .Nuevos_registros {
+        width: 250px;
+        height: 150px;
+        background: white;
+    }
+    
+    .R-titulo {
+        background: #34495E;
+        border: #000 2px solid;
+    }
+    
+    .salidas {
+        margin: 15px 20px;
+        width: 1060px;
+        background: #FDFEFE;
+    }
+    
     .medidas::-webkit-scrollbar {
         width: 8px;
         /* Tamaño del scroll en vertical */
@@ -402,7 +427,7 @@
             overflow-x: auto;
         }
         .tabla-herramientas {
-            width: 1000px;
+            width: 950px;
             display: block;
             overflow-x: auto;
         }
@@ -410,6 +435,11 @@
             width: 1000px;
             display: block;
             overflow-x: auto;
+        }
+        .salidas {
+            margin: 15px 20px;
+            width: 950px;
+            background: #FDFEFE;
         }
     }
     

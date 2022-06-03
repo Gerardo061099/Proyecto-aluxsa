@@ -43,7 +43,7 @@ ob_start();
             ALUXSA S.A de C.V
         </a>
         <a class="navbar-brand" href="cerrar_sesion.php">
-        Cerrar sesion
+        <img src="img/log-out.png" alt="">
         </a>
     </nav>
     <center>
