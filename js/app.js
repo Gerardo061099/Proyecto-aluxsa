@@ -11,7 +11,7 @@ function obtener(e) {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" || can == "" || precio == "" || total == "" || img == "undefined" || select == "Choose..." || cate == "Choose..." || gav == "Choose...") {
+    if (nom == "" && can == "" && precio == "" && total == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",

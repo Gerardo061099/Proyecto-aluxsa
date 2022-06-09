@@ -14,7 +14,7 @@ if ($id_herramienta != "Choose..." && $id_maquina != "Choose..." && $cantidad !=
         if ($result['cantidad']>=$cantidad) {// if 3
             $resta = $result['cantidad'] - $cantidad;//3
             if ($id_herramienta != "Choose..." && $id_maquina != "Choose..." && $cantidad != "" && $id_solicitud != "") {//if 4
-                mysqli_query($conexion, "INSERT INTO $tbdet_db4 (id_Herramientas,id_Maquina,id_Solicitud,Cantidad) values ($id_herramienta,$id_maquina,$id_solicitud,$cantidad)");
+                mysqli_query($conexion, "INSERT INTO $tbdet_db4 (id_herramientas,id_Maquina,id_Solicitud,Cantidad) values ($id_herramienta,$id_maquina,$id_solicitud,$cantidad)");
                 mysqli_query($conexion,"UPDATE $tbherr_db7 SET cantidad = $resta WHERE id_Herramienta = '$id_herramienta'");
                 echo "Registro realizado";
             }//end if 4

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Bodega</title>
-    <!-- <link rel="stylesheet" href="css/navbar.css"> -->
+    <link rel="shortcut icon" href="img/list.png">
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
@@ -40,11 +40,11 @@ ob_start();
 ?>
     <!-- Image and text -->
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            ALUXSA S.A de C.V
+        <a class="navbar-brand" href="pagina_principal.php">
+        <img src="img/home.png" alt="">
         </a>
-        <a class="navbar-brand" href="cerrar_sesion.php">
-        Cerrar sesion
+        <a class="navbar-brand" href="#">
+        ALUXSA S.A de C.V
         </a>
     </nav>
     <center>
@@ -117,7 +117,7 @@ ob_start();
         </section>
         <br><br>
         <div>
-            <button type="button" class="btn btn-outline-info" onclick="convertir()">Convertir a PDF</button>
+            <button type="button" class="btn btn-outline-info" onclick="convertir()"> <img src="img/list.png" alt=""> Convertir a PDF</button>
         </div><br><br>
     </center>
     <nav aria-label="Page navigation example">

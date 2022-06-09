@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de nuevas herramientas</title>
+    <link rel="shortcut icon" href="img/copy.png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
@@ -129,6 +130,7 @@ ob_start();
                                         </select>
                                 </div>
                             </div>
+                            <a href="add_medidas.php" type="submit" class="btn btn-primary">Agregar medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
                         </form>
                     </div>

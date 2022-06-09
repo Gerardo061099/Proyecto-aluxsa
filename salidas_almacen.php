@@ -49,7 +49,6 @@ ob_start();
     </nav>
     <?php
             include ("abrir_conexion.php");
-            $query = mysqli_query($conexion,"");
             $consulta = mysqli_query($conexion, "SELECT Count(id_solicitud) AS solicitud FROM $tbdet_db4 where id_solicitud = (SELECT MAX(id_solicitud) FROM $tbdet_db4)");
             $resultado = mysqli_fetch_array($consulta);
     ?>
@@ -57,9 +56,14 @@ ob_start();
         <div class="contenedor_registros">
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><img src="img/profile.png" alt=""> Raul</li>
-                    <li class="list-group-item">Número de empleado: </li>
-                    <li class="list-group-item">Número de herramientas solicitadas: </li>
+                <?php
+                        include ("abrir_conexion.php");
+                        $query = mysqli_query($conexion, "SELECT Nombre,Apellidos,N_Empleado FROM $tbem_db5 WHERE id_empleado = (SELECT MAX(id_empleado) FROM $tbem_db5)");
+                        $resul = mysqli_fetch_array($query);
+                ?>
+                    <li class="list-group-item"><img src="img/profile.png" alt=""> <?php echo $resul['Nombre']." ".$resul['Apellidos'];?></li>
+                    <li class="list-group-item">Número de empleado: <?php echo $resul['N_Empleado'];?></li>
+                    <li class="list-group-item">Número de herramientas solicitadas: <?php echo $resultado['solicitud'];?> </li>
                 </ul>
                 <div class="card-footer">
                     Número de solicitud: 

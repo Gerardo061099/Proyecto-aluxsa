@@ -36,7 +36,7 @@
             </div>
         <div class="col-md-4" style="padding: 0px; width: 30%;"></div>
     </div>
-    <center><p class="ley">Aluminios Xalatlaco S.A de C.V. Todos los derechos Reservados</p></center>
+    <center><p class="ley">Aluminios Xalatlaco S.A de C.V. Software v0.1</p></center>
             <?php
             //utilizando variables globales
             //control de usuarios

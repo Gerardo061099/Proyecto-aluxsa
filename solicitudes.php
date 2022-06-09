@@ -63,7 +63,7 @@ ob_start();
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="cantidad">N° Empleado:</label>
-                                    <input type="text" class="form-control" id="n_empleado">
+                                    <input type="text" class="form-control" id="n_empleado" maxlength="5">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="genero">Genero:</label>
