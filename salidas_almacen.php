@@ -66,7 +66,12 @@ ob_start();
                     <li class="list-group-item">Número de herramientas solicitadas: <?php echo $resultado['solicitud'];?> </li>
                 </ul>
                 <div class="card-footer">
-                    Número de solicitud: 
+                    <?php
+                        include("abrir_conexion.php");
+                        $consulta = mysqli_query($conexion, "SELECT MAX(id_solicitud) AS solicitud FROM $tbsoli_db10");
+                        $res = mysqli_fetch_array($consulta);
+                    ?>
+                    Número de solicitud: <?php  echo $res['solicitud']; ?>
                 </div>
             </div>
         </div>
@@ -74,13 +79,13 @@ ob_start();
             <div style="margin: 0px 10px; background: #FDFEFE;">
                                 <h1 class="titulos" style="text-align:left;"><strong>Salidas del almacen</strong></h1>
                             </div>
-                            <div class="tabla-herramientas">
+                            <div class="tb_h">
                                 <?php
                                     include("abrir_conexion.php");// conexion con la BD
                                     $resultados = mysqli_query($conexion,"SELECT s.id_solicitud,e.nombre as solicitante,e.apellidos,h.Nombre as herramienta,c.Descripcion,c.Material,g.Num_gavilanes AS Gav,m.Largo,m.Ancho,d.cantidad,s.Fecha from $tbsoli_db10 s inner join $tbdet_db4 d on s.id_solicitud = d.id_solicitud inner join $tbherr_db7 h on d.id_herramientas = h.id_herramienta inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas inner join $tbem_db5 e on s.id_empleado = e.id_empleado;");
                                     //Unimos tabla Herramientas con categorias y medidas
                                     echo "
-                                    <table class=\"table\" id=\"herramientas\">
+                                    <table class=\"table\" id=\"h\">
                                                 <thead class=\"thead-dark\">
                                                     <tr>
                                                         <th><center>solicitud</center></th>

@@ -12,7 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    
 </head>
 <body style="background: #17202A;">
 <?php
@@ -47,7 +46,6 @@ ob_start();
         <a class="navbar-brand" href="inventario.php">
         Volver a registros
         </a>
-            
     </nav>
     <center>
         <div class="box-1" style="border-top: #DC7633 7px solid;">
@@ -71,49 +69,7 @@ ob_start();
                                 </div>
                             </div>
                             <div class="form-row" >
-                                <div class="form-group col-md-2">
-                                    <label for="precio">Precio $:</label>
-                                    <input type="text" class="form-control" id="precio" name="preci">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="total">Total:</label>
-                                    <input type="texto" class="form-control" id="total" name="tota">
-                                </div>
                                 <div class="form-group col-md-6">
-                                    <label for="subir_imagen">Nomenclatura: img.jpg</label>
-                                    <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="medidas">Medidas:</label>
-                                        <select id="medidas" id="medidas" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                                include("abrir_conexion.php");
-                                                $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
-                                                    while ($valores = mysqli_fetch_array($query)) {
-                                                        echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
-                                                    }
-                                                    include("cerrar_conexion.php");
-                                            ?>
-                                        </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="categoria">Categoria:</label>
-                                        <select id="categoria" id="categoria" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                                include("abrir_conexion.php");
-                                                $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
-                                                    while ($valores = mysqli_fetch_array($query)) {
-                                                        echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['Descripcion'].' '.$valores['Material'].'</option>');
-                                                    }
-                                                    include("cerrar_conexion.php");
-                                            ?>
-                                        </select>
-                                </div>
-                                <div class="form-group col-md-4">
                                     <label for="gavilanes">Gavilanes:</label>
                                         <select id="gavilanes" id="gavilanes" class="form-control">
                                             <option selected>Choose...</option>
@@ -129,9 +85,39 @@ ob_start();
                                             ?>
                                         </select>
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="medidas">Medidas:</label>
+                                        <select id="medidas" id="medidas" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                                include("abrir_conexion.php");
+                                                $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
+                                                    while ($valores = mysqli_fetch_array($query)) {
+                                                        echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
+                                                    }
+                                                    include("cerrar_conexion.php");
+                                            ?>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="categoria">Categoria:</label>
+                                        <select id="categoria" id="categoria" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                                include("php/print_list_categorias.php");
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="subir_imagen">Nomenclatura: img.jpg</label>
+                                    <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
+                                </div>
                             </div>
                             <a href="add_medidas.php" type="submit" class="btn btn-primary">Agregar medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
+                            <div id="cargar"></div>
                         </form>
                     </div>
                 </div>

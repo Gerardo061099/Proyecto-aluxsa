@@ -6,6 +6,7 @@ $m1 = $_POST['Largo'];
         echo "Datos Vacios";
     }else{
         $mp = str_replace('\'\'','pul',$m2);//cambiamos las '' por pulg en la variable m2
+        //$mp = addslashes($m2);// agregamos slash en las comillas '' para poder insertarlas en la BD
         $mp2 = str_replace('\'\'','pul',$m1);//cambiamos las '' por pulg en la variable m1
         mysqli_query($conexion,"INSERT INTO $tbmed_db9 (Ancho,Largo) VALUES ('$mp','$mp2')");
         echo "Insercion exitosa";

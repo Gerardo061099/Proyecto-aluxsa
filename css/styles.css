@@ -78,16 +78,6 @@
         /*pading in*/
     }
     
-    .botones {
-        margin: 10px 10px;
-        padding: 8px 8px;
-        width: max-content;
-        background: #FDFEFE;
-        border: #34495E 5px solid;
-        border-radius: 5px;
-        display: block;
-    }
-    
     .opciones {
         width: max-content;
         height: 50px;
@@ -162,7 +152,35 @@
     }
     
     .forms {
+        margin: 5px 5px;
         display: flex;
+    }
+    
+    .form-update {
+        align-content: center;
+        width: max-content;
+        height: 170px;
+        margin: 10px 10px;
+        padding: 5px;
+        background: #FDFEFE;
+        border-radius: 5px;
+        border-left: #F4D03F 5px solid;
+    }
+    
+    .botones {
+        margin: 10px 10px;
+        padding: 8px 8px;
+        width: max-content;
+        height: 170px;
+        background: #FDFEFE;
+        border-left: #DC7633 5px solid;
+        border-radius: 5px;
+        display: block;
+    }
+    
+    .card {
+        margin: 10px 10px;
+        border-radius: 5px;
     }
     
     .tabla-herramientas {
@@ -172,7 +190,21 @@
         overflow-y: auto;
     }
     
+    .tb_h {
+        width: 1050px;
+        height: 300px;
+        display: block;
+        overflow-y: auto;
+    }
+    
     #herramientas {
+        margin: 0px;
+        width: 1050px;
+        height: 25px;
+        font-size: 13px;
+    }
+    
+    #h {
         margin: 0px;
         width: 1050px;
         height: 25px;
@@ -270,18 +302,6 @@
         border-radius: 5px;
         background: #FDFEFE;
         display: flex;
-    }
-    
-    .form-update {
-        align-content: center;
-        width: max-content;
-        height: max-content;
-        margin: 25px 20px;
-        padding: 5px;
-        position: relative;
-        background: #FDFEFE;
-        border-radius: 5px;
-        border-left: #F4D03F 7px solid;
     }
     
     .tablas2 {
@@ -426,8 +446,17 @@
             display: block;
             overflow-x: auto;
         }
+        .tablas2 {
+            margin: 10px 15px;
+            width: 90%;
+        }
         .tabla-herramientas {
-            width: 950px;
+            width: 1010px;
+            display: block;
+            overflow-x: auto;
+        }
+        .tb_h {
+            width: 650px;
             display: block;
             overflow-x: auto;
         }
@@ -437,9 +466,13 @@
             overflow-x: auto;
         }
         .salidas {
-            margin: 15px 20px;
-            width: 950px;
+            margin: 15px 15px;
+            padding: 5PX 5PX;
+            width: 660px;
             background: #FDFEFE;
+        }
+        .form-update {
+            width: 270px;
         }
     }
     
@@ -511,6 +544,9 @@
             width: 80px;
             height: 75px;
         }
+        .tablas2 {
+            padding: 5px 5px;
+        }
         .medidas {
             background-color: #ECF0F1;
             margin: 10px;
@@ -539,6 +575,22 @@
             width: 730px;
             display: block;
             overflow-x: auto;
+        }
+        .tb_h {
+            width: 380px;
+            display: block;
+            overflow-x: auto;
+        }
+        .tabla-herramientas {
+            width: 740px;
+            display: block;
+            overflow-x: auto;
+        }
+        .salidas {
+            margin: 15px 15px;
+            padding: 5PX 5PX;
+            width: 390px;
+            background: #FDFEFE;
         }
     }
     
@@ -593,6 +645,9 @@
         .forms {
             display: block;
         }
+        .subtitulo2 {
+            font-size: 25px;
+        }
         .contenedor-botones {
             margin: 20px 10px;
         }
@@ -607,6 +662,16 @@
             margin: 10px 10px;
             display: block;
             overflow-x: auto;
+        }
+        .box-registros {
+            display: block;
+        }
+        .form-update {
+            height: max-content;
+        }
+        .botones {
+            height: max-content;
+            width: 300px;
         }
     }
     
@@ -625,6 +690,22 @@
             margin: 10px 5px;
             padding: 10px;
         }
+        .tb_h {
+            width: 330px;
+            display: block;
+            overflow-x: auto;
+        }
+        .tabla-herramientas {
+            width: 330px;
+            display: block;
+            overflow-x: auto;
+        }
+        .salidas {
+            margin: 15px 15px;
+            padding: 5PX 5PX;
+            width: 340px;
+            background: #FDFEFE;
+        }
     }
     
     @media all and (max-width:330px) {
@@ -636,5 +717,37 @@
         }
         .infor {
             width: 250px;
+        }
+        .tablas2 {
+            padding: 5px 5px;
+        }
+        .caja1 {
+            padding: 5px 5px;
+        }
+        .tb_h {
+            width: 280px;
+            display: block;
+            overflow-x: auto;
+        }
+        .tabla-herramientas {
+            width: 280px;
+            display: block;
+            overflow-x: auto;
+        }
+        .salidas {
+            margin: 15px 15px;
+            padding: 5PX 5PX;
+            width: 290px;
+            background: #FDFEFE;
+        }
+        .contenedor_registros {
+            margin: 10px 10px;
+            width: 300px;
+        }
+        .forms {
+            margin: 0px 0px;
+        }
+        .card {
+            margin: 5px 5px;
         }
     }

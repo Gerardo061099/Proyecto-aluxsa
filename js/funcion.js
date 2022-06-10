@@ -1,5 +1,5 @@
 function medidas(e) {
-    e.preventDefault();
+    //e.preventDefault();
     var ancho = document.getElementById('ancho').value;
     var largo = document.getElementById('largo').value;
     if (largo === "" || ancho === "") {
@@ -22,7 +22,7 @@ function medidas(e) {
             Cache: false,
             contentType: false,
             beforeSend: function(mensaje) {
-
+                $('#cargando').html('<div><img src="img/cargando.gif" alt=""></div>');
             },
             success: function(mensaje) {
                 if (mensaje == "Insercion exitosa") {

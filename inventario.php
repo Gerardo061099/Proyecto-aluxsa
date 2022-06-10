@@ -58,7 +58,7 @@ ob_start();
                 <div class="form-update">
                     <form>
                         <div class="form-row" id="items">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="id_h"># registro</label>
                                 <select class="custom-select" id="id_h">
                                 <option selected>Choose...</option>
@@ -72,7 +72,7 @@ ob_start();
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="cantidadnew">Cantidad</label>
                                 <input type="text" class="form-control" id="cantidadnew">
                             </div>
@@ -80,76 +80,78 @@ ob_start();
                         <button class="btn btn-primary" type="submit" onclick="update(event);"><img src="img/update.png" alt=""> Actualizar</button>
                     </form>
                 </div>
-                <div class="contenedor-botones">
-                    <div class="botones">
-                            <form method="POST" action="inventario.php">
-                                <center>
-                                <div class="form-row align-items-center">
-                                    <div class="col-auto my-1">
-                                        <label for="herra_b">Herramienta:</label>
-                                        <select class="custom-select" id="herra_b" name="herramienta">
-                                            <option selected>Choose...</option>
-                                            <option value="Cortador">Cortador</option>
-                                            <option value="Buril">Buril</option>
-                                            <option value="Broca">Broca</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label for="medida_b">Medida:</label>
-                                        <select class="custom-select" id="medida_b" name="medida">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                            include("abrir_conexion.php");
-                                            $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
-                                                while($res = mysqli_fetch_array($consulta)){
-                                                    echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
-                                                }
-                                            include("cerrar_conexion.php");
-                                            ?>
-                                        </select>
-                                    </div>
+                <div class="botones">
+                    <form method="POST" action="inventario.php">
+                            <div class="form-row align-items-center">
+                                <div class="col-md-5 my-1">
+                                    <label for="herra_b">Herramienta:</label>
+                                    <select class="custom-select" id="herra_b" name="herramienta">
+                                        <option selected>Choose...</option>
+                                        <option value="Cortador">Cortador</option>
+                                        <option value="Buril">Buril</option>
+                                        <option value="Broca">Broca</option>
+                                    </select>
                                 </div>
-                                </center>
-                                <div class="col-auto my-1">
-                                <button class="btn btn-info" type="submit" name="buscar"><img src="img/search.png" alt="sin resultados"> Buscar</button>
-                                    <div id="cargando"></div>
+                                <div class="col-md-5 my-1">
+                                    <label for="medida_b">Medida:</label>
+                                    <select class="custom-select" id="medida_b" name="medida">
+                                        <option selected>Choose...</option>
+                                        <?php
+                                        include("abrir_conexion.php");
+                                        $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
+                                            while($res = mysqli_fetch_array($consulta)){
+                                                echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
+                                            }
+                                        include("cerrar_conexion.php");
+                                        ?>
+                                    </select>
                                 </div>
-                            </form>
-                    </div>
+                            </div>
+                        <div class="col-auto my-1">
+                            <button class="btn btn-info" type="submit" name="buscar"><img src="img/search.png" alt="sin resultados"> Buscar</button>
+                                <div id="cargando"></div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="tb-herramientas">
-                    <div class="opciones">
-                        <a href="registro_h.php" class="badge badge-success"><img src="img/new.png" alt=""> Nuevo registro</a>
-                        <a href=" " class="badge badge-secondary">Refrescar pagina</a>
-                        <a class="navbar-brand" href="#">
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="registro_h.php" class="badge badge-success"><img src="img/new.png" alt=""> Nuevo registro</a></li>
+                        <li class="list-group-item"><a class="navbar-brand" href="#">
                             <?php
                                 //Contamos la cantidad que hay en el almacen
                                 include("abrir_conexion.php");
                                 $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM $tbherr_db7");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-primary\">
-                                                <strong>N° Herramientas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
+                                                <strong>N° Piesas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
                                             </button>
                                         ";
                                 }
                                 include("cerrar_conexion.php");
                             ?>
-                        </a>
-                        <a class="navbar-brand" href="herramienta_agotada.php">
+                        </a></li>
+                        <li class="list-group-item"><a class="navbar-brand" href="herramienta_agotada.php">
                             <?php
                                 //Contamos la cantidad que hay en el almacen
                                 include("abrir_conexion.php");
                                 $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as faltantes FROM $tbherr_db7 WHERE cantidad < 3");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-danger\">
-                                                <strong>Herramientas agotadas:</strong> <span class=\"badge badge-light\">".$consulta['faltantes']."</span>
+                                                <strong>Agotadas:</strong> <span class=\"badge badge-light\">".$consulta['faltantes']."</span>
                                             </button>
                                         ";
                                 }
                                 include("cerrar_conexion.php");
-                            ?>
-                        </a>
+                            ?></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tb-herramientas">
+                    <div class="opciones">
+                        
+                        
+                        
                     </div>
                     <div style="margin: 0px 10px; background: #FDFEFE;">
                         <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas</strong></h1>
@@ -157,7 +159,7 @@ ob_start();
                     <div class="tabla-herramientas">
                         <?php
                             include("abrir_conexion.php");// conexion con la BD
-                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY h.id_herramienta");
+                            $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY h.id_herramienta");
                             //Unimos tabla Herramientas con categorias y medidas
                             echo "
                             <table class=\"table\" id=\"herramientas\">
@@ -209,6 +211,7 @@ ob_start();
                                             }
                                         }
                                         ?>
+                                        
                                         </center></th>
                                         <th><center><a class="btn btn-danger btn-sm" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
                                     </tr>
@@ -225,7 +228,6 @@ ob_start();
             <?php
                 include("abrir_conexion.php");
                 if (isset($_POST['buscar'])) {
-                    
                     $her = $_POST['herramienta'];
                     $med = $_POST['medida'];
                     if ($her != 'Choose...' && $med != 'Choose...') {

@@ -5,13 +5,11 @@ function obtener(e) {
     //por su id incluyendo la imagen
     var nom = document.getElementById('nombre').value;
     var can = document.getElementById('cantidad').value;
-    var precio = document.getElementById('precio').value;
-    var total = document.getElementById('total').value;
     var img = document.getElementById('subir_imagen').files[0]; //obtenemos un objeto
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" && can == "" && precio == "" && total == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
+    if (nom == "" && can == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
@@ -20,8 +18,6 @@ function obtener(e) {
     } else {
         console.log("Nombre del producto: " + nom);
         console.log("Cantidad: " + can);
-        console.log("Precio: " + precio);
-        console.log("Total: " + total);
         console.log("Ruta de la imagen: " + img);
         console.log("Id de la medida es: " + select);
         console.log("Id de la categoria es: " + cate);
@@ -29,8 +25,6 @@ function obtener(e) {
         var datos = new FormData();
         datos.append("nombre", nom);
         datos.append("cantidad", can);
-        datos.append("precio", precio);
-        datos.append("total", total);
         datos.append("img", img);
         datos.append("medidas", select);
         datos.append("categoria", cate);
@@ -44,7 +38,7 @@ function obtener(e) {
             Cache: false,
             contentType: false,
             before: function() {
-                $('#cargar').html('<div><img src="cargando.gif"></img></div>');
+                $('#cargar').html('<div><img src="cargando.gif"> Cargando...</img></div>');
             },
             success: function(mensaje) {
                 if (mensaje == "campos vacios") {
@@ -98,7 +92,7 @@ function update(e) {
                     swal({
                         title: "Oh oh ",
                         text: "Ocurrio un error",
-                        icon: "error"
+                        icon: "Debes ingresar los valores necesarios para realizar la actualizacion"
                     });
                 }
             }

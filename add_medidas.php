@@ -47,7 +47,6 @@ ob_start();
         <a class="navbar-brand" href="#">
         ALUXSA S.A de C.V
         </a>
-            
     </nav>
     <center>
         <div class="box-1" style="border-top: #DC7633 7px solid;">
@@ -71,6 +70,7 @@ ob_start();
                                 </div>
                             </div>
                             <input type="submit" value="Agregar" class="btn btn-success" onclick="medidas(event)">
+                            <div id="cargando"></div>
                         </form>
                     </div>
                 </div>
