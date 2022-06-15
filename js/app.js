@@ -100,7 +100,7 @@ function update(e) {
     } else {
         swal({
             title: "Datos Vacios",
-            text: "Ocurrio un error",
+            text: "Debes ingresar los valores necesarios para realizar la actualizacion",
             icon: "error"
         });
     }

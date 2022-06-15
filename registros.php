@@ -72,7 +72,7 @@ ob_start();
                 <div class="separador"></div>
             <?php
                 include("abrir_conexion.php");// conexion con la BD
-                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'CORTADOR' ORDER BY h.id_herramienta");
+                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'CORTADOR' ORDER BY h.id_herramienta");
                 //Unimos tabla Herramientas con categorias y medidas
                 echo "
                     <table class=\"table\" id=\"tb-cortadores\">
@@ -149,7 +149,7 @@ ob_start();
             <div class="separador"></div>
             <?php
                 include("abrir_conexion.php");// conexion con la BD
-                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.preciocompra,h.cantidad,h.total,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'Broca' ORDER BY h.id_herramienta");
+                $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE NOMBRE = 'Broca' ORDER BY h.id_herramienta");
                 //Unimos tabla Herramientas con categorias y medidas
                 echo "
                     <table class=\"table\" id=\"tb-cortadores\">

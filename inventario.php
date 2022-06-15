@@ -115,7 +115,7 @@ ob_start();
                 </div>
                 <div class="card" style="width: 18rem;">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="registro_h.php" class="badge badge-success"><img src="img/new.png" alt=""> Nuevo registro</a></li>
+                        <li class="list-group-item"><a href="registro_h.php" class="badge badge-success"><img src="img/playlist.png" alt=""> Nuevo registro</a></li>
                         <li class="list-group-item"><a class="navbar-brand" href="#">
                             <?php
                                 //Contamos la cantidad que hay en el almacen

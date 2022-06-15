@@ -39,7 +39,6 @@ ob_start();
 ?>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">ALUXSA S.A de C.V</a>
-        <a class="navbar-brand" href="pagina_principal.php">Pagina Principal</a>
     </nav>
     <center>
     <div class="box-1" style="border-left: #DC7633 7px solid;">
@@ -73,7 +72,6 @@ ob_start();
                                         <option value="Mujer">Mujer</option>
                                     </select>
                                 </div>
-                                
                             </div>
                             <input type="submit" value="Siguiente" class="btn btn-outline-info" onclick="subirsolicitud(event)">
                             <a class="btn btn-danger" href="pagina_principal.php" role="button">Cancelar</a>

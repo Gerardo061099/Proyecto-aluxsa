@@ -61,7 +61,7 @@ ob_start();
                                         include("abrir_conexion.php");
                                         $consulta = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,m.Ancho,m.Largo FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbmed_db9 m on h.id_medidas = m.id_medidas ORDER BY h.id_herramienta ");
                                         while ($res = mysqli_fetch_array($consulta)){
-                                            echo '<option value='.$res['id_herramienta'].'>'.$res['Nombre'].' '.$res['material'].' '.$res['descripcion'].' '.$res['Ancho'].''.$res['Largo'].'</option>';
+                                            echo '<option value='.$res['id_herramienta'].'>'.$res['Nombre'].' '.$res['material'].' '.$res['descripcion'].' '.$res['Ancho'].' x '.$res['Largo'].'</option>';
                                         }
                                         include("cerrar_conexion.php");
                                     ?>

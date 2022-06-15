@@ -62,11 +62,11 @@ ob_start();
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="ancho">Ancho:</label>
-                                    <input type="text" class="form-control" id="ancho" placeholder="1/2'',3/4'',...,10.0mm,8.00mm">
+                                    <input type="text" class="form-control" id="ancho">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="largo">Largo:</label>
-                                    <input type="text" class="form-control" id="largo" placeholder="3/16'',3/8'',...,10.0mm,8.00mm">
+                                    <input type="text" class="form-control" id="largo">
                                 </div>
                             </div>
                             <input type="submit" value="Agregar" class="btn btn-success" onclick="medidas(event)">
@@ -83,7 +83,6 @@ ob_start();
             </ul>
         </nav>
     </center>
-    
     <script src="js/funcion.js"></script>
 </body>
 </html>

@@ -27,6 +27,7 @@ ob_start();
             $_SESSION['sesion']=3;
             $resultado = mysqli_query($conexion,"SELECT * FROM $tbu_db1 WHERE user = '$mail' AND pass = PASSWORD('$pwd')");
             while($consulta = mysqli_fetch_array($resultado)){
+                $usuario = $consulta['Nombre'];
                 //echo "Bienvenido ".$consulta['user']." has iniciado sesion";
                 $_SESSION['sesion']=1;
             }
@@ -46,16 +47,13 @@ ob_start();
                 str_segundo = new String (segundo)
                 if (str_segundo.length == 1)
                 segundo = "0" + segundo
-
                 str_minuto = new String (minuto)
                 if (str_minuto.length == 1)
                 minuto = "0" + minuto
-
                 str_hora = new String (hora)
                 if (str_hora.length == 1)
                 hora = "0" + hora
                 horaImprimible = hora + " : " + minuto + " : " + segundo
-
                 document.form_reloj.reloj.value = horaImprimible
                 setTimeout("mueveReloj()",1000)
             }
@@ -76,7 +74,7 @@ ob_start();
     <center>
         <div class="box-1">
             <div class="encabesado">
-                <h1 class="titulo">¡Bienvenido al sistema de inventario de ALUXSA!</h1>
+                <h1 class="titulo">¡Bienvenido <?php echo $usuario;?> al sistema de inventario de ALUXSA!</h1>
             </div>
         </div>
     </center>
