@@ -74,7 +74,7 @@ ob_start();
     <center>
         <div class="box-1">
             <div class="encabesado">
-                <h1 class="titulo">¡Bienvenido <?php echo $usuario;?> al sistema de inventario de ALUXSA!</h1>
+                <h1 class="titulo">¡<?php echo $usuario;?> bienvenido  al sistema de inventario de ALUXSA!</h1>
             </div>
         </div>
     </center>

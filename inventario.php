@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
-    
 </head>
 <body class="pag">
 <?php
@@ -57,6 +56,7 @@ ob_start();
             <div class="forms">
                 <div class="form-update">
                     <form>
+                        <h1 id="titulos-form">Actualizar</h1>
                         <div class="form-row" id="items">
                             <div class="col-md-6 mb-3">
                                 <label for="id_h"># registro</label>
@@ -82,13 +82,13 @@ ob_start();
                 </div>
                 <div class="botones">
                     <form method="POST" action="inventario.php">
+                        <h1 id="titulos-form">Buscar</h1>
                             <div class="form-row align-items-center">
                                 <div class="col-md-5 my-1">
                                     <label for="herra_b">Herramienta:</label>
                                     <select class="custom-select" id="herra_b" name="herramienta">
                                         <option selected>Choose...</option>
                                         <option value="Cortador">Cortador</option>
-                                        <option value="Buril">Buril</option>
                                         <option value="Broca">Broca</option>
                                     </select>
                                 </div>
@@ -107,9 +107,9 @@ ob_start();
                                     </select>
                                 </div>
                             </div>
-                        <div class="col-auto my-1">
-                            <button class="btn btn-info" type="submit" name="buscar"><img src="img/search.png" alt="sin resultados"> Buscar</button>
-                                <div id="cargando"></div>
+                            <div class="col-auto my-1">
+                                <button class="btn btn-info" type="submit" name="buscar"><img src="img/search.png" alt="sin resultados"> Buscar</button>
+                            <div id="cargando"></div>
                         </div>
                     </form>
                 </div>
@@ -234,13 +234,10 @@ ob_start();
                         $consult = mysqli_query($conexion, "SELECT h.id_herramienta,h.Nombre,c.Descripcion,c.Material,g.Num_gavilanes,m.Ancho,m.Largo,h.Cantidad,h.rutaimg FROM $tbherr_db7 h inner join $tbcat_db3 c on h.id_categoria = c.id_categoria inner join $tbgav_db6 g on h.id_gavilanes = g.id_gav inner join $tbmed_db9 m on h.id_medidas = m.id_medidas WHERE Nombre LIKE '%$her%' AND Ancho LIKE '%$med%' ORDER BY h.id_herramienta");                    
             ?>
                     <div class="contador-h">
-                        <div><center>
-                            <h1>Resultados</h1>
-                        </center>
-                        </div>
+                        <div style="background: #2E4053; border-radius: 5px; "><center><h1 style="color: white;">Resultados</h1></center></div>
                             <?php
                             while($consulta = mysqli_fetch_array($consult)) {
-                                ?>
+                            ?>
                             <div class="conten">
                             <img src="<?php echo $consulta['rutaimg'];?>" id="imgs" alt="imagen no encontrada">
                                 <div class = "infor">
@@ -251,16 +248,16 @@ ob_start();
                                 </div>
                             </div>
                             <?php
-                            echo '
-                            <script>
-                            swal({
-                                title: "Busqueda exitosa!!",
-                                text: "Para ver los resultados deslice hacia arriba",
-                                icon: "success"
-                            });
-                            </script>';
-                    }
-                }else {
+                                echo '
+                                <script>
+                                swal({
+                                    title: "Busqueda exitosa!!",
+                                    text: "Para ver los resultados deslice hacia arriba",
+                                    icon: "success"
+                                });
+                                </script>';
+                            }
+                    }else {
                     echo '
                     <script>
                         swal({
@@ -269,22 +266,21 @@ ob_start();
                             icon: "warning"
                         });
                     </script>';
-                }
+                    }
                     include("cerrar_conexion.php");
                 }
-                ?>
+                            ?>
                     </div>
-    
     <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="pagina_principal.php">Previous</a>
+                <a class="page-link" href="pagina_principal.php"><-</a>
             </li>
             <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
             <li class="page-item"><a class="page-link" href="herramienta_agotada.php">3</a></li>
             <li class="page-item">
-                <a class="page-link" href="registros.php">Next</a>
+                <a class="page-link" href="registros.php">-></a>
             </li>
         </ul>
     </nav>

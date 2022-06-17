@@ -71,6 +71,10 @@
         display: block;
     }
     
+    #titulos-form {
+        font-size: 15px;
+    }
+    
     .titulo {
         /*margin out*/
         margin-top: 0.5px;
@@ -132,12 +136,11 @@
     }
     
     #imgs {
-        width: 245px;
+        width: 290px;
         height: 215px;
         display: inline-block;
         margin: 10px;
         border-radius: 5px;
-        border: #44A08D 5px solid;
     }
     
     .infor {
@@ -749,5 +752,9 @@
         }
         .card {
             margin: 5px 5px;
+        }
+        #imgs {
+            width: 260px;
+            height: 190px;
         }
     }
