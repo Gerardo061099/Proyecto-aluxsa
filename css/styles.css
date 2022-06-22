@@ -411,7 +411,7 @@
     }
     
     .salidas {
-        margin: 15px 20px;
+        margin: 15px 15px;
         width: 1060px;
         background: #FDFEFE;
     }
@@ -459,7 +459,7 @@
             overflow-x: auto;
         }
         .tb_h {
-            width: 650px;
+            width: 610px;
             display: block;
             overflow-x: auto;
         }
@@ -471,7 +471,7 @@
         .salidas {
             margin: 15px 15px;
             padding: 5PX 5PX;
-            width: 660px;
+            width: 625x;
             background: #FDFEFE;
         }
         .form-update {
@@ -580,7 +580,7 @@
             overflow-x: auto;
         }
         .tb_h {
-            width: 380px;
+            width: 360px;
             display: block;
             overflow-x: auto;
         }
@@ -589,10 +589,13 @@
             display: block;
             overflow-x: auto;
         }
+        .contenedor_registros {
+            margin: 15px 15px;
+        }
         .salidas {
             margin: 15px 15px;
             padding: 5PX 5PX;
-            width: 390px;
+            width: 380px;
             background: #FDFEFE;
         }
     }
