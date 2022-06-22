@@ -412,8 +412,12 @@
     
     .salidas {
         margin: 15px 15px;
-        width: 1060px;
+        width: 975px;
         background: #FDFEFE;
+    }
+    
+    .tb_h {
+        width: 960px;
     }
     
     .medidas::-webkit-scrollbar {
