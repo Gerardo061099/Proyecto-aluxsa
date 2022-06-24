@@ -283,7 +283,6 @@ function RegistrarSoli(e) {
                     });
                     window.location.href = " ";
                 }
-
             }
         });
     } else {

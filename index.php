@@ -27,6 +27,7 @@
                         <div class="form-group">
                             <label for="pass" class="passla">Contraseña:</label>
                             <input type="password" name="pass" placeholder="********" class="form-control" id="pass" style="width: 55%; display:flex; margin:auto;">
+                            
                         </div>
                     </div>
                 <center>

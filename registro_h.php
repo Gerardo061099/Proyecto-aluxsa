@@ -76,7 +76,7 @@ ob_start();
                                             <?php
                                                 include("abrir_conexion.php");
                                                 //realizamos una consulta a la DB
-                                                $query = $conexion -> query ("SELECT * FROM $tbgav_db6");
+                                                $query = $conexion -> query ("SELECT * FROM $tbgav_db6 ORDER BY Num_gavilanes");
                                                 //mostramos los datos obtenidos mediante etiquetas de HTML
                                                     while ($valores = mysqli_fetch_array($query)) {
                                                         echo ('<option value="'.$valores['id_Gav'].'">'.$valores['Num_gavilanes'].'</option>');
@@ -115,8 +115,10 @@ ob_start();
                                     <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
                                 </div>
                             </div>
-                            <a href="add_medidas.php" type="submit" class="btn btn-primary">Agregar medidas</a>
+                            <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt=""> Categoria</a>
+                            <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt=""> Medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
+                            <button type="button" class="btn btn-danger"><img src="" alt=""> Borrar</button>
                             <div id="cargar"></div>
                         </form>
                     </div>
@@ -125,7 +127,7 @@ ob_start();
         <nav aria-label="Page navigation example" style="margin: 10px 10px;">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="inventario.php">Previous</a>
+                <a class="page-link" href="inventario.php">Pagina anterior</a>
             </li>
             
         </ul>

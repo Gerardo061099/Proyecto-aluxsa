@@ -9,7 +9,7 @@ if ($id_herramienta != "Choose..." && $id_maquina != "Choose..." && $cantidad !=
     $id_solicitud = $result['n_solicitud'];//9
     //echo "Registro realizado";
     if ($id_herramienta != "Choose..." && $id_maquina != "Choose..." && $cantidad != "" && $id_solicitud != "") {//if 2
-        $query = mysqli_query($conexion,"SELECT cantidad FROM $tbherr_db7 where id_Herramienta = $id_herramienta ");
+        $query = mysqli_query($conexion,"SELECT cantidad FROM $tbherr_db7 WHERE id_Herramienta = $id_herramienta");
         $result = mysqli_fetch_array($query);
         if ($result['cantidad']>=$cantidad) {// if 3
             $resta = $result['cantidad'] - $cantidad;//3
@@ -33,5 +33,4 @@ if ($id_herramienta != "Choose..." && $id_maquina != "Choose..." && $cantidad !=
 else {
     echo "Agunos datos están vacios";
 }
-
 ?>

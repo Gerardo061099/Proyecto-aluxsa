@@ -68,7 +68,6 @@ ob_start();
                                         <th><center>Ancho</center></th>
                                         <th><center>Largo</center></th>
                                         <th><center>Cantidad</center></th>
-                                        <th><center>Estado</center></th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -84,26 +83,6 @@ ob_start();
                                         <td><center><?php echo $consulta['Ancho']?></center></td>
                                         <td><center><?php echo $consulta['Largo']?></center></td>
                                         <td><center><?php echo $consulta['cantidad']?></center></td>
-                                        <td><center>
-                                        <?php
-                                        //mostramos un aviso segun la cantidad de piezas 
-                                        if($consulta['cantidad']<2){//condicionamos var cantidad a 2 o menor para mostrar un mesaje 
-                                            if ($consulta['cantidad']==1) {
-                                                echo "<span class=\"badge badge-warning\">Compra más</span>";
-                                            }
-                                            else{
-                                                if ($consulta['cantidad']==0) {
-                                                    echo "<span class=\"badge badge-danger\">Insuficiente</span>";
-                                                }
-                                            }
-                                        }//si la cantidad es mayor a 2 no se requiere comprar más
-                                        else{
-                                            if ($consulta['cantidad']>=2) {
-                                                echo "<span class=\"badge badge-success\">Suficiente</span>";
-                                            }
-                                        }
-                                        ?>
-                                        </center></td>
                                     </tr>
                                 </tbody>
                                 <?php

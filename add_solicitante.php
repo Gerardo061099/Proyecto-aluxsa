@@ -13,7 +13,7 @@ if ($nombre != "" && $apellidos != "" && $n_empleado != "" && $genero != "" ) {
         if ($num_emp !="") {
             mysqli_query($conexion,"INSERT INTO $tbsoli_db10 (id_Empleado,Fecha) values ($num_emp,now())");
         }else{
-            echo "";
+            echo "Tratamos de obtener los datos del empleado, pero no fue posible terminar el proceso.";
         }
         include("cerrar_conexion.php");
 }

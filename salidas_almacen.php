@@ -61,7 +61,7 @@ ob_start();
                         $query = mysqli_query($conexion, "SELECT Nombre,Apellidos,N_Empleado FROM $tbem_db5 WHERE id_empleado = (SELECT MAX(id_empleado) FROM $tbem_db5)");
                         $resul = mysqli_fetch_array($query);
                 ?>
-                    <li class="list-group-item"><img src="img/profile.png" alt=""> <?php echo $resul['Nombre']." ".$resul['Apellidos'];?></li>
+                    <li class="list-group-item"><img src="img/profile.png" alt="Sin respuesta del servidor"> <?php echo $resul['Nombre']." ".$resul['Apellidos'];?></li>
                     <li class="list-group-item">Número de empleado: <?php echo $resul['N_Empleado'];?></li>
                     <li class="list-group-item">Número de herramientas solicitadas: <?php echo $resultado['solicitud'];?> </li>
                 </ul>

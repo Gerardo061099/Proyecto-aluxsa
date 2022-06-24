@@ -135,9 +135,7 @@ ob_start();
                     $n_broca = $row['brocas'];
                 }
                 ?>
-                <p><?php echo '<button type="button" class="btn btn-info">Brocas <span class="badge badge-light">'.$n_broca.'</span>
-                    <span class="sr-only">unread messages</span>
-                    </button>'; ?>  </p>
+                <p><?php echo '<button type="button" class="btn btn-info">Brocas <span class="badge badge-light">'.$n_broca.'</span><span class="sr-only">unread messages</span></button>'; ?></p>
             </div>
         </div>
     </div>
