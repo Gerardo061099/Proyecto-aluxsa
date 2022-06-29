@@ -19,7 +19,7 @@
 session_start();
 ob_start();
     if (isset($_POST['btn1'])) {
-        $_SESSION['sesion']=0;//No a inisiado sesion
+        $_SESSION['sesion']=0;//No a iniCiado sesion
         $mail = $_POST['user'];
         $pwd = $_POST['pass'];
         if ($mail == "" || $pwd == "") {//Revisamos si algun campo está vacio
@@ -69,7 +69,7 @@ ob_start();
                                     <input type="text" class="form-control" id="largo">
                                 </div>
                             </div>
-                            <input type="submit" value="Agregar" class="btn btn-success" onclick="medidas(event)">
+                            <input type="submit" value="Agregar" class="btn btn-outline-success" onclick="medidas(event)">
                             <div id="cargando"></div>
                         </form>
                     </div>
@@ -78,7 +78,7 @@ ob_start();
         <nav aria-label="Page navigation example" style="margin: 10px 10px;">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="inventario.php">Previous</a>
+                    <a class="page-link" href="registro_h.php">Volver</a>
                 </li>
             </ul>
         </nav>

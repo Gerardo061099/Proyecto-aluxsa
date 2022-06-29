@@ -18,7 +18,7 @@
 session_start();
 ob_start();
     if (isset($_POST['btn1'])) {
-        $_SESSION['sesion']=0;//No a inisiado sesion
+        $_SESSION['sesion']=0;//No a iniciado sesion
         $mail = $_POST['user'];
         $pwd = $_POST['pass'];
         if ($mail == "" || $pwd == "") {//Revisamos si algun campo está vacio
@@ -81,13 +81,13 @@ ob_start();
                                                     while ($valores = mysqli_fetch_array($query)) {
                                                         echo ('<option value="'.$valores['id_Gav'].'">'.$valores['Num_gavilanes'].'</option>');
                                                     }
-                                                    include("cerrar_conexion.php");
+                                                include("cerrar_conexion.php");
                                             ?>
                                         </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="medidas">Medidas:</label>
-                                        <select id="medidas" id="medidas" class="form-control">
+                                        <select id="medidas" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
                                                 include("abrir_conexion.php");
@@ -95,7 +95,7 @@ ob_start();
                                                     while ($valores = mysqli_fetch_array($query)) {
                                                         echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
                                                     }
-                                                    include("cerrar_conexion.php");
+                                                include("cerrar_conexion.php");
                                             ?>
                                         </select>
                                 </div>
@@ -103,7 +103,7 @@ ob_start();
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="categoria">Categoria:</label>
-                                        <select id="categoria" id="categoria" class="form-control">
+                                        <select id="categoria" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
                                                 include("php/print_list_categorias.php");
@@ -115,10 +115,10 @@ ob_start();
                                     <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
                                 </div>
                             </div>
-                            <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt=""> Categoria</a>
-                            <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt=""> Medidas</a>
+                            <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt="sin resultados"> Categoria</a>
+                            <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
-                            <button type="button" class="btn btn-danger"><img src="" alt=""> Borrar</button>
+                            <button type="button" class="btn btn-danger"><img src="img/trash-can.png" alt="sin resultados" onclick="borrar(event)"></button>
                             <div id="cargar"></div>
                         </form>
                     </div>
@@ -133,7 +133,7 @@ ob_start();
         </ul>
     </nav>
     </center>
-    
+    <script src="js/eliminar.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
