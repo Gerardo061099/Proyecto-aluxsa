@@ -1,5 +1,4 @@
 function obtener(e) {
-    console.log("Datos obtenidos: ");
     e.preventDefault();
     //obtenemos los valores ingresados por el usuario del documento registro_h.php
     //por su id incluyendo la imagen
@@ -16,12 +15,6 @@ function obtener(e) {
             icon: "warning",
         });
     } else {
-        console.log("Nombre del producto: " + nom);
-        console.log("Cantidad: " + can);
-        console.log("Ruta de la imagen: " + img);
-        console.log("Id de la medida es: " + select);
-        console.log("Id de la categoria es: " + cate);
-        console.log("Id de los gavilanes son: " + gav);
         var datos = new FormData();
         datos.append("nombre", nom);
         datos.append("cantidad", can);
@@ -44,7 +37,7 @@ function obtener(e) {
                 if (mensaje == "campos vacios") {
                     swal({
                         title: "Debes llenar todos los campos!!",
-                        text: "Se inserto una nueva herramienta a la base de datos",
+                        text: "El registro no se pudo realizar",
                         icon: "warning"
                     });
                 } else {
@@ -60,13 +53,11 @@ function obtener(e) {
 } //fin function obtener();
 
 // funcion para actualizar campo cantidad de una herramienta
-function update(e) {
+function update() {
     //e.preventDefault();
     var id_herramienta = document.getElementById('id_h').value;
     var cantidadnew = document.getElementById('cantidadnew').value;
     if (id_herramienta != "Choose..." && cantidadnew != "") {
-        console.log("# herramienta:" + id_herramienta);
-        console.log("Cantidad: " + cantidadnew);
         var files = new FormData();
         files.append("numero_h", id_herramienta);
         files.append("can", cantidadnew);
@@ -110,8 +101,6 @@ function consultar(e) {
     var nombre_h = document.getElementById('herra_b').value;
     var medida_h = document.getElementById('medida_b').value;
     if (nombre_h != "Choose..." && medida_h != "Choose...") {
-        console.log("Nombre: " + nombre_h);
-        console.log("Medida de la herramienta: " + medida_h);
         var datos = new FormData();
         datos.append("herramientajs", nombre_h);
         datos.append("medidajs", medida_h);
@@ -199,10 +188,6 @@ function subirsolicitud(e) {
     var apellidos = document.getElementById("ap").value;
     var n_empleado = document.getElementById("n_empleado").value;
     var genero = document.getElementById("genero").value;
-    console.log("Nombre empleado: " + nombre);
-    console.log("Apellidos: " + apellidos);
-    console.log("N° empleado: " + n_empleado);
-    console.log("Genero: " + genero);
     var datos = new FormData();
     datos.append("Nombre", nombre);
     datos.append("Apellidos", apellidos);
@@ -236,16 +221,12 @@ function subirsolicitud(e) {
         }
     });
 }
-
 function RegistrarSoli(e) {
     e.preventDefault();
     var herramienta = document.getElementById("herramienta").value;
     var maquina = document.getElementById("maquina").value;
     var cantidad = document.getElementById("cantidad").value;
     if (herramienta != "Choose..." && maquina != "Choose..." && cantidad != "") {
-        console.log("id_herramienta: " + herramienta);
-        console.log("id_Maquina: " + maquina);
-        console.log("Cantidad: " + cantidad);
         var data = new FormData();
         data.append("N_herramienta", herramienta);
         data.append("N_maquina", maquina);

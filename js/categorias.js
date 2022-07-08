@@ -3,8 +3,6 @@ function addcategorias(a) {
     var desc = document.getElementById('desc').value;
     var material = document.getElementById('material').value;
     if (desc != "" && material != "") {
-        console.log("Descripcion: " + desc);
-        console.log("Material: " + material);
         var datos = new FormData();
         datos.append("descripcion", desc);
         datos.append("material", material);
@@ -15,15 +13,16 @@ function addcategorias(a) {
             processData: false,
             contentType: false,
             beforeSend: function() {
-                $('#cargando').html("Procesando la peticion...");
+                $('#cargando').html("<img src='img/cargando.gif'>");
             },
-            success: function(mensaje) {
-                alert(mensaje);
+            success: function() {
                 swal({
                     title: "El proceso finalizo",
                     text: "Los datos se insertaron correctamente",
                     icon: "success"
                 });
+                window.location.href = "registro_h.php";
+                //$('#cargando').html("Listo!!");
             },
         });
     } else {

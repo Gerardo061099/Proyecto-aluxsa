@@ -13,7 +13,7 @@ $resul = mysqli_fetch_array($consulta);
 $suma= $resul['Cantidad'] + $cantidadn;
 //$ope =$consulta + $cantidadn ;
 if ($id_h!="" && $cantidadn!="") {
-    $_UPDATE_SQL = "UPDATE $tbherr_db7 SET Cantidad = $suma WHERE id_Herramienta= '$id_h'";
+    $_UPDATE_SQL = "UPDATE $tbherr_db7 SET Cantidad = $suma, Fecha_Hora = now() WHERE id_Herramienta= '$id_h'";
     mysqli_query($conexion,$_UPDATE_SQL);
     echo "Actualizacion exitosa";
 }

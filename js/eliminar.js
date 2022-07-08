@@ -4,7 +4,6 @@ function borrar(a) {
     var categoria = document.getElementById("categoria").value;
     if (medida != "Choose..." && categoria == "Choose...") {
         //borramos medidas
-        console.log("Medida seleccionada: " + medida);
         var datos = new FormData();
         datos.append("Medida", medida);
         $.ajax({
@@ -22,7 +21,6 @@ function borrar(a) {
             }
         });
     } else if (categoria != "Choose..." && medida == "Choose...") {
-        console.log("Categoria: " + categoria);
         var dato = new FormData();
         dato.append("Categoria", categoria);
         $.ajax({

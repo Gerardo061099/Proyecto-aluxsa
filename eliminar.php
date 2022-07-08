@@ -8,9 +8,9 @@ if ($id != "") {//validamos si la variable id esta vacia
     echo "
     <script type='text/javascript'>
         alert('Registro eliminado exitosamente');
+        window.location.href = 'inventario.php';
     </script>
     ";
-    header("Location: inventario.php");
 }else {//caso que se realiza en casi de que $id este vacia 
     if ($id == "") {
         echo "  
