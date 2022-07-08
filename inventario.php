@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
+    <script src="extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
 </head>
 <body class="pag">
 <?php
