@@ -63,9 +63,13 @@ ob_start();
                                     <label for="nombre">Nombre:</label>
                                     <input type="text" class="form-control" id="nombre" name="nombr" placeholder="Cortador, Broca..">
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-2">
                                     <label for="cantidad">Cantidad:</label>
-                                    <input type="text" class="form-control" id="cantidad" name="cantida" placeholder="1 2 3 4...">
+                                    <input type="text" class="form-control" id="cantidad" name="cantidad1" placeholder="1,2,3,4...">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="cantidadm">Cantidad Minima:</label>
+                                    <input type="text" class="form-control" id="cantidadm" name="cantidad2" placeholder="Cantidad Minima">
                                 </div>
                             </div>
                             <div class="form-row" >

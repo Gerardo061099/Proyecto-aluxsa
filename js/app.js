@@ -4,20 +4,23 @@ function obtener(e) {
     //por su id incluyendo la imagen
     var nom = document.getElementById('nombre').value;
     var can = document.getElementById('cantidad').value;
+    var canm = document.getElementById('cantidadm').value;
     var img = document.getElementById('subir_imagen').files[0]; //obtenemos un objeto
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" && can == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
+    if (nom == "" && canm == "" && can == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
             icon: "warning",
         });
     } else {
+        alert("La cantidad minima es: "+canm);
         var datos = new FormData();
         datos.append("nombre", nom);
         datos.append("cantidad", can);
+        datos.append("cantidadm", canm);
         datos.append("img", img);
         datos.append("medidas", select);
         datos.append("categoria", cate);
@@ -31,7 +34,7 @@ function obtener(e) {
             Cache: false,
             contentType: false,
             before: function() {
-                $('#cargar').html('<div><img src="cargando.gif"> Cargando...</img></div>');
+                $('#cargar').html('Cargando...');
             },
             success: function(mensaje) {
                 if (mensaje == "campos vacios") {
@@ -46,6 +49,7 @@ function obtener(e) {
                         text: "Puedes consultar la informacion en la lista de herramientas",
                         icon: "success"
                     });
+                    $('#cargar').html('Registro terminado!!');
                 }
             }
         });

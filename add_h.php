@@ -3,6 +3,7 @@
         //ajax
         $nombre = $_POST['nombre'];
         $cantidad = $_POST['cantidad'];
+        $cantidadm = $_POST['cantidadm'];
         $medidas = $_POST['medidas'];
         $categoria = $_POST['categoria'];
         $n_gavilanes = $_POST['gavilanes'];
@@ -16,7 +17,7 @@
             echo "campos vacios";
         }else {
             if ($nombre_img = $_FILES['img']['name'] != "") {
-                mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,cantidad,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$cantidad','$ruta',now())");
+                mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,cantidad_minima,cantidad,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$cantidadm','$cantidad','$ruta',now())");
                 echo "Insercion exitosa";
             }
         include("cerrar_conexion.php");
