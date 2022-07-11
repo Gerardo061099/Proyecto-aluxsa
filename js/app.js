@@ -9,12 +9,13 @@ function obtener(e) {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" && canm == "" && can == "" && img == "" && select == "Choose..." && cate == "Choose..." && gav == "Choose...") {
+    if (nom == "" || canm == "" || can == "" || img == "" || select == "Choose..." || cate == "Choose..." || gav == "Choose...") {
         swal({
             title: "Campos Vacios",
             text: "Debes llenar todos los campos",
             icon: "warning",
         });
+        $('#load1').html('Oh Oh.. ocurrio un error!!');
     } else {
         alert("La cantidad minima es: "+canm);
         var datos = new FormData();
@@ -33,23 +34,17 @@ function obtener(e) {
             processData: false,
             Cache: false,
             contentType: false,
-            before: function() {
-                $('#cargar').html('Cargando...');
+            beforeSend: function() {
+                $('#load1').html('Cargando...');
             },
             success: function(mensaje) {
-                if (mensaje == "campos vacios") {
-                    swal({
-                        title: "Debes llenar todos los campos!!",
-                        text: "El registro no se pudo realizar",
-                        icon: "warning"
-                    });
-                } else {
+                if (mensaje == "Insercion exitosa") {
                     swal({
                         title: "Insercion exitosa",
                         text: "Puedes consultar la informacion en la lista de herramientas",
                         icon: "success"
                     });
-                    $('#cargar').html('Registro terminado!!');
+                    $('#load1').html('Registro terminado!!');
                 }
             }
         });

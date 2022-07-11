@@ -150,9 +150,6 @@ ob_start();
             </div>
             <div class="tb-herramientas">
                     <div class="opciones">
-                        
-                        
-                        
                     </div>
                     <div style="margin: 0px 10px; background: #FDFEFE;">
                         <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas</strong></h1>

@@ -123,7 +123,7 @@ ob_start();
                             <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
                             <button type="button" class="btn btn-danger"><img src="img/trash-can.png" alt="sin resultados" onclick="borrar(event)"></button>
-                            <div id="load1"></div>
+                            <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>
                 </div>
