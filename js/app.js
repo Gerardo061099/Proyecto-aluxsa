@@ -9,15 +9,6 @@ function obtener(e) {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    if (nom == "" || canm == "" || can == "" || img == "" || select == "Choose..." || cate == "Choose..." || gav == "Choose...") {
-        swal({
-            title: "Campos Vacios",
-            text: "Debes llenar todos los campos",
-            icon: "warning",
-        });
-        $('#load1').html('Oh Oh.. ocurrio un error!!');
-    } else {
-        alert("La cantidad minima es: "+canm);
         var datos = new FormData();
         datos.append("nombre", nom);
         datos.append("cantidad", can);
@@ -38,7 +29,14 @@ function obtener(e) {
                 $('#load1').html('Cargando...');
             },
             success: function(mensaje) {
-                if (mensaje == "Insercion exitosa") {
+                if (mensaje == "campos vacios") {
+                    swal({
+                        title: "Campos Vacios",
+                        text: "Debes llenar todos los campos",
+                        icon: "warning",
+                    });
+                    $('#load1').html('Oh Oh.. ocurrio un error!!');
+                } else {
                     swal({
                         title: "Insercion exitosa",
                         text: "Puedes consultar la informacion en la lista de herramientas",
@@ -48,7 +46,7 @@ function obtener(e) {
                 }
             }
         });
-    }
+    
 } //fin function obtener();
 
 // funcion para actualizar campo cantidad de una herramienta
@@ -152,11 +150,11 @@ function convertir() {
     html2pdf()
         .set({
             margin: 0.2,
-            marginTop: 0.8,
+            marginTop: 0.4,
             filename: "Reportes.pdf",
             image: {
                 type: "jpg",
-                quality: 0.98,
+                quality: 0.50,
             },
             html2canvas: {
                 scale: 3,

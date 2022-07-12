@@ -43,8 +43,8 @@ ob_start();
         <a class="navbar-brand" href="pagina_principal.php">
             ALUXSA S.A de C.V
         </a>
-        <a class="navbar-brand" href="#">
-            
+        <a class="navbar-brand" href="add_user.php">
+            <img src="img/add_user1.png" alt="">
         </a>
     </nav>
     <center>
@@ -91,6 +91,7 @@ ob_start();
                                         <option selected>Choose...</option>
                                         <option value="Cortador">Cortador</option>
                                         <option value="Broca">Broca</option>
+                                        <option value="Broca">Machuelo</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5 my-1">
@@ -121,7 +122,7 @@ ob_start();
                             <?php
                                 //Contamos la cantidad que hay en el almacen
                                 include("abrir_conexion.php");
-                                $resul = mysqli_query($conexion,"SELECT SUM(cantidad) as herramientas FROM $tbherr_db7");
+                                $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as herramientas FROM $tbherr_db7");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-primary\">
                                                 <strong>N° Piesas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
@@ -135,7 +136,7 @@ ob_start();
                             <?php
                                 //Contamos la cantidad que hay en el almacen
                                 include("abrir_conexion.php");
-                                $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as faltantes FROM $tbherr_db7 WHERE cantidad < 3");
+                                $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as faltantes FROM $tbherr_db7 WHERE cantidad < Cantidad_Minima");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-danger\">
                                                 <strong>Agotadas:</strong> <span class=\"badge badge-light\">".$consulta['faltantes']."</span>
@@ -211,7 +212,6 @@ ob_start();
                                             }
                                         }
                                         ?>
-                                        
                                         </center></th>
                                         <th><center><a class="btn btn-danger btn-sm" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
                                     </tr>

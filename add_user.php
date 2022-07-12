@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de nuevas herramientas</title>
-    <link rel="shortcut icon" href="img/copy.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Agregar Usuarios</title>
+    <link rel="shortcut icon" href="img/add_user.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body style="background: #17202A;">
-<?php
+    <?php
 session_start();
 ob_start();
     if (isset($_POST['btn1'])) {
-        $_SESSION['sesion']=0;//No a iniciado sesion
+        $_SESSION['sesion']=0;//No a inisiado sesion
         $mail = $_POST['user'];
         $pwd = $_POST['pass'];
         if ($mail == "" || $pwd == "") {//Revisamos si algun campo está vacio
@@ -39,18 +37,15 @@ ob_start();
         header("Location:index.php");
     }
 ?>
-<nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="pagina_principal.php">
             ALUXSA S.A de C.V
-        </a>
-        <a class="navbar-brand" href="inventario.php">
-        Volver a registros
         </a>
     </nav>
     <center>
         <div class="box-1" style="border-top: #DC7633 7px solid;">
             <div class="encabesado">
-                <h1 class="titulo">Registro de Herramientas</h1>
+                <h1 class="titulo">Agregar Usuario</h1>
             </div>
         </div>
         <div class="aside1">
@@ -59,13 +54,13 @@ ob_start();
                         <form enctype="multipart/form-data">
                         <h1>Registrar:</h1><!-- from. registrar nuevas herramientas -->
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
+                                <div class="form-group col-md-4">
+                                    <label for="nombre">Nombre(s):</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombr" placeholder="Cortador, Broca..">
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label for="cantidad1">Cantidad:</label>
-                                    <input type="text" class="form-control" id="cantidad" name="cantidad1" placeholder="1,2,3,4...">
+                                <div class="form-group col-md-4">
+                                    <label for="apellidos">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="1,2,3,4...">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="cantidadm">Cantidad Minima:</label>
@@ -129,13 +124,13 @@ ob_start();
                 </div>
         </div>
         <nav aria-label="Page navigation example" style="margin: 10px 10px;">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="inventario.php">Pagina anterior</a>
-            </li>
-            
-        </ul>
-    </nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="inventario.php">Pagina anterior</a>
+                </li>
+                
+            </ul>
+        </nav>
     </center>
     <script src="js/eliminar.js"></script>
     <script src="js/app.js"></script>

@@ -13,13 +13,11 @@
         $carpeta = 'img2';
         $ruta = $carpeta.'/'.$nombre_img;
         move_uploaded_file($temporal,$ruta);
-        if ($nombre == "" || $cantidad == "" || $medidas == "Choose..." || $categoria == "Choose..." || $n_gavilanes == "Choose..." || $nombre_img == "") {
+        if ($nombre == "" || $cantidad == "" || $medidas == "Choose..." || $categoria == "Choose..." || $n_gavilanes == "Choose...") {
             echo "campos vacios";
         }else {
-            if ($nombre_img = $_FILES['img']['name'] != "") {
-                mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,cantidad_minima,cantidad,rutaimg,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$cantidadm','$cantidad','$ruta',now())");
+                mysqli_query($conexion, "INSERT INTO $tbherr_db7 (id_categoria,nombre,id_gavilanes,id_medidas,cantidad_minima,cantidad,fecha_hora) values ('$categoria','$nombre','$n_gavilanes','$medidas','$cantidadm','$cantidad',now())");
                 echo "Insercion exitosa";
-            }
         include("cerrar_conexion.php");
         }
     

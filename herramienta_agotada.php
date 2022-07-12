@@ -54,7 +54,7 @@ ob_start();
                 <div class="tb">
                 <?php
                     include("abrir_conexion.php");// conexion con la BD
-                    $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < 2 ORDER BY id_herramienta");
+                    $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad_minima,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < Cantidad_Minima ORDER BY id_herramienta");
                     //Unimos tabla Herramientas con categorias y medidas
                 ?>
                             <table class="table" id="tabla2">
@@ -68,6 +68,7 @@ ob_start();
                                         <th><center>Ancho</center></th>
                                         <th><center>Largo</center></th>
                                         <th><center>Cantidad</center></th>
+                                        <th><center>A Comprar</center></th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -83,6 +84,7 @@ ob_start();
                                         <td><center><?php echo $consulta['Ancho']?></center></td>
                                         <td><center><?php echo $consulta['Largo']?></center></td>
                                         <td><center><?php echo $consulta['cantidad']?></center></td>
+                                        <td><center><?php echo $consulta['cantidad_minima']-$consulta['cantidad']?></center></td>
                                     </tr>
                                 </tbody>
                                 <?php
