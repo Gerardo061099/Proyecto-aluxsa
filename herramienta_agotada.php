@@ -98,7 +98,7 @@ ob_start();
         </section>
         <br><br>
         <div>
-            <button type="button" class="btn btn-outline-info" onclick="convertir()"> <img src="img/list.png" alt=""> Convertir a PDF</button>
+            <a href="reporte_pdf.php" class="btn btn-outline-info"><img src="img/printer.png" alt="Sin resultados"> Imprimir documento</a>
         </div><br><br>
     </center>
     <nav aria-label="Page navigation example">

@@ -144,41 +144,6 @@ function consultar(e) {
     }
 } //fin function consultar();
 
-function convertir() {
-    console.log("Function convertir");
-    var $screenshot = document.body;
-    html2pdf()
-        .set({
-            margin: 0.2,
-            marginTop: 0.4,
-            filename: "Reportes.pdf",
-            image: {
-                type: "jpg",
-                quality: 0.50,
-            },
-            html2canvas: {
-                scale: 3,
-                letterRendering: true
-            },
-            jsPDF: {
-                unit: "in",
-                format: "a3",
-                orientation: "portrait" //portrait o landscape
-            }
-        })
-        .from($screenshot)
-        .save()
-        .catch(error => console.log(error))
-        .finally()
-        .then(() => {
-            swal({
-                title: "Conversion exitosa!!",
-                text: "Se a generado el PDF",
-                icon: "success"
-            });
-        });
-}
-
 function subirsolicitud(e) {
     e.preventDefault();
     var nombre = document.getElementById("nombre").value;
