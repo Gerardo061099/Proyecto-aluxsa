@@ -12,12 +12,16 @@ function borrar(a) {
             data: datos,
             processData: false,
             contentType: false,
+            beforeSend: function () {
+                $('#load1').html('Cargando...');
+            },
             success: function() {
                 swal({
                     title: "Proceso exitoso",
                     text: "Las medidas han sido borradas",
                     icon: "success"
                 });
+                $('#load1').html('Medidas eliminadas');
             }
         });
     } else if (categoria != "Choose..." && medida == "Choose...") {
@@ -29,12 +33,16 @@ function borrar(a) {
             data: dato,
             processData: false,
             contentType: false,
+            beforeSend: function () {
+                $('#load1').html('Cargando...');
+            },
             success: function() {
                 swal({
                     title: "Proceso exitoso",
-                    text: "La categoria han sido borradas",
+                    text: "La categoria han sido borrada",
                     icon: "success"
                 });
+                $('#load1').html('Categoria eliminada');
             }
         });
     } else if (categoria == "Choose..." && medida == "Choose...") {

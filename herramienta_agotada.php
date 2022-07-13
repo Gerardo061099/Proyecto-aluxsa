@@ -40,11 +40,11 @@ ob_start();
 ?>
     <!-- Image and text -->
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="pagina_principal.php">
-        <img src="img/home.png" alt="">
-        </a>
         <a class="navbar-brand" href="#">
-        ALUXSA S.A de C.V
+            ALUXSA S.A de C.V
+        </a>
+        <a class="navbar-brand" href="pagina_principal.php">
+            <img src="img/home.png" alt="Sin resultados">
         </a>
     </nav>
     <center>
@@ -54,7 +54,7 @@ ob_start();
                 <div class="tb">
                 <?php
                     include("abrir_conexion.php");// conexion con la BD
-                    $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad_minima,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < Cantidad_Minima ORDER BY id_herramienta");
+                    $resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad_minima,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < Cantidad_Minima ORDER BY Nombre");
                     //Unimos tabla Herramientas con categorias y medidas
                 ?>
                             <table class="table" id="tabla2">

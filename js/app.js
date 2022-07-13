@@ -76,13 +76,7 @@ function update() {
                         text: "Se realizo un actualizacion de manera exitosa!!",
                         icon: "success"
                     });
-                } else {
-                    swal({
-                        title: "Oh oh ",
-                        text: "Ocurrio un error",
-                        icon: "Debes ingresar los valores necesarios para realizar la actualizacion"
-                    });
-                }
+                } 
             }
         });
     } else {
@@ -236,3 +230,8 @@ function RegistrarSoli(e) {
         });
     }
 }
+const reload = document.getElementById('reload');
+
+reload.addEventListener('click', _ => { // el _ es para indicar la ausencia de parametros
+    location.reload();
+});

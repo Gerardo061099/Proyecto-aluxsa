@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
@@ -110,7 +111,12 @@ ob_start();
                                         <select id="categoria" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
-                                                include("php/print_list_categorias.php");
+                                                include("abrir_conexion.php");
+                                                $query = $conexion -> query ("SELECT * FROM $tbcat_db3");
+                                                while ($valores = mysqli_fetch_array($query)) {
+                                                    echo ('<option value="'.$valores['id_Categoria'].'">'.$valores['Descripcion'].' '.$valores['Material'].'</option>');
+                                                }
+                                                include("cerrar_conexion.php");
                                             ?>
                                         </select>
                                 </div>
@@ -123,6 +129,7 @@ ob_start();
                             <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
                             <button type="button" class="btn btn-danger"><img src="img/trash-can.png" alt="sin resultados" onclick="borrar(event)"></button>
+                            <button id="reload" class="btn btn-info">Refrescar</button>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>
@@ -133,7 +140,6 @@ ob_start();
             <li class="page-item">
                 <a class="page-link" href="inventario.php">Pagina anterior</a>
             </li>
-            
         </ul>
     </nav>
     </center>

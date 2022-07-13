@@ -50,7 +50,7 @@ $pdf->Cell(20,10,'Largo','B',0,'C',1);
 $pdf->Cell(17,10,'Cantidad','B',0,'C',1);
 $pdf->Cell(18,10,'A comprar','B',1,'C',1);
 include("abrir_conexion.php");// conexion con la BD
-$resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad_minima,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < Cantidad_Minima ORDER BY id_herramienta");
+$resultados = mysqli_query($conexion,"SELECT h.id_herramienta,h.Nombre,c.material,c.descripcion,g.Num_gavilanes,m.Ancho,m.Largo,h.cantidad_minima,h.cantidad,h.fecha_hora FROM $tbherr_db7 h inner join categorias c on h.id_categoria = c.id_categoria inner join gavilanes g on h.id_gavilanes = g.id_gav inner join medidas m on h.id_medidas = m.id_medidas  WHERE cantidad < Cantidad_Minima ORDER BY descripcion");
 while($consulta = mysqli_fetch_array($resultados)){
     $pdf->SetX(2);
     $pdf->SetFont('Helvetica','',10);

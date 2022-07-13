@@ -7,10 +7,10 @@
     <title>Herramientas</title>
     <link rel="shortcut icon" href="img/bits.png">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
-    <script src="extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
 </head>
 <body class="pag">
 <?php
@@ -91,7 +91,7 @@ ob_start();
                                         <option selected>Choose...</option>
                                         <option value="Cortador">Cortador</option>
                                         <option value="Broca">Broca</option>
-                                        <option value="Broca">Machuelo</option>
+                                        <option value="Machuelo">Machuelo</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5 my-1">
@@ -151,6 +151,7 @@ ob_start();
             </div>
             <div class="tb-herramientas">
                     <div class="opciones">
+                        <button id="reload" class="btn btn-outline-info">Refrescar</button>
                     </div>
                     <div style="margin: 0px 10px; background: #FDFEFE;">
                         <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas</strong></h1>
@@ -271,19 +272,7 @@ ob_start();
                 }
                             ?>
                     </div>
-    <nav aria-label="Page navigation example" style="margin: 10px 10px;">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="pagina_principal.php"><-</a>
-            </li>
-            <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
-            <li class="page-item"><a class="page-link" href="herramienta_agotada.php">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="registros.php">-></a>
-            </li>
-        </ul>
-    </nav>
+    
 </body>
 <script src="js/app.js"></script>
 </html>
