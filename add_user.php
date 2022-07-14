@@ -52,72 +52,39 @@ ob_start();
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
                         <form enctype="multipart/form-data">
-                        <h1>Registrar:</h1><!-- from. registrar nuevas herramientas -->
+                            <center>Datos del Personales</center>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <label for="nombre">Nombre(s):</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombr" placeholder="Cortador, Broca..">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <label for="apellidos">Apellidos:</label>
                                     <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="1,2,3,4...">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="cantidadm">Cantidad Minima:</label>
-                                    <input type="text" class="form-control" id="cantidadm" name="cantidad2" placeholder="Cantidad Minima">
-                                </div>
                             </div>
-                            <div class="form-row" >
+                            <center>Datos de Usuario</center>
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="gavilanes">Gavilanes:</label>
-                                        <select id="gavilanes" id="gavilanes" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                                include("abrir_conexion.php");
-                                                //realizamos una consulta a la DB
-                                                $query = $conexion -> query ("SELECT * FROM $tbgav_db6 ORDER BY Num_gavilanes");
-                                                //mostramos los datos obtenidos mediante etiquetas de HTML
-                                                    while ($valores = mysqli_fetch_array($query)) {
-                                                        echo ('<option value="'.$valores['id_Gav'].'">'.$valores['Num_gavilanes'].'</option>');
-                                                    }
-                                                include("cerrar_conexion.php");
-                                            ?>
-                                        </select>
+                                    <label for="user">Usuario:</label>
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="Cantidad Minima">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="medidas">Medidas:</label>
-                                        <select id="medidas" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                                include("abrir_conexion.php");
-                                                $query = $conexion -> query ("SELECT * FROM $tbmed_db9");
-                                                    while ($valores = mysqli_fetch_array($query)) {
-                                                        echo ('<option value="'.$valores['id_Medidas'].'">'.$valores['Ancho'].' x '.$valores['Largo'].'</option>');
-                                                    }
-                                                include("cerrar_conexion.php");
-                                            ?>
-                                        </select>
+                                    <label for="pass">Contraseña:</label>
+                                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Cantidad Minima">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="categoria">Categoria:</label>
-                                        <select id="categoria" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <?php
-                                                include("php/print_list_categorias.php");
-                                            ?>
-                                        </select>
+                                    <label for="pwd2">Repetir contraseña:</label>
+                                    <input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="Cantidad Minima">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="subir_imagen">Nomenclatura: img.jpg</label>
-                                    <input type="file" class="form-control-file" id="subir_imagen" name="upimg">
+                                    <label for="n_empleado">Número de empleado:</label>
+                                    <input type="text" class="form-control" id="n_empleado" name="n_empleado" placeholder="Cantidad Minima">
                                 </div>
                             </div>
-                            <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt="sin resultados"> Categoria</a>
-                            <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
-                            <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
-                            <button type="button" class="btn btn-danger"><img src="img/trash-can.png" alt="sin resultados" onclick="borrar(event)"></button>
+                            <input type="submit" value="Hecho" class="btn btn-success" onclick=registrar(event)>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>
@@ -132,7 +99,6 @@ ob_start();
             </ul>
         </nav>
     </center>
-    <script src="js/eliminar.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/usuarios.js"></script>
 </body>
 </html>

@@ -152,6 +152,7 @@ ob_start();
             <div class="tb-herramientas">
                     <div class="opciones">
                         <button id="reload" class="btn btn-outline-info">Refrescar</button>
+                        <a href="reporte_pdflistac.php" class="btn btn-outline-info"><img src="img/printer.png" alt="Sin resultados"> Imprimir documento</a>
                     </div>
                     <div style="margin: 0px 10px; background: #FDFEFE;">
                         <h1 class="titulos" style="text-align:left;"><strong>Listado de herramientas</strong></h1>

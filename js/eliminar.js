@@ -12,7 +12,7 @@ function borrar(a) {
             data: datos,
             processData: false,
             contentType: false,
-            beforeSend: function () {
+            beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
             success: function() {
@@ -33,7 +33,7 @@ function borrar(a) {
             data: dato,
             processData: false,
             contentType: false,
-            beforeSend: function () {
+            beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
             success: function() {
