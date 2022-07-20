@@ -28,6 +28,7 @@ function medidas(e) {
                         text: "Los datos se agregaron correctamente",
                         icon: "success"
                     });
+                    window.location.href = "registro_h.php";
                 } else {
                     swal({
                         title: "Error",

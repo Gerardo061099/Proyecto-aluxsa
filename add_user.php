@@ -51,51 +51,88 @@ ob_start();
         <div class="aside1">
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
-                        <form enctype="multipart/form-data">
-                            <center>Datos del Personales</center>
+                        <form>
+                            <center>Datos Personales</center>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="nombre">Nombre(s):</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
+                                    <input type="text" class="form-control" id="nombre" name="nombre">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="apellidos">Apellidos:</label>
-                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="1,2,3,4...">
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos">
                                 </div>
                             </div>
                             <center>Datos de Usuario</center>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="user">Usuario:</label>
-                                    <input type="text" class="form-control" id="user" name="user" placeholder="Cantidad Minima">
+                                    <input type="text" class="form-control" id="user" name="user">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="pass">Contraseña:</label>
-                                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Cantidad Minima">
+                                    <input type="password" class="form-control" id="pass" name="pass">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="pwd2">Repetir contraseña:</label>
-                                    <input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="Cantidad Minima">
+                                    <input type="password" class="form-control" id="pwd2" name="pwd2">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="n_empleado">Número de empleado:</label>
-                                    <input type="text" class="form-control" id="n_empleado" name="n_empleado" placeholder="Cantidad Minima">
+                                    <input type="text" class="form-control" id="n_empleado" name="n_empleado">
                                 </div>
                             </div>
-                            <input type="submit" value="Hecho" class="btn btn-success" onclick=registrar(event)>
+                            <input type="submit" value="Hecho" class="btn btn-success" onclick=registrar(event)><br>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>
                 </div>
         </div>
+        </center>
+        <div class="table-responsive">
+        <?php
+        include("abrir_conexion.php");
+            $query = mysqli_query($conexion,"SELECT Nombre,Apellidos,user,Num_empleado,Estado FROM $tbu_db1 ORDER BY id_us");
+            echo '
+            <table class="table table-dark" style="font-size: 15px;">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Usuario</th>
+                        <th># Empleado</th>
+                        <th>Estado</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>';
+            while ($res = mysqli_fetch_array($query)) {
+                echo '
+                    <tr>
+                        <th>'.$res['Nombre'].'</th>
+                        <td>'.$res['Apellidos'].'</td>
+                        <td>'.$res['user'].'</td>
+                        <td>'.$res['Num_empleado'].'</td>
+                        <td>'.$res['Estado'].'</td>
+                        <td>'?><a class="btn btn-danger btn-sm" href="id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a><?php echo '</td>
+                        <td>'?><a class="btn btn-primary btn-sm" href="id=<?php echo $consulta['id_herramienta']?>" role="button">Actualizar</a><?php echo'</td>
+                    </tr>';
+            }
+            include("cerrar_conexion.php");
+            echo '
+                </tbody>
+            </table>';
+        ?>
+        </div>
+    <center>
         <nav aria-label="Page navigation example" style="margin: 10px 10px;">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="inventario.php">Pagina anterior</a>
                 </li>
-                
             </ul>
         </nav>
     </center>

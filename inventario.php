@@ -7,6 +7,7 @@
     <title>Herramientas</title>
     <link rel="shortcut icon" href="img/bits.png">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -100,7 +101,7 @@ ob_start();
                                         <option selected>Choose...</option>
                                         <?php
                                         include("abrir_conexion.php");
-                                        $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas ORDER BY h.id_herramienta");
+                                        $consulta = mysqli_query($conexion,"SELECT m.ancho FROM $tbherr_db7 h INNER JOIN $tbmed_db9 m WHERE h.id_Medidas = m.id_Medidas GROUP BY ancho");
                                             while($res = mysqli_fetch_array($consulta)){
                                                 echo '<option value="'.$res['ancho'].'">'.$res['ancho'].'</option>';   
                                             }
@@ -125,7 +126,7 @@ ob_start();
                                 $resul = mysqli_query($conexion,"SELECT Count(id_herramienta) as herramientas FROM $tbherr_db7");
                                 while($consulta = mysqli_fetch_array($resul)){
                                     echo "  <button type=\"button\" class=\"btn btn-primary\">
-                                                <strong>N° Piesas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
+                                                <strong>Herramientas:</strong> <span class=\"badge badge-light\">".$consulta['herramientas']."</span>
                                             </button>
                                         ";
                                 }
@@ -173,17 +174,18 @@ ob_start();
                                                 <th><center>Gavilanes</center></th>
                                                 <th><center>Ancho</center></th>
                                                 <th><center>Largo</center></th>
-                                                <th><center>C_Minima</center></th>
                                                 <th><center>Cantidad</center></th>
+                                                <th><center>C_Minima</center></th>
                                                 <th><center>Fecha</center></th>
                                                 <th><center>Estado</center></th>
                                                 <th><center></center></th>
                                             </tr>
                                         </thead>
+                                        <tbody class=\"body-tb\">
                                 ";
                                 while($consulta = mysqli_fetch_array($resultados)){
                                 echo 
-                                "<tbody class=\"body-tb\">
+                                "
                                     <tr>
                                         <td><center>".$consulta['id_herramienta']."</center></td>
                                         <td><center>".$consulta['Nombre']."</center></td>
@@ -192,8 +194,8 @@ ob_start();
                                         <td><center>".$consulta['Num_gavilanes']."</center></td>
                                         <td><center>".$consulta['Ancho']."</center></td>
                                         <td><center>".$consulta['Largo']."</center></td>
-                                        <td><center>".$consulta['cantidad_minima']."</center></td>
                                         <td><center>".$consulta['cantidad']."</center></td>
+                                        <td><center>".$consulta['cantidad_minima']."</center></td>
                                         <td><center>".$consulta['fecha_hora']."</center></td>
                                         <th><center>";?>
                                         <?php
@@ -217,10 +219,11 @@ ob_start();
                                         </center></th>
                                         <th><center><a class="btn btn-danger btn-sm" href="eliminar.php?id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a></center></th>
                                     </tr>
-                                </tbody>
+                                
                             <?php
                             }
                             include("cerrar_conexion.php");
+                            echo "</tbody>";
                             ?>
                                 </table><br>
                     </div>
@@ -276,4 +279,5 @@ ob_start();
     
 </body>
 <script src="js/app.js"></script>
+<script src="js/eliminar_registro.js"></script>
 </html>

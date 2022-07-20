@@ -34,7 +34,7 @@ $pdf->SetFont('Helvetica','B',25);
 $pdf->Image('img/titulo.jpg',40,10,120);
 $pdf->Ln(100);
 $pdf->SetXY(30,30);
-$pdf->Cell(0,8,'Lista de Herramientas',0,1,'C',0);
+$pdf->Cell(0,8,'Lista de herramientas por comprar',0,1,'C',0);
 $pdf->Ln(10);
 $pdf->SetX(2);
 $pdf->SetFillColor(46, 64, 83);

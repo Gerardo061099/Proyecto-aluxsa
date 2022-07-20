@@ -36,7 +36,7 @@ ob_start();
             include("cerrar_conexion.php");
         }
     }
-    if ($_SESSION['sesion']<>1) {
+    if ($_SESSION['sesion']<1 || $_SESSION['sesion']>1) {
         header("Location:index.php");
     }
 ?>
@@ -55,7 +55,7 @@ ob_start();
             </div>
         </div>
         <div class="aside1">
-            <button id="reload" class="btn btn-info">Refrescar</button>
+            <a href="registro_h.php" class="btn btn-info">Reload</a>
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
                         <form enctype="multipart/form-data">
@@ -66,7 +66,7 @@ ob_start();
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Cortador, Broca..">
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="cantidad1">Cantidad:</label>
+                                    <label for="cantidad">Cantidad:</label>
                                     <input type="text" class="form-control" id="cantidad" name="cantidad1" placeholder="1,2,3,4...">
                                 </div>
                                 <div class="form-group col-md-4">
@@ -129,7 +129,7 @@ ob_start();
                             <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt="sin resultados"> Categoria</a>
                             <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
                             <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
-                            <a type="submit" class="btn btn-danger"><img src="img/trash-can.png" alt="sin resultados" onclick="borrar(event)"></a>
+                            <a type="submit" class="btn btn-danger" onclick="borrar(event)"><img src="img/trash-can.png" alt="sin resultados"></a>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>

@@ -1,5 +1,5 @@
 function obtener(e) {
-    e.preventDefault();
+    
     //obtenemos los valores ingresados por el usuario del documento registro_h.php
     //por su id incluyendo la imagen
     var nom = document.getElementById('nombre').value;
@@ -86,7 +86,6 @@ function update() {
             icon: "error"
         });
     }
-
 } //fin function update();
 function consultar(e) {
     var nombre_h = document.getElementById('herra_b').value;
@@ -170,9 +169,10 @@ function subirsolicitud(e) {
             } else if (mensaje == "La insercion no se pudo ejecutar") {
                 swal({
                     title: "Oh oh",
-                    text: "Ocurrio un problema",
+                    text: "Aun no has llenado todos los campos",
                     icon: "warning"
                 });
+                $('#cargar').html('<br><div style="background:#EC7063; color:#FDFEFE; width: max-content; border-radius:3px; padding:3px 3px;">Debes llenar todos los campos</div>');
             }
         }
     });

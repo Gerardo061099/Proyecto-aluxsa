@@ -54,7 +54,7 @@ ob_start();
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="nombre">Nombre :</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="">
+                                    <input type="text" class="form-control" id="nombre">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="cantidad">Apellidos:</label>
@@ -75,7 +75,7 @@ ob_start();
                             </div>
                             <input type="submit" value="Siguiente" class="btn btn-outline-info" onclick="subirsolicitud(event)">
                             <a class="btn btn-danger" href="pagina_principal.php" role="button">Cancelar</a>
-                            <br><br>
+                            <br>
                             <div id="cargar"></div>
                         </form>
                     </div>

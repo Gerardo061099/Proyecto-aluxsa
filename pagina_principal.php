@@ -67,9 +67,8 @@ ob_start();
             <input type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()" style="background-color : #283747; color : White; font-family : Verdana, Arial, Helvetica; font-size : 12pt; text-align : center;">
         </form>
         <a class="navbar-brand" href="cerrar_sesion.php">
-        <img src="img/log-out.png" alt="">
+            <img src="img/log-out.png" alt="">
         </a>
-        
     </nav>
     <center>
         <div class="box-1">
@@ -84,35 +83,35 @@ ob_start();
             <div class="card-header">Herramientas</div>
             <div class="card-body">
                 <h5 class="card-title">Lista de herramientas</h5>
-                <p class="card-text"><center><a href="inventario.php"><img src="img/drilling.png" alt=""></a></center></p>
+                <p class="card-text"><center><a href="inventario.php"><img src="img/drilling.png" alt="sin resultados"></a></center></p>
             </div>
         </div>
         <div class="card text-white bg-success mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Categorias</div>
             <div class="card-body">
                 <h5 class="card-title">Lista de Categorias</h5>
-                <p class="card-text"><center><a href="registros.php"><img src="img/categ.png" alt=""></a></center></p>
+                <p class="card-text"><center><a href="registros.php"><img src="img/categ.png" alt="sin resultados"></a></center></p>
             </div>
         </div>
         <div class="card text-white bg-danger mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Reportes</div>
             <div class="card-body">
                 <h5 class="card-title">Herramientas agotadas</h5>
-                <p class="card-text"><center><a href="herramienta_agotada.php"><img src="img/report.png" alt=""></center></a></p>
+                <p class="card-text"><center><a href="herramienta_agotada.php"><img src="img/report.png" alt="sin resultados"></center></a></p>
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Solicitudes</div>
             <div class="card-body">
                 <h5 class="card-title">Registrar solicitud</h5>
-                <p class="card-text"><center><a href="solicitudes.php"><img src="img/responsive.png" alt=""></center></a></p>
+                <p class="card-text"><center><a href="solicitudes.php"><img src="img/responsive.png" alt="sin resultados"></center></a></p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3" id="card1" style="max-width: 18rem;">
             <div class="card-header">Salidas del almacén</div>
             <div class="card-body">
                 <h5 class="card-title">Salidas del almacén</h5>
-                <p class="card-text"><center><a href="salidas_almacen.php"><img src="img/out.png" alt=""></center></a></p>
+                <p class="card-text"><center><a href="salidas_almacen.php"><img src="img/out.png" alt="sin resultados"></center></a></p>
             </div>
         </div>
     </div>

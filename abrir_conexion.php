@@ -3,7 +3,7 @@
 $host = "localhost";//servidor
 $userdb = "root";//usuario
 $claveus = "root";//clavepass
-$nombredb = "bodega";//db bodega
+$nombredb = "almacen";//db bodega
 //tablas BD
 $tbu_db1 = "usuarios";
 $tbcat_db3 = "categorias";
@@ -15,7 +15,7 @@ $tbmaq_db8 = "maquinaria";
 $tbmed_db9 = "medidas";
 $tbsoli_db10 = "solicitud";
 //conexion
-$conexion = new mysqli($host,$userdb,$claveus,$nombredb);
+$conexion = new mysqli ($host,$userdb,$claveus,$nombredb);
 //En caso de haber datos erroneos del servidor
 if ($conexion->connect_errno) {
     echo "Problemas de conexion con el servidor...";

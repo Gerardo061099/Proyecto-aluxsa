@@ -1,5 +1,4 @@
-function borrar(a) {
-    a.preventDefault();
+function borrar() {
     var medida = document.getElementById("medidas").value;
     var categoria = document.getElementById("categoria").value;
     if (medida != "Choose..." && categoria == "Choose...") {
