@@ -58,7 +58,6 @@ ob_start();
                 setTimeout("mueveReloj()",1000)
             }
         </script>
-    <!-- Image and text -->
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             ALUXSA S.A de C.V

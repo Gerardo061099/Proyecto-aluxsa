@@ -186,20 +186,6 @@ ob_start();
                 ";
             ?>
             </div>
-        </div>  
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="inventario.php">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="inventario.php">1</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="herramienta_agotada.php">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="herramienta_agotada.php">Next</a>
-            </li>
-        </ul>
-    </nav>
-    
+        </div>
 </body>
 </html>

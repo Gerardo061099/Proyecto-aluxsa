@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sistema de inventario aluxsa">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -27,7 +28,6 @@
                         <div class="form-group">
                             <label for="pass" class="passla">Contraseña:</label>
                             <input type="password" name="pass" placeholder="********" class="form-control" id="pass" style="width: 55%; display:flex; margin:auto;">
-                            
                         </div>
                     </div>
                 <center>

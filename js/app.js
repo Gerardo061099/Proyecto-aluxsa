@@ -1,5 +1,4 @@
-function obtener(e) {
-    
+function obtener() {
     //obtenemos los valores ingresados por el usuario del documento registro_h.php
     //por su id incluyendo la imagen
     var nom = document.getElementById('nombre').value;
@@ -33,8 +32,9 @@ function obtener(e) {
                     swal({
                         title: "Campos Vacios",
                         text: "Debes llenar todos los campos",
-                        icon: "warning",
+                        icon: "error",
                     });
+                    window.location.href = "";
                     $('#load1').html('Oh Oh.. ocurrio un error!!');
                 } else {
                     swal({
@@ -43,6 +43,7 @@ function obtener(e) {
                         icon: "success"
                     });
                     $('#load1').html('Registro terminado!!');
+                    window.location.href = "";
                 }
             }
         });
@@ -230,8 +231,3 @@ function RegistrarSoli(e) {
         });
     }
 }
-const reload = document.getElementById('reload');
-
-reload.addEventListener('click', _ => { // el _ es para indicar la ausencia de parametros
-    location.reload();
-});

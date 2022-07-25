@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <title>Registro de nuevas herramientas</title>
     <link rel="shortcut icon" href="img/copy.png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
@@ -55,7 +58,7 @@ ob_start();
             </div>
         </div>
         <div class="aside1">
-            <a href="registro_h.php" class="btn btn-info">Reload</a>
+            <a id="refresh" href="javascript:location.reload()" role="button" class="btn btn-info" >Recargar</a>
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
                         <form enctype="multipart/form-data">
@@ -128,7 +131,7 @@ ob_start();
                             </div>
                             <a href="add_categorias.php" type="submit" class="btn btn-dark"><img src="img/plus-withe.png" alt="sin resultados"> Categoria</a>
                             <a href="add_medidas.php" type="submit" class="btn btn-primary"><img src="img/plus-withe.png" alt="sin resultados"> Medidas</a>
-                            <input type="submit" value="Hecho" class="btn btn-success" onclick=obtener(event)>
+                            <input type="submit" value="Hecho" class="btn btn-success" onclick="obtener()">
                             <a type="submit" class="btn btn-danger" onclick="borrar(event)"><img src="img/trash-can.png" alt="sin resultados"></a>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
@@ -143,6 +146,7 @@ ob_start();
         </ul>
     </nav>
     </center>
+    <script src="js/funcion.js"></script>
     <script src="js/eliminar.js"></script>
     <script src="js/app.js"></script>
 </body>

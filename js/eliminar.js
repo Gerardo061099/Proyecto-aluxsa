@@ -2,6 +2,7 @@ function borrar() {
     var medida = document.getElementById("medidas").value;
     var categoria = document.getElementById("categoria").value;
     if (medida != "Choose..." && categoria == "Choose...") {
+        console.log("Id: "+medida);
         //borramos medidas
         var datos = new FormData();
         datos.append("Medida", medida);
@@ -14,13 +15,14 @@ function borrar() {
             beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
-            success: function() {
+            success: function () {
                 swal({
                     title: "Proceso exitoso",
                     text: "Las medidas han sido borradas",
                     icon: "success"
                 });
                 $('#load1').html('Medidas eliminadas');
+                window.location.href = " ";
             }
         });
     } else if (categoria != "Choose..." && medida == "Choose...") {
@@ -42,12 +44,20 @@ function borrar() {
                     icon: "success"
                 });
                 $('#load1').html('Categoria eliminada');
+                window.location.href = " ";
             }
         });
     } else if (categoria == "Choose..." && medida == "Choose...") {
         swal({
             title: "Error",
             text: "Para borrar un registro necesitas seleccionar una opcion",
+            icon: "error"
+        });
+    }
+    else if (categoria != "Choose..." && medida != "Choose...") {
+        swal({
+            title: "Error",
+            text: "Solo puedes borrar una opcion a la vez",
             icon: "error"
         });
     }

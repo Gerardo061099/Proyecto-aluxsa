@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="img/bits.png">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
@@ -152,7 +151,7 @@ ob_start();
             </div>
             <div class="tb-herramientas">
                     <div class="opciones">
-                        <button id="reload" class="btn btn-outline-info">Refrescar</button>
+                        <a href="inventario.php" class="btn btn-outline-info">Refrescar</a>
                         <a href="reporte_pdflistac.php" class="btn btn-outline-info"><img src="img/printer.png" alt="Sin resultados"> Imprimir documento</a>
                     </div>
                     <div style="margin: 0px 10px; background: #FDFEFE;">
@@ -279,5 +278,4 @@ ob_start();
     
 </body>
 <script src="js/app.js"></script>
-<script src="js/eliminar_registro.js"></script>
 </html>
