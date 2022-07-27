@@ -1,3 +1,9 @@
+<?php
+//importante
+session_start();
+ob_start();
+    
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,9 +18,6 @@
 </head>
 <body class="pag" onload="mueveReloj()">
 <?php
-//importante
-session_start();
-ob_start();
     if (isset($_POST['btn1'])) {
         $_SESSION['sesion']=0;//No a inisiado sesion
         $mail = $_POST['user'];
@@ -34,7 +37,7 @@ ob_start();
             include("cerrar_conexion.php");
         }
     }
-    if ($_SESSION['sesion']<>1) {
+    if ($_SESSION['sesion']<1 || $_SESSION['sesion']>1) {
         header("Location:index.php");
     }
 ?>
@@ -72,7 +75,7 @@ ob_start();
     <center>
         <div class="box-1">
             <div class="encabesado">
-                <h1 class="titulo">¡<?php echo $usuario;?> bienvenido  al sistema de inventario de ALUXSA!</h1>
+                <h1 class="titulo">¡Bienvenido  al sistema de inventario de ALUXSA!</h1>
             </div>
         </div>
     </center>

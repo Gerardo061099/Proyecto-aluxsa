@@ -1,3 +1,9 @@
+<?php
+//utilizando variables globales
+            //control de usuarios
+            session_start();
+            ob_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,31 +44,29 @@
         <div class="col-md-4" style="padding: 0px; width: 30%;"></div>
     </div>
     <center><p class="ley">Aluminios Xalatlaco S.A de C.V. Software v0.1</p></center>
-            <?php
-            //utilizando variables globales
-            //control de usuarios
-            session_start();
-            ob_start();
+</body>
+</html>
+<?php
                 if(isset($_SESSION['sesion'])){ 
                     if($_SESSION['sesion']==2){//Error de campos vacios
-                        echo "<script>
+                        echo '<script>
                             swal({
-                                title: \"Campos Vacios:\",
-                                text:\"Debes llenar todos los campos.\",
-                                icon:\"warning\",
-                                dangerMode: true,
+                                title: "Campos Vacios:",
+                                text: "Debes llenar todos los campos.",
+                                icon: "warning",
+                                dangerMode: "true",
                             });
-                        </script>";
+                        </script>';
                     }
                     if($_SESSION['sesion']==3){//Error de datos incorrectos 
-                        echo "<script>
+                        echo '<script>
                             swal({
-                                title: \"DATOS INCORRECTOS:\",
-                                text: \"Verifica el usuario o la Contraseña.\",
-                                icon: \"warning\",
-                                dangerMode: \"true\",
+                                title: "DATOS INCORRECTOS:",
+                                text: "Verifica el usuario y la Contraseña.",
+                                icon: "warning",
+                                dangerMode: "true",
                             });
-                        </script>";
+                        </script>';
                     }
                 }
                 else{
@@ -71,15 +75,13 @@
             ?>
             <?php
                 if($_SESSION['sesion']==4){
-                    echo "<script>
+                    echo '<script>
                         swal({
-                            title: \"Sesion Cerrada\",
-                            text: \"GRACIAS POR USAR NUESTROS SERVICIOS\",
-                            icon: \"success\",
+                            title: "Sesion Cerrada",
+                            text: "GRACIAS POR USAR NUESTROS SERVICIOS",
+                            icon: "success"
                         });
-                    </script>";
+                    </script>';
                 }
                 $_SESSION['sesion']=0; //Despues de confirmar el error, igualo lo variable a 0
             ?>
-</body>
-</html>

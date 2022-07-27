@@ -50,6 +50,14 @@ function registrar(a) {
     } else {
         console.log("Las contraseñas son diferentes");
     }
-    
-    
+}
+
+function Update_infousers(data) {
+    var d = data.split("||");
+    $("#modal_id").val(d[0]);
+    $("#modal_nombre").val(d[1]);
+    $("#modal_apellidos").val(d[2]);
+    $("#modal_user").val(d[3]);
+    $("#modaln_empleado").val(d[4]);
+    $("#modal_estado").val(d[5]);
 }

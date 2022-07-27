@@ -39,7 +39,7 @@ ob_start();
             include("cerrar_conexion.php");
         }
     }
-    if ($_SESSION['sesion']<1 || $_SESSION['sesion']>1) {
+    if ($_SESSION['sesion']<>1) {
         header("Location:index.php");
     }
 ?>
