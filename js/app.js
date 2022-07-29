@@ -8,22 +8,19 @@ function obtener() {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-        var datos = new FormData();
-        datos.append("nombre", nom);
-        datos.append("cantidad", can);
-        datos.append("cantidadm", canm);
-        datos.append("img", img);
-        datos.append("medidas", select);
-        datos.append("categoria", cate);
-        datos.append("gavilanes", gav);
-        console.log("Subiendo datos");
+    var datos = {
+        "nombre": nom,
+        "cantidad": can,
+        "cantidadm": canm,
+        "img": img,
+        "medidas": select,
+        "categoria": cate,
+        "gavilanes": gav
+    };
         $.ajax({
             url: "add_h.php",
             type: "POST",
             data: datos,
-            processData: false,
-            Cache: false,
-            contentType: false,
             beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
@@ -34,7 +31,7 @@ function obtener() {
                         text: "Debes llenar todos los campos",
                         icon: "error",
                     });
-                    window.location.href = "";
+                    location.reload(true);
                     $('#load1').html('Oh Oh.. ocurrio un error!!');
                 } else {
                     swal({
@@ -43,11 +40,10 @@ function obtener() {
                         icon: "success"
                     });
                     $('#load1').html('Registro terminado!!');
-                    window.location.href = "";
+                    location.reload(true);
                 }
             }
         });
-    
 } //fin function obtener();
 
 // funcion para actualizar campo cantidad de una herramienta

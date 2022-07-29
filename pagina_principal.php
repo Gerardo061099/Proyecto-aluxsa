@@ -68,9 +68,14 @@ ob_start();
         <form name="form_reloj">
             <input type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()" style="background-color : #283747; color : White; font-family : Verdana, Arial, Helvetica; font-size : 12pt; text-align : center;">
         </form>
-        <a class="navbar-brand" href="cerrar_sesion.php">
-            <img src="img/log-out.png" alt="">
-        </a>
+        <div class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="add_user.php">
+                <img src="img/add_user1.png" alt="">
+            </a>
+            <a class="navbar-brand" href="cerrar_sesion.php">
+                <img src="img/log-out.png" alt="">
+            </a>
+        </div>
     </nav>
     <center>
         <div class="box-1">

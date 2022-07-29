@@ -10,7 +10,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body style="background: #17202A;">
@@ -86,14 +85,14 @@ ob_start();
                                     <input type="text" class="form-control" id="n_empleado" name="n_empleado">
                                 </div>
                             </div>
-                            <input type="submit" value="Hecho" class="btn btn-success" onclick=registrar(event)><br>
+                            <input type="submit" value="Enviar" class="btn btn-success" onclick="registrar(event);"><br>
                             <div id="load1" style="color: black; font-size: 20px;"></div>
                         </form>
                     </div>
                 </div>
         </div>
         </center>
-        <div class="table-responsive">
+        <div class="table-responsive" id="tabla_us">
         <?php
         include("abrir_conexion.php");
             $query = mysqli_query($conexion,"SELECT id_us,Nombre,Apellidos,user,Num_empleado,Estado FROM $tbu_db1 ORDER BY id_us");
@@ -107,7 +106,6 @@ ob_start();
                         <th>Usuario</th>
                         <th># Empleado</th>
                         <th>Estado</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -130,8 +128,7 @@ ob_start();
                         <td>'.$res['user'].'</td>
                         <td>'.$res['Num_empleado'].'</td>
                         <td>'.$res['Estado'].'</td>
-                        <td>'?><a class="btn btn-danger btn-sm" href="id=<?php echo $consulta['id_herramienta']?>" role="button">Eliminar</a><?php echo '</td>
-                        <td>'?><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal1" onclick="Update_infousers('<?php echo $datos?>');">Actualizar</button>
+                        <td>'?><button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modal1" onclick="Update_infousers('<?php echo $datos?>');">Editar</button>
                         <?php echo'</td>
                         <td></td>
                     </tr>';
@@ -142,7 +139,6 @@ ob_start();
             </table>';
         ?>
         </div>
-        
         <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -181,7 +177,7 @@ ob_start();
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="modal_newpass">Nueva contraseña:</label>
-                                    <input type="text" class="form-control" id="modal_newpass" name="modal_newpass">
+                                    <input type="password" class="form-control" id="modal_newpass" name="modal_newpass">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="modal_estado">Estado:</label>
@@ -191,20 +187,12 @@ ob_start();
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Actualizar</button>
+                        <button type="button" class="btn btn-info btn-sm" data-dismiss="modal" onclick="actualizar_usuarios(event);">Actualizar</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" onclick="eliminar_us(event);">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
-    <center>
-        <nav aria-label="Page navigation example" style="margin: 10px 10px;">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="inventario.php">Pagina anterior</a>
-                </li>
-            </ul>
-        </nav>
-    </center>
     <script src="js/usuarios.js"></script>
 </body>
 </html>

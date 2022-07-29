@@ -11,16 +11,13 @@ function medidas(e) {
     } else {
         console.log('Ancho: ' + ancho);
         console.log('Largo: ' + largo);
-        var data = new FormData();
-        data.append("Ancho", ancho);
-        data.append("Largo", largo);
         $.ajax({
             url: "inserta_medidas.php",
             type: "POST",
-            data: data,
-            processData: false,
-            Cache: false,
-            contentType: false,
+            data: {
+                "Ancho": ancho,
+                "Largo": largo
+            },
             success: function(mensaje) {
                 if (mensaje == "Insercion exitosa") {
                     swal({
@@ -28,7 +25,7 @@ function medidas(e) {
                         text: "Los datos se agregaron correctamente",
                         icon: "success"
                     });
-                    window.location.href = "registro_h.php";
+                    location.reload(true);
                 } else {
                     swal({
                         title: "Error",

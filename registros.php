@@ -39,18 +39,20 @@ ob_start();
         <a class="navbar-brand" href="#">
             ALUXSA S.A de C.V
         </a>
-        <a class="navbar-brand" href="pagina_principal.php">
+        <div class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="pagina_principal.php">
             <img src="img/home.png" alt="">
-        </a>
-        <a class="navbar-brand" href="herramienta_agotada.php">
-            <img src="img/pdf.png" alt="">
-        </a>
-        <a class="navbar-brand" href="solicitudes.php">
-            <img src="img/documents1.png" alt="">
-        </a>
-        <a class="navbar-brand" href="solicitudes.php">
-            <img src="img/" alt="">
-        </a>
+            </a>
+            <a class="navbar-brand" href="herramienta_agotada.php">
+                <img src="img/pdf.png" alt="">
+            </a>
+            <a class="navbar-brand" href="solicitudes.php">
+                <img src="img/documents1.png" alt="">
+            </a>
+            <a class="navbar-brand" href="solicitudes.php">
+                <img src="img/" alt="">
+            </a>
+        </div>
     </nav>
     <nav aria-label="breadcrumb" style="margin: 5px 5px; width: 96%;">
         <ol class="breadcrumb">

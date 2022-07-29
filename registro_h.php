@@ -58,7 +58,13 @@ ob_start();
             </div>
         </div>
         <div class="aside1">
-            <a id="refresh" href="javascript:location.reload()" role="button" class="btn btn-info" >Recargar</a>
+            <button type="button" class="btn btn-info btn-sm" id="refresh" onclick="refrescar();">Refrescar</button>
+            <script>
+                function refrescar() {
+                    alert("funcion refrescar");
+                    window.location.reload(true);
+                }
+            </script>
                 <div class="contenedor" style="border-top: #5DADE2 7px solid;">
                     <div class="aside">
                         <form enctype="multipart/form-data">

@@ -101,20 +101,6 @@ ob_start();
             <a href="reporte_pdf.php" class="btn btn-outline-info"><img src="img/printer.png" alt="Sin resultados"> Imprimir documento</a>
         </div><br><br>
     </center>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="pagina_principal.php">Pagina principal</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="registros.php">2</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="solicitudes.php">4</a></li>
-            <li class="page-item">
-                <a class="page-link" href="solicitudes.php">Next</a>
-            </li>
-        </ul>
-    </nav>
-    
 </body>
 <script src="js/app.js"></script>
 </html>

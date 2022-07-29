@@ -8,7 +8,8 @@
         $categoria = $_POST['categoria'];
         $n_gavilanes = $_POST['gavilanes'];
         //-------------------subimos foto--------------------------------
-        $nombre_img = $_FILES['img']['name'];//así obtiene el nombre del archivo FILE
+        $img = $_FILES['img']['name'];//así obtiene el nombre del archivo FILE
+        $nombre_img = str_replace("-","",$img);
         $temporal = $_FILES['img']['tmp_name'];//así obtiene el archivo FILE
         $carpeta = 'img2';
         $ruta = $carpeta.'/'.$nombre_img;

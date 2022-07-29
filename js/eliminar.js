@@ -4,14 +4,13 @@ function borrar() {
     if (medida != "Choose..." && categoria == "Choose...") {
         console.log("Id: "+medida);
         //borramos medidas
-        var datos = new FormData();
-        datos.append("Medida", medida);
+        datos.append();
         $.ajax({
             type: "POST",
             url: "borrardatos.php",
-            data: datos,
-            processData: false,
-            contentType: false,
+            data: {
+                    "Medida": medida
+            },
             beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
@@ -22,18 +21,16 @@ function borrar() {
                     icon: "success"
                 });
                 $('#load1').html('Medidas eliminadas');
-                window.location.href = " ";
+                location.reload(true);
             }
         });
     } else if (categoria != "Choose..." && medida == "Choose...") {
-        var dato = new FormData();
-        dato.append("Categoria", categoria);
         $.ajax({
             type: "POST",
             url: "borrardatos.php",
-            data: dato,
-            processData: false,
-            contentType: false,
+            data: {
+                "Categoria": categoria
+            },
             beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
@@ -44,7 +41,7 @@ function borrar() {
                     icon: "success"
                 });
                 $('#load1').html('Categoria eliminada');
-                window.location.href = " ";
+                location.reload(true);
             }
         });
     } else if (categoria == "Choose..." && medida == "Choose...") {
@@ -53,8 +50,7 @@ function borrar() {
             text: "Para borrar un registro necesitas seleccionar una opcion",
             icon: "error"
         });
-    }
-    else if (categoria != "Choose..." && medida != "Choose...") {
+    }else if (categoria != "Choose..." && medida != "Choose...") {
         swal({
             title: "Error",
             text: "Solo puedes borrar una opcion a la vez",
