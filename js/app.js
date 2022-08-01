@@ -1,4 +1,5 @@
-function obtener() {
+function obtener(a) {
+    a.preventDefault();
     //obtenemos los valores ingresados por el usuario del documento registro_h.php
     //por su id incluyendo la imagen
     var nom = document.getElementById('nombre').value;
@@ -8,30 +9,40 @@ function obtener() {
     var select = document.getElementById('medidas').value;
     var cate = document.getElementById('categoria').value;
     var gav = document.getElementById('gavilanes').value;
-    var datos = {
-        "nombre": nom,
-        "cantidad": can,
-        "cantidadm": canm,
-        "img": img,
-        "medidas": select,
-        "categoria": cate,
-        "gavilanes": gav
-    };
+    var datos = new FormData();
+    datos.append("nombre", nom);
+    datos.append("cantidad", can);
+    datos.append("cantidadm", canm);
+    datos.append("img", img);
+    datos.append("medidas", select);
+    datos.append("categoria", cate);
+    datos.append("gavilanes", gav);
         $.ajax({
             url: "add_h.php",
             type: "POST",
             data: datos,
+            processData: false,
+            //Cache: false,
+            contentType: false,
             beforeSend: function() {
                 $('#load1').html('Cargando...');
             },
-            success: function(mensaje) {
-                if (mensaje == "campos vacios") {
+            success: function (mensaje) {
+                if (mensaje == "imagen no subida") {
+                    swal({
+                        title: "Error",
+                        text: "Cambia el nombre de la imagen",
+                        icon: "error",
+                    });
+                    $('#load1').html('Proceso finalizado!!');
+                }
+                else if (mensaje=="campos vacios") {
                     swal({
                         title: "Campos Vacios",
                         text: "Debes llenar todos los campos",
                         icon: "error",
                     });
-                    location.reload(true);
+                    //location.reload(true);
                     $('#load1').html('Oh Oh.. ocurrio un error!!');
                 } else {
                     swal({
@@ -40,7 +51,7 @@ function obtener() {
                         icon: "success"
                     });
                     $('#load1').html('Registro terminado!!');
-                    location.reload(true);
+                    //location.reload(true);
                 }
             }
         });
