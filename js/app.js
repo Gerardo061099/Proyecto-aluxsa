@@ -28,12 +28,16 @@ function obtener(a) {
                 $('#load1').html('Cargando...');
             },
             success: function (mensaje) {
+                console.log("dentro de succesful");
+                console.log("Mensaje resivido desde el servidor: "+ mensaje);
+                console.log("comparando mensaje");
                 if (mensaje == "imagen no subida") {
                     swal({
                         title: "Error",
-                        text: "Cambia el nombre de la imagen",
+                        text: "El tamaño de la imagen debe ser de 1.5M o menos",
                         icon: "error",
                     });
+                    console.log("Cambia el nombre de la imagen");
                     $('#load1').html('Proceso finalizado!!');
                 }
                 else if (mensaje=="campos vacios") {
@@ -43,13 +47,15 @@ function obtener(a) {
                         icon: "error",
                     });
                     //location.reload(true);
+                    console.log("Debes llenar todos los campos");
                     $('#load1').html('Oh Oh.. ocurrio un error!!');
-                } else {
+                } else if (mensaje == "Insercion exitosa"){
                     swal({
                         title: "Insercion exitosa",
                         text: "Puedes consultar la informacion en la lista de herramientas",
                         icon: "success"
                     });
+                    console.log("Puedes consultar la informacion en la lista de herramientas");
                     $('#load1').html('Registro terminado!!');
                     //location.reload(true);
                 }

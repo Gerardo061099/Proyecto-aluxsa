@@ -1,3 +1,6 @@
+<?php
+session_start();
+ob_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +20,6 @@
 </head>
 <body style="background: #17202A;">
 <?php
-session_start();
-ob_start();
     if (isset($_POST['btn1'])) {
         $_SESSION['sesion']=0;//No a iniciado sesion
         $mail = $_POST['user'];
@@ -39,7 +40,7 @@ ob_start();
     }
     if ($_SESSION['sesion']<>1) {
         header("Location:index.php");
-    }
+    }else{
 ?>
 <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -150,8 +151,10 @@ ob_start();
         </ul>
     </nav>
     </center>
-    <script src="js/funcion.js"></script>
     <script src="js/eliminar.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
+<?php
+}
+?>

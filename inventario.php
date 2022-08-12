@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Herramientas</title>
     <link rel="shortcut icon" href="img/bits.png">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--CDN swal(sweatalert)-->
 </head>
 <body class="pag">
@@ -239,7 +238,9 @@ ob_start();
             ?>
                     <div class="contador-h">
                         <div style="background: #2E4053; border-radius: 5px; "><center><h1 style="color: white;">Resultados</h1></center></div>
+                        <center><div id="mensaje"></div></center>
                             <?php
+                            if(mysqli_num_rows($consult) != 0){
                             while($consulta = mysqli_fetch_array($consult)) {
                             ?>
                             <div class="conten">
@@ -252,6 +253,7 @@ ob_start();
                                 </div>
                             </div>
                             <?php
+                            }
                                 echo '
                                 <script>
                                 swal({
@@ -260,7 +262,16 @@ ob_start();
                                     icon: "success"
                                 });
                                 </script>';
-                            }
+                        }else{
+                            echo '
+                            <script>
+                                swal({
+                                    title: "Opciones no validas",
+                                    text: "Las medidas no coinciden con el tipo de herramienta en la base de datos",
+                                    icon: "error"
+                                });
+                            </script>';
+                        }
                     }else {
                     echo '
                     <script>
